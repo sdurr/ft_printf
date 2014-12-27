@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/27 15:33:05 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/27 19:07:37 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_print_c(va_list ap)
 {
   char c;
 
-  c = va_arg(ap, int);
+  c = (char)va_arg(ap, int);
   ft_putchar(c);
   return (1);
 }
