@@ -1,55 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_test_type.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/27 15:23:57 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/28 15:23:27 by sdurr            ###   ########.fr       */
+/*   Created: 2014/12/28 14:14:27 by sdurr             #+#    #+#             */
+/*   Updated: 2014/12/28 14:55:24 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 #include "libftprintf.h"
 #include <stdarg.h>
-#include "libft.h"
 
-int		ft_printf(char *format, ...)
+int		ft_test_type(char *s)
 {
-	va_list	ap;
-	int		i;
-	int		ret;
-	char	*s;
-	int		d;
+	int i;
 
-	s = ft_strdup(format);
 	i = 0;
-	ret = 0;
-	va_start(ap, format);
-	if (ft_test_type(s) == -1)
-		return (0);
-	while (s[i])
-	{
+	while (s[i++])
 		while (s[i] != '%' && s[i])
 		{
 			if (s[i] == '#' && s[i - 1] == '%')
 				i++;
-			if (s[i] == 'x' && s[i - 1] == '#')
+			else if (s[i] == 'x' && s[i - 1] == '#')
 				i++;
-			ft_putchar(s[i]);
-			ret++;
+			else if (s[i] == '+' && s[i + 1] == 'd')
+				i++;
+			else if (s[i] == '+' && s[i + 1] == 'i')
+				i++;
+			else if (s[i] == '+')
+			{
+				ft_putstr_fd("error : '+' flags used with %", 2);
+				ft_putchar_fd(s[i + 1], 2);
+				ft_putchar_fd('\n', 2);
+				return (-1);
+			}
 			i++;
 		}
-		if (s[i] == '%')
-		{
-			i++;
-			d = ft_type(s, i, ap);
-			ret = ret + d;
-		}
-		i++;
-	}
-	va_end(ap);
-	ft_putnbr(ret);
-	return (ret);
+	return (0);
 }
