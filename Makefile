@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2014/12/28 14:25:39 by sdurr            ###   ########.fr        #
+#    Updated: 2014/12/29 19:04:20 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -20,6 +20,7 @@ SRC			= ft_print_c.c \
 				ft_printf.c \
 				ft_print_d.c \
 				ft_print_x.c \
+				ft_print_x_maj.c \
 				ft_print_x_diese.c \
 				ft_type.c \
 				ft_test_type.c \
