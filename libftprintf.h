@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:12:02 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/29 20:56:05 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/29 21:37:14 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define	LIBFTPRINTF_H
 
 # include <stdarg.h>
+# include "libft.h"
 
 void	ft_putnbr_long(long n);
 char	*ft_litoa(long n);

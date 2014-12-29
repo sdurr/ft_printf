@@ -1,21 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/27 15:27:52 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/29 22:03:13 by sdurr            ###   ########.fr       */
+/*   Created: 2014/12/29 22:24:46 by sdurr             #+#    #+#             */
+/*   Updated: 2014/12/29 22:24:48 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "libftprintf.h"
-
-int main()
-{
-	ft_printf("retour ft = %d\n", ft_printf("\nje suis,%#X \n",  256));
-	printf("retour printf = %d", printf("%#lx %10cd ts \n", 2554545454545456, "123456"));
-	return (0);
-}
+jlksdjzkljasflk

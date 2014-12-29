@@ -6,11 +6,11 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2014/12/29 20:55:43 by sdurr            ###   ########.fr        #
+#    Updated: 2014/12/29 21:56:08 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-NAME		= libftprint.a
+NAME		= libftprintf.a
 
 CPATH		= ./src/
 
@@ -45,7 +45,7 @@ $(NAME)	:		$(OBJ)
 
 .c.o:		$(CPATH)%.c
 				make -C libft
-				$(CC) $(CFLAGS) $(HPATH) libft/includes/ -c $(SRC)
+				$(CC) $(CFLAGS) $(HPATH) -c $(SRC)
 
 clean	:
 				rm -rf $(OBJ)
