@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:27:52 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/28 15:02:40 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/29 18:07:09 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 int main()
 {
-	printf("%d%s\n", 7, "geg");
-	ft_printf("je suis %d %s %c %% %#x %i %u \n", 0x17, "jsfk", 'z', 11, 0x11, 11);
-//	printf("\n%d", printf("je suis %d %s %c %% %#x  %+i %u\n", 0x17, "jsfk", 'z', 11, 0x11, -11));
+	ft_printf("retour ft = %d\n", ft_printf("\nje suis, %+d %c\n", 12, 'c'));
+	printf("retour printf = %d", printf("\nje suis, %ld %c %s\n", -12, 'c', "blabla"));
 	return (0);
 }
