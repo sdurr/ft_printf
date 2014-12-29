@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/29 22:19:30 by getrembl         ###   ########.fr       */
+/*   Updated: 2014/12/29 23:01:34 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int		ft_print_x(va_list ap)
 	while (quotient != 0)
 	{
 		rest = quotient % 16;
-		(quotient > 15) ? (quotient = quotient / 16) : (quotient = 0);
-		(rest < 10) ? (rest = 48 + rest) : (rest = 87 + rest);
+		(quotient > 15) ? (quotient /= 16) : (quotient = 0);
+		(rest < 10) ? (rest += 48) : (rest += 87);
 		hexa[i++] = rest;
 	}
 	hexa[i--] = '\0';

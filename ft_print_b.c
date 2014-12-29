@@ -6,7 +6,7 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 21:15:03 by getrembl          #+#    #+#             */
-/*   Updated: 2014/12/29 22:19:18 by getrembl         ###   ########.fr       */
+/*   Updated: 2014/12/29 23:00:07 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,15 @@ int			ft_print_b(va_list ap)
 	bin = ft_strnew(33);
 	quotient = va_arg(ap, int);
 	i = 0;
+	if (quotient < 0)
+	{
+		ft_putchar('-');
+		quotient = quotient * -1;
+	}
 	while (quotient != 0)
 	{
 		rest = quotient % 2;
-		(quotient > 1) ? (quotient = quotient / 2) : (quotient = 0);
+		(quotient > 1) ? (quotient /= 2) : (quotient = 0);
 		rest = rest + 48;
 		bin[i++] = rest;
 	}

@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/12 17:11:27 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/29 20:52:26 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/29 22:56:34 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 char	*ft_litoa(long n)
 {
 	char	*ret;
-	long		i;
+	long	i;
 
 	i = 0;
 	if (!(ret = (char *)malloc(sizeof(char) * ft_long_long(n) + 1)))
