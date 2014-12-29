@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:27:52 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/29 21:04:30 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/29 22:03:13 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int main()
 {
-	ft_printf("retour ft = %d\n", ft_printf("\nje suis, %ld %c %sjkfdsj %x\n", 15545454552, 'c', "blabla", -256));
-	printf("retour printf = %d", printf("%ld\n", 6354543524516));
+	ft_printf("retour ft = %d\n", ft_printf("\nje suis,%#X \n",  256));
+	printf("retour printf = %d", printf("%#lx %10cd ts \n", 2554545454545456, "123456"));
 	return (0);
 }

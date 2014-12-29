@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:24:57 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/29 21:03:03 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/29 21:21:37 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,12 @@ int	ft_type(char *s, int i, va_list ap)
 		ft_putchar ('%');
 		return (1);
 	}
-	if (s[i] == 'x' && s[i - 1] == '#')
+	if ((s[i] == 'x' && s[i - 1] == '#') || (s[i] == 'X' && s[i - 1] == '#'))
 	{
-		ft_putstr("0x");
+		if (s[i] == 'x')
+			ft_putstr("0x");
+		else
+			ft_putstr("0X");
 		return (ft_print_x(ap));
 	}
 	if (s[i] == 'x')
