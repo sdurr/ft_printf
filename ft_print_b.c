@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_x.c                                       :+:      :+:    :+:   */
+/*   ft_print_b.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
+/*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/29 22:19:30 by getrembl         ###   ########.fr       */
+/*   Created: 2014/12/29 21:15:03 by getrembl          #+#    #+#             */
+/*   Updated: 2014/12/29 22:19:18 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdarg.h>
+#include "libftprintf.h"
 
-int		ft_print_x(va_list ap)
+int			ft_print_b(va_list ap)
 {
-	char	*hexa;
+	char	*bin;
 	int		quotient;
 	int		rest;
 	int		i;
 	char	*ret;
 
-	hexa = ft_strnew(33);
+	bin = ft_strnew(33);
 	quotient = va_arg(ap, int);
 	i = 0;
 	while (quotient != 0)
 	{
-		rest = quotient % 16;
-		(quotient > 15) ? (quotient = quotient / 16) : (quotient = 0);
-		(rest < 10) ? (rest = 48 + rest) : (rest = 87 + rest);
-		hexa[i++] = rest;
+		rest = quotient % 2;
+		(quotient > 1) ? (quotient = quotient / 2) : (quotient = 0);
+		rest = rest + 48;
+		bin[i++] = rest;
 	}
-	hexa[i--] = '\0';
-	ret = ft_strnew(ft_strlen(hexa) + 1);
+	bin[i--] = '\0';
+	ret = ft_strnew(ft_strlen(bin) + 1);
 	rest = 0;
 	while (i >= 0)
-		ret[rest++] = hexa[i--];
+		ret[rest++] = bin[i--];
 	ft_putstr(ret);
-	return (ft_strlen(hexa));
+	return (ft_strlen(bin));
 }
-
