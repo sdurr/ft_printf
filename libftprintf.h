@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:12:02 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/29 22:28:54 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/29 23:05:41 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ long	ft_long_long(long n);
 int		ft_print_d_long(va_list ap);
 int		ft_print_c(va_list ap);
 int		ft_print_b(va_list ap);
+int		ft_print_o(va_list ap);
 int		ft_print_d(va_list ap);
 int		ft_print_u(va_list ap);
 int		ft_print_s(va_list ap);

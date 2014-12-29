@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2014/12/29 22:28:24 by sdurr            ###   ########.fr        #
+#    Updated: 2014/12/29 23:05:28 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,6 +15,7 @@ NAME		= libftprintf.a
 CPATH		= ./src/
 
 SRC			= ft_print_c.c \
+				ft_print_o.c \
 				ft_print_b.c \
 				ft_long_long.c \
 				ft_print_d_long.c \

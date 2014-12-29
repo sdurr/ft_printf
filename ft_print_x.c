@@ -6,14 +6,15 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/29 23:01:34 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/29 23:06:12 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/29 22:47:45 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdarg.h>
 
-int		ft_print_x(va_list ap)
+int			ft_print_x(va_list ap)
 {
 	char	*hexa;
 	int		quotient;
