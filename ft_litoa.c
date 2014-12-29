@@ -1,21 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/27 15:27:52 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/29 21:04:30 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/12 17:11:27 by sdurr             #+#    #+#             */
+/*   Updated: 2014/12/29 20:52:26 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
+#include <stdlib.h>
 #include "libftprintf.h"
 
-int main()
+char	*ft_litoa(long n)
 {
-	ft_printf("retour ft = %d\n", ft_printf("\nje suis, %ld %c %sjkfdsj %x\n", 15545454552, 'c', "blabla", -256));
-	printf("retour printf = %d", printf("%ld\n", 6354543524516));
-	return (0);
+	char	*ret;
+	long		i;
+
+	i = 0;
+	if (!(ret = (char *)malloc(sizeof(char) * ft_long_long(n) + 1)))
+		return (NULL);
+	if (n < 0)
+	{
+		ret[i++] = '-';
+		n = n * -1;
+	}
+	while (n >= 10 && n <= 2147483647)
+	{
+		ret[i++] = n % 10 + '0';
+		n = n / 10;
+	}
+	if (n < 10)
+		ret[i++] = n + '0';
+	ret[i] = '\0';
+	ret = ft_revers(ret);
+	return (ret);
 }

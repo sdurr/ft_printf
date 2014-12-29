@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf_d.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/27 15:27:52 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/29 21:04:30 by sdurr            ###   ########.fr       */
+/*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
+/*   Updated: 2014/12/29 21:05:52 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <stdarg.h>
+#include "libft.h"
 #include "libftprintf.h"
+#include <stdio.h>
 
-int main()
+int	ft_print_d_long(va_list ap)
 {
-	ft_printf("retour ft = %d\n", ft_printf("\nje suis, %ld %c %sjkfdsj %x\n", 15545454552, 'c', "blabla", -256));
-	printf("retour printf = %d", printf("%ld\n", 6354543524516));
-	return (0);
+	long d;
+
+	d = va_arg(ap, long);
+	ft_putnbr_long(d);
+	return (ft_strlen(ft_litoa(d)));
 }
