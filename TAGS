@@ -1,0 +1,54 @@
+
+ft_litoa.c,32
+char	*ft_litoa(ft_litoa17,957
+
+ft_long_long.c,27
+long		ft_long_long(13,892
+
+ft_print_b.c,25
+int			ft_print_b(15,918
+
+ft_print_c.c,23
+int	ft_print_c(16,932
+
+ft_print_d.c,23
+int	ft_print_d(16,932
+
+ft_print_d_long.c,28
+int	ft_print_d_long(18,976
+
+ft_print_o.c,25
+int			ft_print_o(15,917
+
+ft_print_s.c,23
+int	ft_print_s(16,932
+
+ft_print_u.c,23
+int	ft_print_u(16,932
+
+ft_print_x.c,25
+int			ft_print_x(16,932
+
+ft_print_x_diese.c,30
+int		ft_print_x_diese(16,932
+
+ft_print_x_maj.c,28
+int		ft_print_x_maj(16,932
+
+ft_printf.c,23
+int		ft_printf(18,977
+
+ft_putnbr_long.c,28
+void	ft_putnbr_long(15,912
+
+ft_test_type.c,26
+int		ft_test_type(17,957
+
+ft_type.c,20
+int	ft_type(17,957
+
+main.c,17
+int main(16,937
+
+libftprintf.h,30
+# define	LIBFTPRINTF_H14,915
