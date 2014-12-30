@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:12:02 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/29 23:05:41 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/30 14:01:23 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 # define	LIBFTPRINTF_H
 
 # include <stdarg.h>
-# include "libft.h"
 
 void	ft_putnbr_long(long n);
 char	*ft_litoa(long n);
 long	ft_long_long(long n);
 int		ft_print_d_long(va_list ap);
+int		ft_print_d_plus(va_list ap);
 int		ft_print_c(va_list ap);
 int		ft_print_b(va_list ap);
 int		ft_print_o(va_list ap);

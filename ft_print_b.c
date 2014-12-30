@@ -6,11 +6,12 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 21:15:03 by getrembl          #+#    #+#             */
-/*   Updated: 2014/12/29 23:00:07 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/30 14:03:21 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include "libft.h"
 
 int			ft_print_b(va_list ap)
 {

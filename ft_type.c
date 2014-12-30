@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:24:57 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/29 23:02:53 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/30 15:03:26 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,19 @@ int	ft_type(char *s, int i, va_list ap)
 {
 	if ((s[i - 1] == '+' && s[i] == 'd') || (s[i - 1] == '+' && s[i] == 'i'))
 	{
-		ft_putchar('+');
-		return (ft_print_d(ap) + 1);
+		return (ft_print_d_plus(ap));
 	}
 
 	if (s[i -1] == 'l' && s[i] == 'd')
 		return (ft_print_d_long(ap));
 	if (s[i] == 'd' || s[i] == 'i')
 		return (ft_print_d(ap));
-	if (s[i] == 'u')
+	if (s[i] == 'o' && s[i - 1] == '#')
+	{
+		ft_putchar('0');
+		return (ft_print_o(ap) + 1);
+	}
+		if (s[i] == 'u')
 		return (ft_print_d(ap));
 	if (s[i] == 'o')
 		return (ft_print_o(ap));
@@ -47,7 +51,7 @@ int	ft_type(char *s, int i, va_list ap)
 			ft_putstr("0x");
 		else
 			ft_putstr("0X");
-		return (ft_print_x(ap));
+		return (ft_print_x(ap) + 2);
 	}
 	if (s[i] == 'x')
 		return (ft_print_x(ap));
