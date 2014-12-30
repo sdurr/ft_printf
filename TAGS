@@ -6,7 +6,7 @@ ft_long_long.c,27
 long		ft_long_long(13,892
 
 ft_print_b.c,25
-int			ft_print_b(15,918
+int			ft_print_b(16,937
 
 ft_print_c.c,23
 int	ft_print_c(16,932
@@ -17,8 +17,11 @@ int	ft_print_d(16,932
 ft_print_d_long.c,28
 int	ft_print_d_long(18,976
 
+ft_print_d_plus.c,29
+int		ft_print_d_plus(17,957
+
 ft_print_o.c,25
-int			ft_print_o(15,917
+int			ft_print_o(16,937
 
 ft_print_s.c,23
 int	ft_print_s(16,932
@@ -26,8 +29,8 @@ int	ft_print_s(16,932
 ft_print_u.c,23
 int	ft_print_u(16,932
 
-ft_print_x.c,25
-int			ft_print_x(16,932
+ft_print_x.c,26
+int			ft_print_x(17,1013
 
 ft_print_x_diese.c,30
 int		ft_print_x_diese(16,932
@@ -52,3 +55,176 @@ int main(16,937
 
 libftprintf.h,30
 # define	LIBFTPRINTF_H14,915
+
+libft/ft_atoi.c,22
+int			ft_atoi(13,892
+
+libft/ft_bzero.c,25
+void				ft_bzero(15,912
+
+libft/ft_isalnum.c,24
+int		ft_isalnum(13,892
+
+libft/ft_isalpha.c,24
+int		ft_isalpha(13,892
+
+libft/ft_isascii.c,24
+int		ft_isascii(13,892
+
+libft/ft_isdigit.c,24
+int		ft_isdigit(13,892
+
+libft/ft_isprint.c,24
+int		ft_isprint(13,892
+
+libft/ft_itoa.c,31
+char		*ft_itoa(ft_itoa16,932
+
+libft/ft_memalloc.c,39
+void		*ft_memalloc(ft_memalloc16,932
+
+libft/ft_memccpy.c,40
+void					*ft_memccpy(ft_memccpy15,912
+
+libft/ft_memchr.c,36
+void			*ft_memchr(ft_memchr15,912
+
+libft/ft_memcmp.c,27
+int						ft_memcmp(15,912
+
+libft/ft_memcpy.c,36
+void			*ft_memcpy(ft_memcpy15,912
+
+libft/ft_memdel.c,24
+void		ft_memdel(16,932
+
+libft/ft_memmove.c,38
+void			*ft_memmove(ft_memmove15,912
+
+libft/ft_memset.c,37
+void				*ft_memset(ft_memset15,912
+
+libft/ft_nbdigit.c,24
+int		ft_nbdigit(13,892
+
+libft/ft_nwd.c,23
+size_t		ft_nwd(15,912
+
+libft/ft_putchar.c,25
+void		ft_putchar(15,913
+
+libft/ft_putchar_fd.c,28
+void		ft_putchar_fd(15,913
+
+libft/ft_putendl.c,25
+void		ft_putendl(15,912
+
+libft/ft_putendl_fd.c,28
+void		ft_putendl_fd(15,912
+
+libft/ft_putnbr.c,24
+void		ft_putnbr(15,912
+
+libft/ft_putnbr_fd.c,27
+void		ft_putnbr_fd(15,912
+
+libft/ft_putstr.c,24
+void		ft_putstr(15,912
+
+libft/ft_putstr_fd.c,27
+void		ft_putstr_fd(15,912
+
+libft/ft_strcat.c,35
+char		*ft_strcat(ft_strcat15,912
+
+libft/ft_strchr.c,35
+char		*ft_strchr(ft_strchr15,912
+
+libft/ft_strclr.c,24
+void		ft_strclr(13,892
+
+libft/ft_strcmp.c,24
+int			ft_strcmp(13,892
+
+libft/ft_strcpy.c,35
+char		*ft_strcpy(ft_strcpy15,912
+
+libft/ft_strdel.c,24
+void		ft_strdel(15,912
+
+libft/ft_strdup.c,35
+char		*ft_strdup(ft_strdup16,932
+
+libft/ft_strequ.c,24
+int			ft_strequ(13,892
+
+libft/ft_striter.c,25
+void		ft_striter(13,892
+
+libft/ft_striteri.c,28
+void				ft_striteri(13,892
+
+libft/ft_strjoin.c,38
+char			*ft_strjoin(ft_strjoin16,932
+
+libft/ft_strlcat.c,28
+size_t			ft_strlcat(15,912
+
+libft/ft_strlen.c,26
+size_t		ft_strlen(15,912
+
+libft/ft_strmap.c,35
+char		*ft_strmap(ft_strmap16,932
+
+libft/ft_strmapi.c,39
+char				*ft_strmapi(ft_strmapi16,932
+
+libft/ft_strncat.c,37
+char		*ft_strncat(ft_strncat15,912
+
+libft/ft_strncmp.c,25
+int			ft_strncmp(15,912
+
+libft/ft_strncpy.c,37
+char		*ft_strncpy(ft_strncpy15,912
+
+libft/ft_strnequ.c,25
+int			ft_strnequ(15,912
+
+libft/ft_strnew.c,35
+char		*ft_strnew(ft_strnew16,932
+
+libft/ft_strnstr.c,38
+char			*ft_strnstr(ft_strnstr15,912
+
+libft/ft_strrchr.c,38
+char			*ft_strrchr(ft_strrchr15,912
+
+libft/ft_strsplit.c,40
+char		**ft_strsplit(ft_strsplit16,932
+
+libft/ft_strsplit_bis.c,48
+char		**ft_strsplit_bis(ft_strsplit_bis15,912
+
+libft/ft_strstr.c,36
+char			*ft_strstr(ft_strstr15,912
+
+libft/ft_strsub.c,37
+char				*ft_strsub(ft_strsub16,932
+
+libft/ft_strtrim.c,38
+char			*ft_strtrim(ft_strtrim16,932
+
+libft/ft_tolower.c,25
+int			ft_tolower(13,892
+
+libft/ft_toupper.c,24
+int		ft_toupper(13,892
+
+libft/ft_wdlen.c,25
+size_t		ft_wdlen(15,912
+
+libft/libft.h,24
+# define LIBFT_H14,908
+
+test.c,0
