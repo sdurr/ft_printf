@@ -6,7 +6,7 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 21:15:03 by getrembl          #+#    #+#             */
-/*   Updated: 2014/12/30 15:44:11 by getrembl         ###   ########.fr       */
+/*   Updated: 2014/12/30 17:07:15 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int			ft_print_b_negative(int decimal)
 	char			*ret;
 
 	bin = ft_strnew(33);
-	quotient = 4 294 967 295 + 1 - decimal;
+	quotient = 4294967296 + decimal;
 	i = 0;
 	while (quotient != 0)
 	{
@@ -48,11 +48,11 @@ int					ft_print_b(va_list ap)
 	int				i;
 	char			*ret;
 
-	bin = ft_strnew(33);
 	quotient = va_arg(ap, int);
-	i = 0;
 	if (quotient < 0)
-		ft_print_b_negative(quotient);
+		return (ft_print_b_negative(quotient));
+	bin = ft_strnew(33);
+	i = 0;
 	while (quotient != 0)
 	{
 		rest = quotient % 2;
