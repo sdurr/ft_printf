@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:24:57 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/30 15:03:26 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/01 18:56:12 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,22 @@ int	ft_type(char *s, int i, va_list ap)
 	if (s[i -1] == 'l' && s[i] == 'd')
 		return (ft_print_d_long(ap));
 	if (s[i] == 'd' || s[i] == 'i')
-		return (ft_print_d(ap));
+		return (ft_print_d(ap, s, i));
 	if (s[i] == 'o' && s[i - 1] == '#')
 	{
 		ft_putchar('0');
-		return (ft_print_o(ap) + 1);
+		return (ft_print_o(ap, s, i) + 1);
 	}
-		if (s[i] == 'u')
-		return (ft_print_d(ap));
+	if (s[i] == 'u')
+		return (ft_print_d(ap, s, i));
 	if (s[i] == 'o')
-		return (ft_print_o(ap));
+		return (ft_print_o(ap, s, i));
 	if (s[i] == 's')
-		return (ft_print_s(ap));
+		return (ft_print_s(ap, s, i));
 	if (s[i] == 'b')
-	return (ft_print_b(ap));
+		return (ft_print_b(ap, s, i));
 	if (s[i] == 'c')
-		return (ft_print_c(ap));
+		return (ft_print_c(ap, s, i));
 	if (s[i] == '%')
 	{
 		ft_putchar ('%');
@@ -48,14 +48,17 @@ int	ft_type(char *s, int i, va_list ap)
 	if ((s[i] == 'x' && s[i - 1] == '#') || (s[i] == 'X' && s[i - 1] == '#'))
 	{
 		if (s[i] == 'x')
+		{
 			ft_putstr("0x");
+			return (ft_print_x(ap, s, i) + 2);
+		}
 		else
 			ft_putstr("0X");
-		return (ft_print_x(ap) + 2);
+		return (ft_print_x_maj(ap, s, i) + 2);
 	}
 	if (s[i] == 'x')
-		return (ft_print_x(ap));
+		return (ft_print_x(ap, s, i));
 	if (s[i] == 'X')
-		return (ft_print_x_maj(ap));
+		return (ft_print_x_maj(ap, s, i));
 	return (0);
 }

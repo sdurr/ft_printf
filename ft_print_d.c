@@ -6,18 +6,38 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/28 15:25:25 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/01 18:39:48 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include "libft.h"
 
-int	ft_print_d(va_list ap)
+int	ft_print_d(va_list ap, char *s, int i)
 {
 	int d;
+	char *tmp;
+	size_t j;
 
+	j = 0;
+	tmp = ft_strnew(13);
+	i--;
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		tmp[j] = s[i];
+		i--;
+		j++;
+	}
+	tmp = ft_revers(tmp);
+	j = ft_atoi(tmp);
 	d = va_arg(ap, int);
+	while (j > (ft_strlen(ft_itoa(d))))
+	{
+		ft_putchar(' ');
+		j--;
+	}
 	ft_putnbr(d);
-	return (ft_strlen(ft_itoa(d)));
+	if (ft_strlen(ft_itoa(d)) >= (size_t)ft_atoi(tmp))
+		return (ft_strlen(ft_itoa(d)));
+	return (ft_atoi(tmp));
 }

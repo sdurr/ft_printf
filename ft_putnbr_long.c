@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 20:41:22 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/29 20:48:19 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/01 19:17:40 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	ft_putnbr_long(long n)
 	}
 	if (n >= 10)
 	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
+		ft_putnbr_long(n / 10);
+		ft_putnbr_long(n % 10);
 	}
 	else
 		ft_putchar(n + '0');
