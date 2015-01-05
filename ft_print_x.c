@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/01 18:53:12 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/05 12:20:16 by getrembl         ###   ########.fr       */
 /*   Updated: 2014/12/29 22:47:45 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -76,6 +76,8 @@ int					ft_print_x(va_list ap, char *s, int j)
 	quotient = va_arg(ap, int);
 	if (quotient < 0)
 		return (ft_print_x_negative(quotient, s, j));
+	if (quotient == 0)
+		ft_putchar('0');
 	i = 0;
 	hexa = ft_strnew(9);
 	while (quotient != 0)

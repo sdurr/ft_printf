@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2014/12/30 14:01:37 by sdurr            ###   ########.fr        #
+#    Updated: 2015/01/05 12:12:29 by getrembl         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -38,7 +38,7 @@ CC			= gcc
 
 CFLAGS		= -Wall -Wextra -Werror
 
-HPATH       = -I libft/includes/
+HPATH       = -I libft/Includes/
 
 all		:		$(NAME)
 
