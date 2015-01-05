@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:57 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/31 10:21:45 by tremblin         ###   ########.fr       */
+/*   Updated: 2015/01/05 15:45:25 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		ft_printf(char *format, ...)
 	i = 0;
 	ret = 0;
 	va_start(ap, format);
+
 	while (s[i])
 	{
 		while (s[i] != '%' && s[i])

@@ -6,12 +6,13 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/31 19:13:31 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/05 15:46:18 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include "libft.h"
+#include "libftprintf.h"
 
 int	ft_print_u(va_list ap, char *s, int i)
 {
@@ -34,6 +35,6 @@ int	ft_print_u(va_list ap, char *s, int i)
 		ft_putchar (' ');
 		j--;
 	}
-	ft_putnbr((int)d); //putnbr unsigned int
-	return (ft_strlen(ft_itoa((int)d)) + ft_atoi(tmp)); //itoa unsigned int
+	ft_putnbr_long((long)d); //putnbr unsigned int
+	return (ft_strlen(ft_litoa((int)d)) + ft_atoi(tmp)); //itoa unsigned int
 }
