@@ -6,7 +6,7 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 21:15:03 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/01 18:50:37 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/05 12:40:06 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ int					ft_print_b(va_list ap, char *s, int j)
 	quotient = va_arg(ap, int);
 	if (quotient < 0)
 		return (ft_print_b_negative(quotient, s, j));
+	if (quotient == 0)
+	{
+		ft_putchar('0');
+		return (1);
+	}
 	bin = ft_strnew(33);
 	i = 0;
 	while (quotient != 0)
