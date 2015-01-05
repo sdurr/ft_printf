@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:12:02 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/30 14:01:23 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/31 11:24:24 by tremblin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ char	*ft_litoa(long n);
 long	ft_long_long(long n);
 int		ft_print_d_long(va_list ap);
 int		ft_print_d_plus(va_list ap);
-int		ft_print_c(va_list ap);
-int		ft_print_b(va_list ap);
-int		ft_print_o(va_list ap);
-int		ft_print_d(va_list ap);
-int		ft_print_u(va_list ap);
-int		ft_print_s(va_list ap);
-int		ft_print_x(va_list ap);
-int		ft_print_x_maj(va_list ap);
+int		ft_print_c(va_list ap, char *s, int j);
+int		ft_print_b(va_list ap, char *s, int j);
+int		ft_print_o(va_list ap, char *s, int j);
+int		ft_print_d(va_list ap, char *s, int j);
+int		ft_print_u(va_list ap, char *s, int j);
+int		ft_print_s(va_list ap, char *s, int j);
+int		ft_print_x(va_list ap, char *s, int j);
+int		ft_print_x_maj(va_list ap, char *s, int j);
 int		ft_print_x_diese(va_list ap);
 int		ft_printf(char *format, ...);
 int		ft_type(char *s, int i, va_list ap);
