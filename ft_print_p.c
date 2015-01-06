@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/06 09:24:04 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/06 12:45:22 by sdurr            ###   ########.fr       */
 /*   Updated: 2014/12/29 22:47:45 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <stdarg.h>
 
-static int			ft_number_befor(char *s1, char *s, int i)
+static int			ft_number_befor(char *s1, char *s, int i, char **aff)
 {
 	char *tmp;
 	size_t j;
@@ -28,14 +28,14 @@ static int			ft_number_befor(char *s1, char *s, int i)
 	j = ft_atoi(tmp);
 	while (j > ft_strlen(s1))
 	{
-		ft_putchar (' ');
+		*aff = ft_strjoin (*aff, " ");
 		j--;
 	}
 	if (ft_strlen(s1) >= (size_t)ft_atoi(tmp))
 		return (0);
 	return (ft_atoi(tmp) - ft_strlen(s1));
 }
-static int ft_print_p_negative(int decimal, char *s, int j)
+static int ft_print_p_negative(int decimal, char *s, int j, char **aff)
 {
 	unsigned int quotient;
 	int rest;
@@ -58,16 +58,16 @@ static int ft_print_p_negative(int decimal, char *s, int j)
 	rest = 0;
 	while (i >= 0)
 		ret[rest++] = hexa[i--];
-	quotient = ft_number_befor(hexa, s, j);
-	ft_putstr("0x7");
+	quotient = ft_number_befor(hexa, s, j, aff);
+	*aff = ft_strjoin(*aff, "0x7");
 	i = ft_strlen(ret);
 	while (i++ < 11)
-		ft_putchar('f');
-	ft_putstr(ret);
+		*aff = ft_strjoin(*aff, "f");
+	*aff = ft_strjoin(*aff, ret);
 	return (14 + quotient);
 }
 
-int					ft_print_p(va_list ap, char *s, int j)
+int					ft_print_p(va_list ap, char *s, int j, char **aff)
 {
 	char			*hexa;
 	int				quotient;
@@ -78,9 +78,9 @@ int					ft_print_p(va_list ap, char *s, int j)
 	quotient = va_arg(ap, int);
 		i = 0;
 		if (quotient < 0)
-			return (ft_print_p_negative(quotient, s, j));
+			return (ft_print_p_negative(quotient, s, j, aff));
 	hexa = ft_strnew(9);
-	while (quotient != 0)
+		while (quotient != 0)
 	{
 		rest = quotient % 16;
 		(quotient > 15) ? (quotient /= 16) : (quotient = 0);
@@ -92,12 +92,12 @@ int					ft_print_p(va_list ap, char *s, int j)
 	rest = 0;
 	while (i >= 0)
 		ret[rest++] = hexa[i--];
-	quotient = ft_number_befor(hexa, s, j);
-	ft_putstr("0x7");
+	quotient = ft_number_befor(hexa, s, j, aff);
+	*aff = ft_strjoin(*aff, "0x7");
 	i = ft_strlen(ret);
 	while (i++ < 11)
-		ft_putchar('f');
-	ft_putstr(ret);
+		*aff = ft_strjoin(*aff, "f");
+	*aff = ft_strjoin(*aff, ret);
 	return (14 + quotient);
 }
 

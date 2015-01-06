@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/05 16:17:04 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/06 12:50:15 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 #include <stdarg.h>
 #include "libftprintf.h"
 
-int	ft_print_c_maj(va_list ap, char *s, int i)
+int	ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 {
 	wchar_t c;
 	char *tmp;
 	int j;
-
+	char *tmp2;
+	tmp2 = ft_strnew(2);
 	j = 0;
 	tmp = ft_strnew(13);
 	i--;
@@ -33,10 +34,11 @@ int	ft_print_c_maj(va_list ap, char *s, int i)
 	c = (char)va_arg(ap, int);
 	while (j > 1)
 	{
-		ft_putchar (' ');
+		*aff = ft_strjoin (*aff, " ");
 		j--;
 	}
-	ft_putchar((char)c);
+	tmp2[0] = (char)c;
+	*aff = ft_strjoin(*aff, tmp2);
 	if (s[i + 1] >= '0' && s[i + 1] <= '9')
 		return (ft_atoi(tmp));
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/06 09:54:31 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/06 12:43:54 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "libftprintf.h"
 
-int	ft_print_u(va_list ap, char *s, int i)
+int	ft_print_u(va_list ap, char *s, int i, char **aff)
 {
 	unsigned int d;
 	char *tmp;
@@ -32,19 +32,19 @@ int	ft_print_u(va_list ap, char *s, int i)
 	d = va_arg(ap, unsigned int);
 	if (d == 4294967295)
 	{
-		ft_putstr("4294967295");
+		*aff = ft_strjoin(*aff, "4294967295");
 		return (10);
 	}
 	if (d == 0)
 	{
-		ft_putchar ('0');
+		*aff = ft_strjoin (*aff ,"0");
 		return (1);
 	}
 	while (j >= d && d > 0) // atoi unsigned int
 	{
-		ft_putchar (' ');
+		*aff = ft_strjoin(*aff, " ");
 		j--;
 	}
-	ft_putnbr_long((long)d); //putnbr unsigned int
+	*aff = ft_strjoin(*aff, ft_litoa(d));
 	return (ft_strlen(ft_litoa((int)d)) + ft_atoi(tmp)); //itoa unsigned int
 }

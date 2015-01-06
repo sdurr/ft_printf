@@ -6,14 +6,14 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/01 19:14:18 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/06 12:43:35 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdarg.h>
 
-int	ft_print_s(va_list ap, char *s, int i)
+int	ft_print_s(va_list ap, char *s, int i, char **aff)
 {
 	char *s1;
 	char *tmp;
@@ -32,10 +32,10 @@ int	ft_print_s(va_list ap, char *s, int i)
 	s1 = va_arg(ap, char *);
 	while (j > ft_strlen(s1))
 	{
-		ft_putchar (' ');
+		*aff = ft_strjoin (*aff, " ");
 		j--;
 	}
-	ft_putstr(s1);
+	*aff =	ft_strjoin(*aff, s1);
 	if (ft_strlen(s1) >= (size_t)ft_atoi(tmp))
 		return (ft_strlen(s1));
 	return (ft_atoi(tmp));

@@ -6,14 +6,14 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 22:44:50 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/05 12:38:15 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/06 12:45:52 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include "libft.h"
 
-static int			ft_number_befor(char *s1, char *s, int i)
+static int			ft_number_befor(char *s1, char *s, int i, char **aff)
 {
 	char *tmp;
 	size_t j;
@@ -27,7 +27,7 @@ static int			ft_number_befor(char *s1, char *s, int i)
 	j = ft_atoi(tmp);
 	while (j > ft_strlen(s1))
 	{
-		ft_putchar (' ');
+		*aff = ft_strjoin(*aff, " ");
 		j--;
 	}
 	if (ft_strlen(s1) >= (size_t)ft_atoi(tmp))
@@ -35,7 +35,7 @@ static int			ft_number_befor(char *s1, char *s, int i)
 	return (ft_atoi(tmp) - ft_strlen(s1));
 }
 
-static int			ft_print_o_negative(int decimal, char *s, int j)
+static int			ft_print_o_negative(int decimal, char *s, int j, char **aff)
 {
 	unsigned int	quotient;
 	int				rest;
@@ -58,12 +58,12 @@ static int			ft_print_o_negative(int decimal, char *s, int j)
 	rest = 0;
 	while (i >=0)
 		ret[rest++] = octal[i--];
-	quotient = ft_number_befor(octal, s, j);
-	ft_putstr(ret);
+	quotient = ft_number_befor(octal, s, j, aff);
+	*aff = ft_strjoin(*aff, ret);
 	return (ft_strlen(octal) + quotient);
 }
 
-int					ft_print_o(va_list ap, char *s, int j)
+int					ft_print_o(va_list ap, char *s, int j, char **aff)
 {
 	char			*octal;
 	int				quotient;
@@ -73,10 +73,10 @@ int					ft_print_o(va_list ap, char *s, int j)
 
 	quotient = va_arg(ap, int);
 	if (quotient < 0)
-		return ((ft_print_o_negative(quotient, s, j)));
+		return ((ft_print_o_negative(quotient, s, j, aff)));
 	if(quotient == 0)
 	{
-		ft_putchar('0');
+		*aff = ft_strjoin(*aff, "0");
 		return (1);
 	}
 	octal = ft_strnew(12);
@@ -93,7 +93,7 @@ int					ft_print_o(va_list ap, char *s, int j)
 	rest = 0;
 	while (i >=0)
 		ret[rest++] = octal[i--];
-	quotient = ft_number_befor(octal, s, j);
-	ft_putstr(ret);
+	quotient = ft_number_befor(octal, s, j, aff);
+	*aff = 	ft_strjoin(*aff, ret);
 	return (ft_strlen(octal) + quotient);
 }

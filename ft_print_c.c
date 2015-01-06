@@ -6,19 +6,21 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/01 19:12:18 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/06 12:51:15 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdarg.h>
 
-int	ft_print_c(va_list ap, char *s, int i)
+int	ft_print_c(va_list ap, char *s, int i, char **aff)
 {
 	char c;
 	char *tmp;
 	int j;
+	char *tmp2;
 
+	tmp2 = ft_strnew(2);
 	j = 0;
 	tmp = ft_strnew(13);
 	i--;
@@ -32,10 +34,11 @@ int	ft_print_c(va_list ap, char *s, int i)
 	c = (char)va_arg(ap, int);
 	while (j > 1)
 	{
-		ft_putchar (' ');
+		*aff = ft_strjoin (*aff, " ");
 		j--;
 	}
-	ft_putchar(c);
+	tmp2[0] = c;
+	*aff = ft_strjoin(*aff, tmp2);
 	if (s[i + 1] >= '0' && s[i + 1] <= '9')
 		return (ft_atoi(tmp));
 	return (1);
