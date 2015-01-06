@@ -7,8 +7,8 @@ long		ft_long_long(13,892
 
 ft_print_b.c,107
 static int			ft_number_befor(16,937
-static int			ft_print_b_negative(37,1296
-int					ft_print_b(65,1852
+static int			ft_print_b_negative(35,1237
+int					ft_print_b(63,1800
 
 ft_print_c.c,23
 int	ft_print_c(16,932
@@ -23,28 +23,30 @@ ft_print_d_plus.c,29
 int		ft_print_d_plus(17,957
 
 ft_print_o.c,107
-static int			ft_number_befor(16,937
-static int			ft_print_o_negative(38,1313
-int					ft_print_o(66,1884
+static int			ft_number_befor(17,957
+static int			ft_print_o_negative(37,1273
+int					ft_print_o(65,1849
+
+ft_print_p.c,106
+static int			ft_number_befor(17,1013
+static int ft_print_p_negative(36,1329
+int					ft_print_p(68,2016
 
 ft_print_s.c,23
 int	ft_print_s(16,932
 
 ft_print_u.c,23
-int	ft_print_u(16,932
+int	ft_print_u(17,957
 
-ft_print_x.c,108
-static int			ft_number_befor(17,1013
-static int			ft_print_x_negative(39,1390
-int					ft_print_x(68,1982
-
-ft_print_x_diese.c,30
-int		ft_print_x_diese(16,932
+ft_print_x.c,107
+static int			ft_number_befor(16,932
+static int			ft_print_x_negative(36,1250
+int					ft_print_x(67,1920
 
 ft_print_x_maj.c,110
 static int ft_number_befor(16,932
-static int			ft_print_x_maj_negative(38,1303
-int		ft_print_x_maj(67,1891
+static int			ft_print_x_maj_negative(36,1246
+int		ft_print_x_maj(67,1913
 
 ft_printf.c,23
 int		ft_printf(18,977
@@ -59,14 +61,14 @@ ft_type.c,20
 int	ft_type(17,957
 
 main.c,17
-int main(16,937
+int main(18,977
 
 libftprintf.h,30
 # define	LIBFTPRINTF_H14,915
 
 libft/ft_atoi.c,59
-static int	gestion_overflow(15,912
-int			ft_atoi(29,1310
+static int	gestion_overflow(16,931
+int			ft_atoi(30,1329
 
 libft/ft_bzero.c,22
 void	ft_bzero(15,913

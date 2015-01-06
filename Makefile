@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2015/01/06 17:18:15 by getrembl         ###   ########.fr        #
+#    Updated: 2015/01/06 19:32:08 by getrembl         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,6 +18,7 @@ SRC				= ft_print_c.c \
 					ft_print_o.c \
 					ft_print_p.c \
 					ft_print_b.c \
+					ft_print_d_maj.c \
 					ft_print_d_plus.c \
 					ft_long_long.c \
 					ft_print_d_long.c \
