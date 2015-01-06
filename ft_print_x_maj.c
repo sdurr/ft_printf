@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/06 12:40:53 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/06 15:46:58 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ static int ft_number_befor(char *s1, char *s, int i, char **aff)
 		*aff = ft_strjoin(*aff, " ");
 		j--;
 	}
-	if(ft_strlen(s1) >=(size_t)ft_atoi(tmp))
 		return (0);
-	return (ft_atoi(tmp) - ft_strlen(s1));
 }
 
 static int			ft_print_x_maj_negative(int decimal, char *s, int j, char **aff)
@@ -59,8 +57,10 @@ static int			ft_print_x_maj_negative(int decimal, char *s, int j, char **aff)
 	while (i >= 0)
 		ret[rest++] = hexa[i--];
 	quotient = ft_number_befor(hexa, s, j, aff);
-	*aff = ft_strjoin(*aff, ret);
-	return (ft_strlen(hexa) + quotient);
+	if (s[j - 1] == '#' && ret[0] != '0')
+		*aff = ft_strjoin(*aff, "0X");
+		*aff = ft_strjoin(*aff, ret);
+	return (0);
 }
 
 
@@ -78,7 +78,7 @@ int		ft_print_x_maj(va_list ap, char *s, int j, char **aff)
 	if (quotient == 0)
 	{
 		*aff = ft_strjoin(*aff, "0");
-		return (1);
+		return (0);
 	}
 	hexa = ft_strnew(15);
 	i = 0;
@@ -95,7 +95,9 @@ int		ft_print_x_maj(va_list ap, char *s, int j, char **aff)
 	while (i >= 0)
 		ret[rest++] = hexa[i--];
 	quotient = ft_number_befor(hexa, s, j, aff);
+	if (s[j - 1] == '#' && ret[0] != '0')
+		*aff = ft_strjoin(*aff, "0X");
 	*aff = ft_strjoin(*aff, ret);
-	return (ft_strlen(hexa) + quotient);
+	return (0);
 }
 

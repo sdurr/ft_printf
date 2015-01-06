@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/06 12:43:54 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/06 15:20:42 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ int	ft_print_u(va_list ap, char *s, int i, char **aff)
 	if (d == 4294967295)
 	{
 		*aff = ft_strjoin(*aff, "4294967295");
-		return (10);
+		return (0);
 	}
 	if (d == 0)
 	{
 		*aff = ft_strjoin (*aff ,"0");
-		return (1);
+		return (0);
 	}
 	while (j >= d && d > 0) // atoi unsigned int
 	{
@@ -46,5 +46,5 @@ int	ft_print_u(va_list ap, char *s, int i, char **aff)
 		j--;
 	}
 	*aff = ft_strjoin(*aff, ft_litoa(d));
-	return (ft_strlen(ft_litoa((int)d)) + ft_atoi(tmp)); //itoa unsigned int
+	return (0); //itoa unsigned int
 }

@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:24:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/06 12:40:08 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/06 15:44:28 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_type(char *s, int i, va_list ap, char **aff)
 	if (s[i] == 'o' && s[i - 1] == '#')
 	{
 		*aff = ft_strjoin(*aff, "0");
-		return (ft_print_o(ap, s, i, aff) + 1);
+		return (ft_print_o(ap, s, i, aff));
 	}
 	if (s[i] == 'u')
 		return (ft_print_u(ap, s, i, aff));
@@ -36,7 +36,7 @@ int	ft_type(char *s, int i, va_list ap, char **aff)
 		return (ft_print_o(ap, s, i, aff));
 	if (s[i] == 's')
 		return (ft_print_s(ap, s, i, aff));
-	if (s[i] == 'b')
+		if (s[i] == 'b')
 		return (ft_print_b(ap, s, i, aff));
 	if (s[i] == 'p')
 		return (ft_print_p(ap, s, i, aff));
@@ -48,17 +48,6 @@ int	ft_type(char *s, int i, va_list ap, char **aff)
 	{
 		*aff = ft_strjoin(*aff, "%");
 		return (1);
-	}
-	if ((s[i] == 'x' && s[i - 1] == '#') || (s[i] == 'X' && s[i - 1] == '#'))
-	{
-		if (s[i] == 'x')
-		{
-			*aff = ft_strjoin(*aff, "0x");
-			return (ft_print_x(ap, s, i, aff) + 2);
-		}
-		else
-			*aff = ft_strjoin(*aff, "0X");
-		return (ft_print_x_maj(ap, s, i, aff) + 2);
 	}
 	if (s[i] == 'x')
 		return (ft_print_x(ap, s, i, aff));

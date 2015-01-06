@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/06 12:50:15 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/06 15:17:27 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,5 @@ int	ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 	}
 	tmp2[0] = (char)c;
 	*aff = ft_strjoin(*aff, tmp2);
-	if (s[i + 1] >= '0' && s[i + 1] <= '9')
-		return (ft_atoi(tmp));
-	return (1);
+	return (0);
 }

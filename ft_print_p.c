@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/06 12:45:22 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/06 15:19:58 by sdurr            ###   ########.fr       */
 /*   Updated: 2014/12/29 22:47:45 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -31,9 +31,7 @@ static int			ft_number_befor(char *s1, char *s, int i, char **aff)
 		*aff = ft_strjoin (*aff, " ");
 		j--;
 	}
-	if (ft_strlen(s1) >= (size_t)ft_atoi(tmp))
-		return (0);
-	return (ft_atoi(tmp) - ft_strlen(s1));
+	return (0);
 }
 static int ft_print_p_negative(int decimal, char *s, int j, char **aff)
 {
@@ -64,7 +62,7 @@ static int ft_print_p_negative(int decimal, char *s, int j, char **aff)
 	while (i++ < 11)
 		*aff = ft_strjoin(*aff, "f");
 	*aff = ft_strjoin(*aff, ret);
-	return (14 + quotient);
+	return (0);
 }
 
 int					ft_print_p(va_list ap, char *s, int j, char **aff)

@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 13:57:27 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/06 12:14:51 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/06 15:18:54 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int		ft_print_d_plus(va_list ap, char **aff)
 	{
 		*aff = ft_strjoin(*aff, "+");
 		*aff = ft_strjoin(*aff, ft_itoa(d));
-	return (ft_strlen(ft_itoa(d)) + 1);
+		return (0);
 	}
 	else
 		*aff = ft_strjoin(*aff, ft_itoa(d));
-	return (ft_strlen(ft_itoa(d)));
+	return (0);
 }

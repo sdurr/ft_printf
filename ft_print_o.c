@@ -6,7 +6,7 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 22:44:50 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/06 12:45:52 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/06 15:36:11 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ static int			ft_number_befor(char *s1, char *s, int i, char **aff)
 		*aff = ft_strjoin(*aff, " ");
 		j--;
 	}
-	if (ft_strlen(s1) >= (size_t)ft_atoi(tmp))
 		return (0);
-	return (ft_atoi(tmp) - ft_strlen(s1));
 }
 
 static int			ft_print_o_negative(int decimal, char *s, int j, char **aff)
@@ -60,7 +58,7 @@ static int			ft_print_o_negative(int decimal, char *s, int j, char **aff)
 		ret[rest++] = octal[i--];
 	quotient = ft_number_befor(octal, s, j, aff);
 	*aff = ft_strjoin(*aff, ret);
-	return (ft_strlen(octal) + quotient);
+	return (0);
 }
 
 int					ft_print_o(va_list ap, char *s, int j, char **aff)
@@ -75,10 +73,7 @@ int					ft_print_o(va_list ap, char *s, int j, char **aff)
 	if (quotient < 0)
 		return ((ft_print_o_negative(quotient, s, j, aff)));
 	if(quotient == 0)
-	{
-		*aff = ft_strjoin(*aff, "0");
-		return (1);
-	}
+		return (0);
 	octal = ft_strnew(12);
 	i = 0;
 	while (quotient != 0)
@@ -95,5 +90,5 @@ int					ft_print_o(va_list ap, char *s, int j, char **aff)
 		ret[rest++] = octal[i--];
 	quotient = ft_number_befor(octal, s, j, aff);
 	*aff = 	ft_strjoin(*aff, ret);
-	return (ft_strlen(octal) + quotient);
+	return (0);
 }
