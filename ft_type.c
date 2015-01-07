@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:24:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/07 08:58:19 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/07 17:05:15 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,18 @@ int	ft_type(char *s, int i, va_list ap, char **aff)
 	{
 		return (ft_print_d_plus(ap, aff));
 	}
-
-	if (s[i -1] == 'l' && s[i] == 'd')
-		return (ft_print_d_long(ap, aff));
+	if (s[i -1] == 'l' && s[i] == 'd' && s[i - 2] == 'l')
+		return (ft_print_d_long_long(ap, s, i, aff));
+	if ((s[i] == 'D') || (s[i] == 'd' && s[i - 1] == 'l') || (s[i] == 'i' && s[i - 1] == 'l'))
+		return (ft_print_d_maj(ap, s, i, aff));
 	if (s[i] == 'd' || s[i] == 'i')
 		return (ft_print_d(ap, s, i, aff));
-	if (s[i] == 'D')
-		return (ft_print_d_maj(ap));
+	if (s[i] == 'U' || (s[i] == 'u' && s[i - 1] == 'l'))
+		return (ft_print_u_maj(ap, s, i, aff));
 	if (s[i] == 'u')
 		return (ft_print_u(ap, s, i, aff));
+	if (s[i] == 'O' || (s[i] == 'o' && s[i - 1] == 'l'))
+		return (ft_print_o_long(ap, s, i, aff));
 	if (s[i] == 'o')
 		return (ft_print_o(ap, s, i, aff));
 	if (s[i] == 's')
@@ -39,11 +42,17 @@ int	ft_type(char *s, int i, va_list ap, char **aff)
 		return (ft_print_p(ap, s, i, aff));
 	if (s[i] == 'c')
 		return (ft_print_c(ap, s, i, aff));
+		if (s[i] == 'C')
+		return (ft_print_c_maj(ap, s, i, aff));
 	if (s[i] == '%')
 	{
 		*aff = ft_strjoin(*aff, "%");
-		return (1);
+		return (0);
 	}
+	if (s[i] == 'x' && s[i - 1] == 'l')
+		return (ft_print_x_long(ap, s, i, aff));
+		if (s[i] == 'X' && s[i - 1] == 'l')
+		return (ft_print_x_maj_long(ap, s, i, aff));
 	if (s[i] == 'x')
 		return (ft_print_x(ap, s, i, aff));
 	if (s[i] == 'X')

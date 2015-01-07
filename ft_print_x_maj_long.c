@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/07 15:19:14 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/07 16:29:21 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int ft_number_befor(char *s1, char *s, int i, char **aff)
 		return (0);
 }
 
-static int			ft_print_x_maj_negative(int decimal, char *s, int j, char **aff)
+static int			ft_print_x_maj_negative_long(long int decimal, char *s, int j, char **aff)
 {
 	unsigned int	quotient;
 	int		rest;
@@ -100,7 +100,7 @@ static int			ft_print_x_maj_negative(int decimal, char *s, int j, char **aff)
 }
 
 
-int		ft_print_x_maj(va_list ap, char *s, int j, char **aff)
+int		ft_print_x_maj_long(va_list ap, char *s, int j, char **aff)
 {
 	char	*hexa;
 	int		quotient;
@@ -108,9 +108,9 @@ int		ft_print_x_maj(va_list ap, char *s, int j, char **aff)
 	int		i;
 	char	*ret;
 
-	quotient = va_arg(ap, int);
+	quotient = va_arg(ap, long int);
 	if (quotient < 0)
-		return (ft_print_x_maj_negative(quotient, s, j, aff));
+		return (ft_print_x_maj_negative_long(quotient, s, j, aff));
 	if (quotient == 0)
 	{
 		*aff = ft_strjoin(*aff, "0");

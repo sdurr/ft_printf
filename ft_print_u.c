@@ -6,13 +6,43 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/07 11:12:08 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/07 14:47:58 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include "libft.h"
 #include "libftprintf.h"
+
+static int ft_point_space(int d, char *s, int i, char **aff, size_t stop)
+{
+	size_t j;
+	char *tmp;
+
+	tmp = ft_strnew(13);
+	j = 0;
+	if (s[i] == '.')
+	{
+		i--;
+		while (s[i] >= '0' && s[i] <= '9')
+		{
+			tmp[j] = s[i];
+			i--;
+			j++;
+		}
+		tmp = ft_revers(tmp);
+		j = ft_atoi(tmp);
+		if (j > stop)
+			while (j > (ft_strlen(ft_itoa(d))))
+			{
+				*aff = ft_strjoin(*aff, " ");
+				j--;
+				if (j == stop)
+					return (0);
+			}
+	}
+	return (0);
+}
 
 int	ft_print_u(va_list ap, char *s, int i, char **aff)
 {
@@ -45,6 +75,7 @@ int	ft_print_u(va_list ap, char *s, int i, char **aff)
 			*aff = ft_strjoin (*aff ,"0");
 		return (0);
 	}
+	ft_point_space(d, s, i, aff, j);
 	while (j > ft_strlen(ft_litoa(d)) && d > 0)
 	{
 		if (s[i] == '.' || s[i + 1] == '0')
