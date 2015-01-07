@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/06 15:19:58 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/07 08:53:28 by sdurr            ###   ########.fr       */
 /*   Updated: 2014/12/29 22:47:45 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -96,6 +96,6 @@ int					ft_print_p(va_list ap, char *s, int j, char **aff)
 	while (i++ < 11)
 		*aff = ft_strjoin(*aff, "f");
 	*aff = ft_strjoin(*aff, ret);
-	return (14 + quotient);
+	return (0);
 }
 
