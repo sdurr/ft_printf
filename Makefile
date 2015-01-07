@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2015/01/06 15:55:56 by getrembl         ###   ########.fr        #
+#    Updated: 2015/01/06 16:14:45 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -38,7 +38,7 @@ CC				= gcc
 
 export CFLAGS	= -Wall -Wextra -Werror
 
-HPATH       	= -I libft/includes/
+HPATH       	= -I libft
 
 LIBFT_DIR		= libft
 
@@ -65,7 +65,6 @@ clean		:
 
 fclean		:	clean
 					rm -rf $(NAME)
-					rm -rf libft.a
 					@(cd $(LIBFT_DIR) && $(MAKE) $@)
 
 re			:	fclean all
