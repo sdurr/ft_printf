@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2015/01/07 17:03:31 by sdurr            ###   ########.fr        #
+#    Updated: 2015/01/07 17:41:44 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -28,7 +28,6 @@ SRC				= ft_print_c.c \
 					ft_print_d_maj.c \
 					ft_print_d_plus.c \
 					ft_long_long.c \
-					ft_print_d_long.c \
 					ft_putnbr_long.c \
 					ft_litoa.c \
 					ft_print_u.c \
@@ -38,7 +37,6 @@ SRC				= ft_print_c.c \
 					ft_print_x.c \
 					ft_print_x_maj.c \
 					ft_type.c \
-					ft_test_type.c \
 
 OBJ				= $(SRC:.c=.o)
 
