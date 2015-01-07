@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/07 17:16:47 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/07 17:47:30 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 static int ft_point_space(int d, char *s, int i, char **aff, size_t stop)
 {
-	size_t j;
-	char *tmp;
+	size_t	j;
+	char	*tmp;
 
 	tmp = ft_strnew(13);
 	j = 0;
@@ -24,18 +24,13 @@ static int ft_point_space(int d, char *s, int i, char **aff, size_t stop)
 	{
 		i--;
 		while (s[i] >= '0' && s[i] <= '9')
-		{
-			tmp[j] = s[i];
-			i--;
-			j++;
-		}
+			tmp[j++] = s[i--];
 		tmp = ft_revers(tmp);
 		j = ft_atoi(tmp);
 		if (j > stop)
-			while (j > (ft_strlen(ft_itoa(d))))
+			while (j-- > (ft_strlen(ft_itoa(d))))
 			{
 				*aff = ft_strjoin(*aff, " ");
-				j--;
 				if (j == stop)
 					return (0);
 			}
@@ -53,11 +48,7 @@ int	ft_print_d(va_list ap, char *s, int i, char **aff)
 	tmp = ft_strnew(13);
 	i--;
 	while (s[i] >= '0' && s[i] <= '9')
-	{
-		tmp[j] = s[i];
-		i--;
-		j++;
-	}
+		tmp[j++] = s[i--];
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
 	d = va_arg(ap, int);
@@ -66,7 +57,7 @@ int	ft_print_d(va_list ap, char *s, int i, char **aff)
 		*aff = ft_strjoin(*aff, "-");
 		d = d * - 1;
 		if (j > 0)
-		j--;
+			j--;
 	}
 	if ((s[i] == '.' && s[i + 1] == '0' && s[i - 1] == '%') || (s[i] == '.' && d == 0))
 		return (0);

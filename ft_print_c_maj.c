@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/07 16:54:32 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/07 17:41:17 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,12 @@ int	ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 	tmp = ft_strnew(13);
 	i--;
 	while (s[i] >= '0' && s[i] <= '9')
-	{
-		tmp[j++] = s[i];
-		i--;
-	}
+		tmp[j++] = s[i--];
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
 	c = va_arg(ap, wchar_t);
-	while (j > 1)
-	{
+	while (j-- > 1)
 		*aff = ft_strjoin (*aff, " ");
-		j--;
-	}
 	if (c == 0)
 		return (1);
 	tmp2[0] = c;
