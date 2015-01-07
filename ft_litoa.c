@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/12 17:11:27 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/29 22:56:34 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/06 19:58:54 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 char	*ft_litoa(long n)
 {
 	char	*ret;
-	long	i;
+	int	i;
 
 	i = 0;
 	if (!(ret = (char *)malloc(sizeof(char) * ft_long_long(n) + 1)))
@@ -25,9 +25,14 @@ char	*ft_litoa(long n)
 	if (n < 0)
 	{
 		ret[i++] = '-';
+		if (n == -9223372036854775807)
+		{
+			ret[i++] = 9;
+			n = n + 9000000000000000000;
+		}
 		n = n * -1;
 	}
-	while (n >= 10 && n <= 2147483647)
+	while (n >= 10 && n <= 9223372036854775807)
 	{
 		ret[i++] = n % 10 + '0';
 		n = n / 10;

@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:24:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/06 16:02:16 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/06 19:31:23 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	ft_type(char *s, int i, va_list ap, char **aff)
 		return (ft_print_d_long(ap, aff));
 	if (s[i] == 'd' || s[i] == 'i')
 		return (ft_print_d(ap, s, i, aff));
+	if (s[i] == 'D')
+		return (ft_print_d_maj(ap));
 	if (s[i] == 'o' && s[i - 1] == '#')
 	{
 		*aff = ft_strjoin(*aff, "0");

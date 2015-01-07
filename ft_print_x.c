@@ -6,8 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/06 15:43:28 by sdurr            ###   ########.fr       */
-/*   Updated: 2014/12/29 22:47:45 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/06 17:41:55 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +75,12 @@ int					ft_print_x(va_list ap, char *s, int j, char **aff)
 	quotient = va_arg(ap, int);
 	if (quotient < 0)
 		return (ft_print_x_negative(quotient, s, j, aff));
-		if (quotient == 0)
+	if (quotient == 0)
 		{
 			*aff = ft_strjoin(*aff, "0");
 			return (0);
 		}
-		i = 0;
+	i = 0;
 	hexa = ft_strnew(9);
 	while (quotient != 0)
 	{
@@ -101,4 +100,3 @@ int					ft_print_x(va_list ap, char *s, int j, char **aff)
 	*aff = ft_strjoin(*aff, ret);
 	return (0);
 }
-
