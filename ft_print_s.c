@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/06 15:20:16 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/07 09:05:34 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,11 @@ int	ft_print_s(va_list ap, char *s, int i, char **aff)
 	j = ft_atoi(tmp);
 	s1 = va_arg(ap, char *);
 	if (!s1 || !ap)
-		return (-1);
-	while (j > ft_strlen(s1))
+	{
+		*aff = ft_strjoin(*aff, "(null)");
+		return (0);
+	}
+		while (j > ft_strlen(s1))
 	{
 		*aff = ft_strjoin (*aff, " ");
 		j--;

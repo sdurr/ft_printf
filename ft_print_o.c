@@ -6,7 +6,7 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 22:44:50 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/06 17:33:11 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/07 09:01:56 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,13 @@ int					ft_print_o(va_list ap, char *s, int j, char **aff)
 	quotient = va_arg(ap, int);
 	if (quotient < 0)
 		return ((ft_print_o_negative(quotient, s, j, aff)));
-	if(quotient == 0)
+	if(quotient == 0 )
 	{
 		*aff = ft_strjoin(*aff, "0");
 		return (0);
 	}
+	if (s[j - 1] == '#')
+				*aff = ft_strjoin(*aff, "0");
 	octal = ft_strnew(12);
 	i = 0;
 	while (quotient != 0)

@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/06 15:27:31 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/07 09:11:21 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_print_c(va_list ap, char *s, int i, char **aff)
 	j = 0;
 	tmp = ft_strnew(13);
 	i--;
-	while (s[i] > '0' && s[i] <= '9')
+	while (s[i] >= '0' && s[i] <= '9')
 	{
 		tmp[j++] = s[i];
 		i--;
