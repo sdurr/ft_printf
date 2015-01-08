@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:12:02 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 10:31:19 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 12:53:30 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			ft_print_x_diese(va_list ap, char **aff);
 int			ft_test_type(char *s);
 int			ft_type(char *s, int i, va_list ap, char **aff);
 
-long		ft_long_long(long n);
+long		ft_longlen(long l);
 
 void		ft_putnbr_long(long n);
 
