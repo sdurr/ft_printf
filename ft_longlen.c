@@ -6,13 +6,13 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/08 12:17:27 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/08 13:01:15 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 13:06:43 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long		ft_longlen(long l)
+size_t		ft_longlen(long l)
 {
-	long	ret;
+	size_t	ret;
 
 	ret = 1;
 	if (l < -9223372036854775807)
