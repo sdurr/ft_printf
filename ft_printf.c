@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 12:09:07 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 15:54:48 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int		ft_printf(char *format, ...)
 	char *tmp;
 	int ret;
 	int test;
+
 	aff = ft_strnew(1);
 	s = ft_strdup(format);
 	i = 0;
@@ -47,9 +48,11 @@ int		ft_printf(char *format, ...)
 					return (-1);
 				ret = test + ret;
 		}
+		ft_putstr(aff);
+		ret += ft_strlen(aff);
+		aff = ft_strnew(1);
 		i++;
 	}
-	ft_putstr(aff);
 	va_end(ap);
-	return (ft_strlen(aff) + ret);
+	return (ret);
 }

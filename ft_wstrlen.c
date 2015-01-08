@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/27 15:27:52 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 15:54:07 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/03 11:39:39 by sdurr             #+#    #+#             */
+/*   Updated: 2015/01/08 15:51:30 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "libftprintf.h"
 #include <string.h>
-#include <unistd.h>
-#include <stdint.h>
+#include <wchar.h>
 
-int main()
+size_t		ft_wstrlen(wchar_t *s)
 {
-	wchar_t *j;
+	size_t cpt;
 
-	j = L"123";
-	printf("retour ft = %d\n", ft_printf("%S", j));
-	printf("retour print = %d\n", printf("%S", j));
-	return (0);
+	cpt = 0;
+	while (*s != '\0')
+	{
+		cpt++;
+		s++;
+	}
+	return (cpt);
 }

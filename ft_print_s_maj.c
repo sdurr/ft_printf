@@ -6,21 +6,24 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 12:25:42 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 15:57:33 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdarg.h>
 #include <wchar.h>
+#include "libftprintf.h"
 
-static int ft_point_space(wchar_t *s1, char *s, int i, char **aff)
+static int		ft_point_space(wchar_t *s1, char *s, int i)
 {
-	size_t j;
-	char *tmp;
+	size_t		j;
+	char		*tmp;
+	int			ret;
 
 	tmp = ft_strnew(13);
 	j = 0;
+	ret = 0;
 	if (s[i] == '.')
 	{
 		i--;
@@ -32,22 +35,25 @@ static int ft_point_space(wchar_t *s1, char *s, int i, char **aff)
 		}
 		tmp = ft_revers(tmp);
 		j = ft_atoi(tmp);
-			while (j > (ft_strlen((char *)s1)))
+			while (j > (ft_wstrlen(s1)))
 			{
-				*aff = ft_strjoin(*aff, " ");
+				ft_putstr(" ");
+				ret++;
 				j--;
 			}
 	}
-	return (0);
+	return (ret);
 }
 
-int	ft_print_s_maj(va_list ap, char *s, int i, char **aff)
+int	ft_print_s_maj(va_list ap, char *s, int i)
 {
 	wchar_t *s1;
 	char *tmp;
 	size_t j;
+	int ret;
 
 	j = 0;
+	ret = 0;
 	tmp = ft_strnew(13);
 	i--;
 	while (s[i] >= '0' && s[i] <= '9')
@@ -58,18 +64,22 @@ int	ft_print_s_maj(va_list ap, char *s, int i, char **aff)
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
 	s1 = va_arg(ap, wchar_t *);
-	ft_point_space(s1, s, i, aff);
+	ret += ft_point_space(s1, s, i);
 	if (!s1 || !ap)
 	{
-		*aff = ft_strjoin(*aff, "(null)");
-		return (0);
+		ft_putstr("(null)");
+		return (6);
 	}
-	while (j > ft_strlen((char *)s1))
+	while (j > ft_wstrlen(s1))
 	{
 		if (s[i] != '.')
-			*aff = ft_strjoin (*aff, " ");
+		{
+			ft_putstr(" ");
+			ret++;
+		}
 		j--;
 	}
-		*aff =	ft_strjoin(*aff, (char *)s1);
-	return (0);
+	ft_putwstr(s1);
+	ret += ft_wstrlen(s1);
+	return (ret);
 }
