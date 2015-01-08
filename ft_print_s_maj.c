@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/07 17:00:43 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 12:25:42 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdarg.h>
 #include <wchar.h>
 
-static int ft_point_space(wchar_t *s1, char *s, int i, char **aff, size_t stop)
+static int ft_point_space(wchar_t *s1, char *s, int i, char **aff)
 {
 	size_t j;
 	char *tmp;
@@ -32,13 +32,10 @@ static int ft_point_space(wchar_t *s1, char *s, int i, char **aff, size_t stop)
 		}
 		tmp = ft_revers(tmp);
 		j = ft_atoi(tmp);
-		if (j > stop)
 			while (j > (ft_strlen((char *)s1)))
 			{
 				*aff = ft_strjoin(*aff, " ");
 				j--;
-				if (j == stop)
-					return (0);
 			}
 	}
 	return (0);
@@ -61,13 +58,13 @@ int	ft_print_s_maj(va_list ap, char *s, int i, char **aff)
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
 	s1 = va_arg(ap, wchar_t *);
-	ft_point_space(s1, s, i, aff, j);
-		if (!s1 || !ap)
+	ft_point_space(s1, s, i, aff);
+	if (!s1 || !ap)
 	{
 		*aff = ft_strjoin(*aff, "(null)");
 		return (0);
 	}
-		while (j > ft_strlen((char *)s1))
+	while (j > ft_strlen((char *)s1))
 	{
 		if (s[i] != '.')
 			*aff = ft_strjoin (*aff, " ");

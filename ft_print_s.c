@@ -6,14 +6,14 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 12:17:31 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 12:23:55 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdarg.h>
 
-static int ft_point_space(char *s1, char *s, int i, char **aff, size_t stop)
+static int ft_point_space(char *s1, char *s, int i, char **aff)
 {
 	size_t j;
 	char *tmp;
@@ -31,7 +31,6 @@ static int ft_point_space(char *s1, char *s, int i, char **aff, size_t stop)
 		}
 		tmp = ft_revers(tmp);
 		j = ft_atoi(tmp);
-		if (j > stop)
 			while (j-- > (ft_strlen(s1)))
 				*aff = ft_strjoin(*aff, " ");
 	}
@@ -55,8 +54,8 @@ int	ft_print_s(va_list ap, char *s, int i, char **aff)
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
 	s1 = va_arg(ap, char *);
-	ft_point_space(s1, s, i, aff, j);
-		if (!s1 || !ap)
+	ft_point_space(s1, s, i, aff);
+	if (!s1 || !ap)
 	{
 		*aff = ft_strjoin(*aff, "(null)");
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:24:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 12:08:02 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 12:26:54 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	ft_type(char *s, int i, va_list ap, char **aff)
 		return (ft_print_o_long(ap, s, i, aff));
 	if (s[i] == 'o')
 		return (ft_print_o(ap, s, i, aff));
+		if (s[i] == 'S')
+		return (ft_print_s_maj(ap, s, i, aff));
 	if (s[i] == 's')
 		return (ft_print_s(ap, s, i, aff));
 		if (s[i] == 'b')
