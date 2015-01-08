@@ -6,7 +6,7 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/08 16:16:25 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/08 16:22:15 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/08 18:31:09 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int		main(void)
 {
-	long l;
+	unsigned long l;
 
-	l = LONG_MIN;
-	printf("modulo D = %D \n", l);
+	l = ULONG_MAX;
+	printf("modulo lx ULONG_MAX = %lx \nmodulo lo 0 = %lo\n", l, 0L);
 	return (0);
 }

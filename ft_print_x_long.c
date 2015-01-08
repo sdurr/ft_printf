@@ -6,10 +6,11 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/07 16:27:33 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 18:33:50 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
 #include "libft.h"
 #include <stdarg.h>
 
@@ -69,15 +70,15 @@ static int			ft_number_befor(char *s1, char *s, int i, char **aff)
 		return (0);
 }
 
-static int			ft_print_x_negative_long(long int decimal, char *s, int j, char **aff)
+static int			ft_print_x_negative_long(long long decimal, char *s, int j, char **aff)
 {
-	long unsigned int	quotient;
+	unsigned long	quotient;
 	int				rest;
 	int				i;
 	char			*ret;
 	char			*hexa;
 
-	quotient = 4294967296 + decimal;
+	quotient = ULONG_MAX + decimal;
 	hexa = ft_strnew(9);
 	i = 0;
 	while (quotient != 0)
@@ -103,12 +104,12 @@ static int			ft_print_x_negative_long(long int decimal, char *s, int j, char **a
 int					ft_print_x_long(va_list ap, char *s, int j, char **aff)
 {
 	char			*hexa;
-	long int				quotient;
+	long long		quotient;
 	int				rest;
 	int				i;
 	char			*ret;
 
-	quotient = va_arg(ap, long int);
+	quotient = va_arg(ap, long long);
 	if (quotient < 0)
 		return (ft_print_x_negative_long(quotient, s, j, aff));
 	if (quotient == 0)
@@ -117,6 +118,11 @@ int					ft_print_x_long(va_list ap, char *s, int j, char **aff)
 				*aff = ft_strjoin(*aff, "0");
 			return (0);
 		}
+	if (quotient == (long long)ULONG_MAX)
+	{
+		*aff = ft_strjoin(*aff, "ffffffffffffffff");
+		return (0);
+	}
 	i = 0;
 	hexa = ft_strnew(9);
 	while (quotient != 0)

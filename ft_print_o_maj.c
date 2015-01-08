@@ -6,13 +6,14 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 22:44:50 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/08 14:43:57 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/08 18:20:10 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include "libft.h"
 #include <stdarg.h>
+#include <limits.h>
 
 static int		ft_point_space(char *s1, char *s, int i, char **aff, size_t stop)
 {
@@ -79,7 +80,7 @@ static int			ft_print_o_negative_long(long int decimal, char *s, int j, char **a
 	char			*ret;
 
 	octal = ft_strnew(12);
-	quotient = 4294967296 + decimal;
+	quotient = ULONG_MAX + decimal;
 	i = 0;
 	while (quotient != 0)
 	{
@@ -101,22 +102,28 @@ static int			ft_print_o_negative_long(long int decimal, char *s, int j, char **a
 int					ft_print_o_maj(va_list ap, char *s, int j, char **aff)
 {
 	char			*octal;
-	long int				quotient;
+	long long		quotient;
 	int				rest;
 	int				i;
 	char			*ret;
 
-	quotient = va_arg(ap,long int);
+	quotient = va_arg(ap,long long);
 	i = j;
 	while (s[i] != '%')
 		i--;
 	if (s[i + 1] == '#')
 		*aff = ft_strjoin(*aff, "0");
+	if (quotient == (long long)ULONG_MAX)
+	{
+		*aff = ft_strjoin(*aff, "1777777777777777777777");
+		return (0);
+	}
 	if (quotient < 0)
 		return ((ft_print_o_negative_long(quotient, s, j, aff)));
-	if ((quotient == 0 && s[j - 1] == '.') || (quotient == 0 && s[j - 1] == '0' && s[j - 2] == '.'))
+	if ((quotient == 0 && s[j - 1] == '.')
+		|| (quotient == 0 && s[j - 1] == '0' && s[j - 2] == '.'))
 		return (0);
-	if(quotient == 0 )
+	if(quotient == 0)
 	{
 		*aff = ft_strjoin(*aff, "0");
 		return (0);
