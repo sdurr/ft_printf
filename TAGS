@@ -1,33 +1,39 @@
 
 ft_litoa.c,32
-char	*ft_litoa(ft_litoa17,957
+char	*ft_litoa(ft_litoa18,977
 
-ft_longlen.c,25
-long		ft_longlen(13,892
+ft_llitoa.c,35
+char		*ft_llitoa(ft_llitoa18,977
+
+ft_llonglen.c,28
+size_t		ft_llonglen(16,933
+
+ft_longlen.c,27
+size_t		ft_longlen(16,933
 
 ft_print_b.c,107
 static int			ft_number_befor(16,937
-static int			ft_print_b_negative(35,1237
-int					ft_print_b(63,1800
+static int			ft_print_b_negative(32,1228
+int					ft_print_b(60,1791
 
-ft_print_c.c,58
-static int ft_point_space(16,932
-int	ft_print_c(41,1321
+ft_print_c.c,62
+static int		ft_point_space(16,932
+int				ft_print_c(41,1324
 
-ft_print_c_maj.c,27
-int	ft_print_c_maj(17,951
+ft_print_c_maj.c,30
+int				ft_print_c_maj(17,951
 
-ft_print_d.c,58
-static int ft_point_space(16,932
-int	ft_print_d(41,1349
+ft_print_d.c,62
+static int		ft_point_space(16,932
+int				ft_print_d(40,1347
 
 ft_print_d_long_long.c,68
-static int ft_point_space(16,932
-int	ft_print_d_long_long(46,1387
+static int ft_point_space(17,957
+int	ft_print_d_long_long(47,1412
 
-ft_print_d_maj.c,62
-static int ft_point_space(18,971
-int	ft_print_d_maj(48,1421
+ft_print_d_maj.c,63
+static int ft_point_space(18,958
+int		ft_print_d_maj(48,1408
 
 ft_print_d_plus.c,29
 int		ft_print_d_plus(17,957
@@ -38,23 +44,25 @@ static int			ft_number_befor(47,1396
 static int			ft_print_o_negative(73,1899
 int					ft_print_o(101,2475
 
-ft_print_o_long.c,153
-static int ft_point_space(17,957
-static int			ft_number_befor(47,1396
-static int			ft_print_o_negative_long(73,1900
-int					ft_print_o_long(101,2491
+ft_print_o_maj.c,153
+static int		ft_point_space(17,957
+static int			ft_number_befor(47,1399
+static int			ft_print_o_negative_long(73,1906
+int					ft_print_o_maj(101,2493
 
-ft_print_p.c,68
-static int ft_print_p_negative(17,1013
-int					ft_print_p(50,1676
+ft_print_p.c,140
+static int ft_point_space(17,1013
+static int ft_number_befor(44,1457
+static int ft_print_p_negative(70,1959
+int					ft_print_p(104,2667
 
 ft_print_s.c,58
 static int ft_point_space(16,932
 int	ft_print_s(40,1289
 
-ft_print_s_maj.c,62
-static int ft_point_space(17,951
-int	ft_print_s_maj(44,1336
+ft_print_s_maj.c,63
+static int		ft_point_space(18,976
+int	ft_print_s_maj(48,1366
 
 ft_print_size_t.c,63
 static int ft_point_space(16,932
@@ -64,15 +72,15 @@ ft_print_u.c,58
 static int ft_point_space(17,957
 int	ft_print_u(47,1401
 
-ft_print_u_maj.c,62
-static int ft_point_space(17,957
-int	ft_print_u_maj(47,1422
+ft_print_u_maj.c,68
+static int			ft_point_space(18,977
+int					ft_print_u_maj(48,1448
 
-ft_print_x.c,143
-static int ft_point_space(16,932
-static int			ft_number_befor(46,1373
-static int			ft_print_x_negative(72,1878
-int					ft_print_x(103,2548
+ft_print_x.c,140
+static int		ft_point_space(17,957
+static int		ft_number_befor(42,1372
+static int		ft_print_x_negative(67,1872
+int				ft_print_x(97,2540
 
 ft_print_x_long.c,153
 static int ft_point_space(16,932
@@ -92,14 +100,33 @@ static int ft_number_befor(46,1371
 static int			ft_print_x_maj_negative_long(72,1872
 int		ft_print_x_maj_long(103,2549
 
+ft_print_x_maj_size_t.c,106
+static int ft_point_space(16,932
+static int ft_number_befor(46,1371
+int		ft_print_x_maj_size_t(72,1872
+
+ft_print_x_size_t.c,107
+static int ft_point_space(16,932
+static int			ft_number_befor(46,1373
+int					ft_print_x_size_t(72,1878
+
 ft_printf.c,23
 int		ft_printf(18,977
 
 ft_putnbr_long.c,28
 void	ft_putnbr_long(15,912
 
+ft_putwchar.c,25
+void	ft_putwchar(16,932
+
+ft_putwstr.c,24
+void	ft_putwstr(18,976
+
 ft_type.c,20
 int	ft_type(17,957
+
+ft_wstrlen.c,27
+size_t		ft_wstrlen(16,932
 
 main.c,17
 int main(19,997

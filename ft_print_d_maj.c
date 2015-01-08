@@ -6,19 +6,20 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 14:22:01 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/08 16:23:05 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include "libft.h"
 #include "libftprintf.h"
+#include <limits.h>
 
 
-static int ft_point_space(long int d, char *s, int i, char **aff, size_t stop)
+static int	ft_point_space(long d, char *s, int i, char **aff, size_t stop)
 {
-	size_t j;
-	char *tmp;
+	size_t	j;
+	char	*tmp;
 
 	tmp = ft_strnew(13);
 	j = 0;
@@ -45,25 +46,21 @@ static int ft_point_space(long int d, char *s, int i, char **aff, size_t stop)
 	return (0);
 }
 
-int		ft_print_d_maj(va_list ap, char *s, int i, char **aff)
+int			ft_print_d_maj(va_list ap, char *s, int i, char **aff)
 {
-	long d;
-	char *tmp;
-	size_t j;
+	long	d;
+	char	*tmp;
+	size_t	j;
 
 	j = 0;
 	tmp = ft_strnew(13);
 	i--;
 	while (s[i] >= '0' && s[i] <= '9')
-	{
-		tmp[j] = s[i];
-		i--;
-		j++;
-	}
+		tmp[j++] = s[i--];
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
 	d = va_arg(ap, long);
-	if (d < 0 && d > -9223372036854775807)
+	if (d < 0 && d > LONG_MIN)
 	{
 		*aff = ft_strjoin(*aff, "-");
 		d = d * - 1;
@@ -80,6 +77,11 @@ int		ft_print_d_maj(va_list ap, char *s, int i, char **aff)
 		else
 			*aff = ft_strjoin(*aff, " ");
 		j--;
+	}
+	if (d == LONG_MIN)
+	{
+		*aff = ft_strjoin(*aff, "-9223372036854775808");
+		return (0);
 	}
 	*aff = ft_strjoin(*aff, ft_litoa(d));
 	return (0);

@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_llonglen.c                                      :+:      :+:    :+:   */
+/*   main_1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/08 15:16:54 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/08 15:52:10 by getrembl         ###   ########.fr       */
+/*   Created: 2015/01/08 16:16:25 by getrembl          #+#    #+#             */
+/*   Updated: 2015/01/08 16:22:15 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
+#include <stdio.h>
 #include <limits.h>
 
-size_t		ft_llonglen(long long ll)
+int		main(void)
 {
-	size_t	ret;
+	long l;
 
-	ret = 1;
-	if (ll < LONG_LONG_MIN)
-		return (20);
-	if (ll < 0)
-	{
-		ret++;
-		ll *= -1;
-	}
-	while ((ll /= 10) > 0)
-		ret++;
-	return (ret);
+	l = LONG_MIN;
+	printf("modulo D = %D \n", l);
+	return (0);
 }
