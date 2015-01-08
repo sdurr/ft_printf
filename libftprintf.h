@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print.h                                         :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:12:02 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 13:39:20 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/08 14:38:34 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,19 @@ int			ft_printf(char *format, ...);
 int			ft_print_b(va_list ap, char *s, int j, char **aff);
 int			ft_print_c(va_list ap, char *s, int j, char **aff);
 int			ft_print_size_t(va_list ap, char *s, int j, char **aff);
+int			ft_print_x_size_t(va_list ap, char *s, int j, char **aff);
 int			ft_print_c_maj(va_list ap, char *s, int j, char **aff);
 int			ft_print_d(va_list ap, char *s, int j, char **aff);
 int			ft_print_d_maj(va_list ap, char *s, int i, char **aff);
 int			ft_print_d_long_long(va_list ap, char *s, int i, char **aff);
-int			ft_print_s_maj(va_list ap, char *s, int i, char **aff);
 int			ft_print_d_plus(va_list ap, char **aff);
 int			ft_print_o(va_list ap, char *s, int j, char **aff);
-int			ft_print_o_long(va_list ap, char *s, int j, char **aff);
-int			ft_print_u_maj(va_list ap, char *s, int j, char **aff);
+int			ft_print_o_maj(va_list ap, char *s, int j, char **aff);
 int			ft_print_p(va_list ap, char *s, int j, char **aff);
 int			ft_print_s(va_list ap, char *s, int j, char **aff);
+int			ft_print_s_maj(va_list ap, char *s, int i, char **aff);
 int			ft_print_u(va_list ap, char *s, int j, char **aff);
+int			ft_print_u_maj(va_list ap, char *s, int j, char **aff);
 int			ft_print_x(va_list ap, char *s, int j, char **aff);
 int			ft_print_x_long(va_list ap, char *s, int j, char **aff);
 int			ft_print_x_maj(va_list ap, char *s, int j, char **aff);

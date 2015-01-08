@@ -6,7 +6,7 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 22:44:50 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/08 14:26:32 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/08 14:43:57 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ static int			ft_print_o_negative_long(long int decimal, char *s, int j, char **a
 	return (0);
 }
 
-int					ft_print_o_long(va_list ap, char *s, int j, char **aff)
+int					ft_print_o_maj(va_list ap, char *s, int j, char **aff)
 {
 	char			*octal;
 	long int				quotient;

@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:24:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 12:26:54 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 14:39:19 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	ft_type(char *s, int i, va_list ap, char **aff)
 	}
 	if (s[i -1] == 'l' && s[i] == 'd' && s[j + 2] == 'l')
 		return (ft_print_d_long_long(ap, s, i, aff));
+	if (s[i - 1] == 'z' && s[i] == 'x')
+		return(ft_print_x_size_t(ap, s, i, aff));
 	if (s[i - 1] == 'z')
 		return(ft_print_size_t(ap, s, i, aff));
 	if ((s[i] == 'D') || (s[i] == 'd' && s[j + 1] == 'l') || (s[i] == 'i' && s[j + 1] == 'l') || (s[i] == 'd' && s[j + 1] == 'j') || (s[i] == 'i' && s[j + 1] == 'j'))
@@ -38,7 +40,7 @@ int	ft_type(char *s, int i, va_list ap, char **aff)
 	if (s[i] == 'u')
 		return (ft_print_u(ap, s, i, aff));
 	if (s[i] == 'O' || (s[i] == 'o' && s[j + 1] == 'l') || (s[i] == 'o' && s[j + 1] == 'j'))
-		return (ft_print_o_long(ap, s, i, aff));
+		return (ft_print_o_maj(ap, s, i, aff));
 	if (s[i] == 'o')
 		return (ft_print_o(ap, s, i, aff));
 		if (s[i] == 'S')
