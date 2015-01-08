@@ -6,9 +6,11 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/08 12:17:27 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/08 13:06:43 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/08 13:15:52 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 size_t		ft_longlen(long l)
 {

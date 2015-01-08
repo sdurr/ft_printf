@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:27:52 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 13:04:32 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 13:37:45 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@
 
 int main()
 {
-
-	printf("retour ft = %d\n", ft_printf("%.p", 42));
-//	printf("retour print = %d\n", printf("%.5c", 42));
+	printf("retour ft = %d\n", ft_printf("%#.0o", 0));
+	printf("retour print = %d\n", printf("%#.0o", 0));
 	return (0);
 }
