@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2015/01/08 12:57:32 by sdurr            ###   ########.fr        #
+#    Updated: 2015/01/08 14:16:00 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,7 +16,9 @@ CPATH			= ./src/
 
 SRC				= ft_print_c.c \
 					ft_print_size_t.c \
+					ft_print_x_size_t.c \
 					ft_print_x_long.c \
+					ft_print_x_size_t.c \
 					ft_print_d_long_long.c \
 					ft_print_u_maj.c \
 					ft_print_s_maj.c \
