@@ -6,7 +6,7 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 21:15:03 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/06 15:16:43 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 14:38:51 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 static int			ft_number_befor(char *s1, char *s, int i, char **aff)
 {
-	char *tmp;
-	size_t j;
+	char			*tmp;
+	size_t			j;
 
 	j = 0;
 	tmp = ft_strnew(13);
@@ -24,12 +24,9 @@ static int			ft_number_befor(char *s1, char *s, int i, char **aff)
 	while (s[i] >= '0' && s[i] <= '9')
 		tmp[j++] = s[i--];
 	tmp = ft_revers(tmp);
-	while (j > ft_strlen(s1));
-	{
+	while (j-- > ft_strlen(s1))
 		*aff = ft_strjoin (*aff, " ");
-		j--;
-	}
-		return (0);
+	return (0);
 }
 
 static int			ft_print_b_negative(int decimal, char *s, int j, char **aff)

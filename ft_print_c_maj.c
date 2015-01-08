@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/07 17:41:17 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 14:41:43 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <stdarg.h>
 #include <wchar.h>
 
-int	ft_print_c_maj(va_list ap, char *s, int i, char **aff)
+int				ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 {
-	wchar_t c;
-	char *tmp;
-	int j;
-	wchar_t *tmp2;
+	wchar_t		c;
+	char		*tmp;
+	int			j;
+	wchar_t		*tmp2;
 
 	tmp2 = (wchar_t *)ft_strnew(2);
 	j = 0;

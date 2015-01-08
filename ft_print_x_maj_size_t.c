@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 10:45:51 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 14:29:57 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,48 +69,15 @@ static int ft_number_befor(char *s1, char *s, int i, char **aff)
 		return (0);
 }
 
-static int			ft_print_x_maj_negative(int decimal, char *s, int j, char **aff)
-{
-	unsigned int	quotient;
-	int		rest;
-	int		i;
-	char	*ret;
-	char	*hexa;
-
-	quotient = 4294967296 + decimal;
-	hexa = ft_strnew(9);
-	i = 0;
-	while (quotient != 0)
-	{
-		rest = quotient % 16;
-		(quotient > 15) ? (quotient /= 16) : (quotient = 0);
-		(rest < 10) ? (rest += 48) : (rest += 55);
-		hexa[i++] = rest;
-	}
-	hexa[i--] = '\0';
-	ret = ft_strnew(ft_strlen(hexa) + 1);
-	rest = 0;
-	while (i >= 0)
-		ret[rest++] = hexa[i--];
-	quotient = ft_number_befor(hexa, s, j, aff);
-	if (s[j - 1] == '#' && ret[0] != '0')
-		*aff = ft_strjoin(*aff, "0X");
-		*aff = ft_strjoin(*aff, ret);
-	return (0);
-}
-
-
-int		ft_print_x_maj(va_list ap, char *s, int j, char **aff)
+int		ft_print_x_maj_size_t(va_list ap, char *s, int j, char **aff)
 {
 	char	*hexa;
-	int		quotient;
+	size_t		quotient;
 	int		rest;
 	int		i;
 	char	*ret;
 
 	quotient = va_arg(ap, int);
-	if (quotient < 0)
-		return (ft_print_x_maj_negative(quotient, s, j, aff));
 	if ((quotient == 0 && s[j - 1] == '.') || (quotient == 0 && s[j - 1] == '0'))
 		return (0);
 	if (quotient == 0)
@@ -138,4 +105,3 @@ int		ft_print_x_maj(va_list ap, char *s, int j, char **aff)
 	*aff = ft_strjoin(*aff, ret);
 	return (0);
 }
-

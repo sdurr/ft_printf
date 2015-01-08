@@ -6,17 +6,17 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 12:41:42 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 14:40:51 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdarg.h>
 
-static int ft_point_space(char *s, int i, char **aff, size_t stop)
+static int		ft_point_space(char *s, int i, char **aff, size_t stop)
 {
-	size_t j;
-	char *tmp;
+	size_t		j;
+	char		*tmp;
 
 	tmp = ft_strnew(13);
 	j = 0;
@@ -38,12 +38,12 @@ static int ft_point_space(char *s, int i, char **aff, size_t stop)
 	return (0);
 }
 
-int	ft_print_c(va_list ap, char *s, int i, char **aff)
+int				ft_print_c(va_list ap, char *s, int i, char **aff)
 {
-	char c;
-	char *tmp;
-	int j;
-	char *tmp2;
+	char		c;
+	char		*tmp;
+	int			j;
+	char		*tmp2;
 
 	tmp2 = ft_strnew(2);
 	j = 0;

@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:24:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 14:39:19 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/08 14:47:05 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	ft_type(char *s, int i, va_list ap, char **aff)
 		return (ft_print_d_long_long(ap, s, i, aff));
 	if (s[i - 1] == 'z' && s[i] == 'x')
 		return(ft_print_x_size_t(ap, s, i, aff));
+		if (s[i - 1] == 'z' && s[i] == 'X')
+		return(ft_print_x_maj_size_t(ap, s, i, aff));
 	if (s[i - 1] == 'z')
 		return(ft_print_size_t(ap, s, i, aff));
 	if ((s[i] == 'D') || (s[i] == 'd' && s[j + 1] == 'l') || (s[i] == 'i' && s[j + 1] == 'l') || (s[i] == 'd' && s[j + 1] == 'j') || (s[i] == 'i' && s[j + 1] == 'j'))
