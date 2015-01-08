@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/07 15:26:27 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 12:17:31 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,8 @@ static int ft_point_space(char *s1, char *s, int i, char **aff, size_t stop)
 		tmp = ft_revers(tmp);
 		j = ft_atoi(tmp);
 		if (j > stop)
-			while (j > (ft_strlen(s1)))
-			{
+			while (j-- > (ft_strlen(s1)))
 				*aff = ft_strjoin(*aff, " ");
-				j--;
-				if (j == stop)
-					return (0);
-			}
 	}
 	return (0);
 }

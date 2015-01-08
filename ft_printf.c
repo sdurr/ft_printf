@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 10:28:28 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 12:09:07 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_printf(char *format, ...)
 	char *aff;
 	char *tmp;
 	int ret;
-
+	int test;
 	aff = ft_strnew(1);
 	s = ft_strdup(format);
 	i = 0;
@@ -43,7 +43,9 @@ int		ft_printf(char *format, ...)
 
 				while ((s[i] >= '0' && s[i] <= '9') || s[i] == '#' || s[i] == '+' || s[i] == 'l' || s[i] == ' ' || s[i] == '.' || s[i] == '-' || s[i] == 'h' || s[i] == '*' || s[i] == 'j' || s[i] == 'z')
 				i++;
-				ret = ret + ft_type(s, i, ap, &aff);
+				if ((test = ft_type(s, i, ap, &aff)) == -1)
+					return (-1);
+				ret = test + ret;
 		}
 		i++;
 	}
