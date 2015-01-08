@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 15:07:52 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/08 15:52:44 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int					ft_print_u_maj(va_list ap, char *s, int i, char **aff)
 	d = va_arg(ap, unsigned long int);
 	if (d == ULONG_MAX)
 	{
-		*aff = ft_strjoin(*aff, ft_litoa(ULONG_MAX));
+		*aff = ft_strjoin(*aff,ft_llitoa((long long)ULONG_MAX));
 		return (0);
 	}
 	if (d == 0)

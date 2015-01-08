@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:12:02 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 14:46:30 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 15:49:10 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdarg.h>
 
 char		*ft_litoa(long n);
+char		*ft_llitoa(long long ll);
 
 int			ft_printf(char *format, ...);
 int			ft_print_b(va_list ap, char *s, int j, char **aff);
@@ -44,6 +45,7 @@ int			ft_print_x_diese(va_list ap, char **aff);
 int			ft_test_type(char *s);
 int			ft_type(char *s, int i, va_list ap, char **aff);
 
+size_t		ft_llonglen(long long ll);
 size_t		ft_longlen(long l);
 
 void		ft_putnbr_long(long n);
