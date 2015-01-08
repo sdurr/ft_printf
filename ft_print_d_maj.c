@@ -6,12 +6,13 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/07 16:15:39 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 09:00:52 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include "libft.h"
+#include <stdio.h>
 
 static int ft_point_space(long int d, char *s, int i, char **aff, size_t stop)
 {
@@ -45,7 +46,7 @@ static int ft_point_space(long int d, char *s, int i, char **aff, size_t stop)
 
 int	ft_print_d_maj(va_list ap, char *s, int i, char **aff)
 {
-	long int d;
+	long d;
 	char *tmp;
 	size_t j;
 
@@ -60,7 +61,7 @@ int	ft_print_d_maj(va_list ap, char *s, int i, char **aff)
 	}
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
-	d = va_arg(ap, long int);
+	d = va_arg(ap, long);
 	if (d < 0 && d > -9223372036854775807)
 	{
 		*aff = ft_strjoin(*aff, "-");

@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/07 16:47:18 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 09:45:49 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "libftprintf.h"
 
-static int ft_point_space(int d, char *s, int i, char **aff, size_t stop)
+static int ft_point_space(unsigned long int d, char *s, int i, char **aff, size_t stop)
 {
 	size_t j;
 	char *tmp;
@@ -33,7 +33,7 @@ static int ft_point_space(int d, char *s, int i, char **aff, size_t stop)
 		tmp = ft_revers(tmp);
 		j = ft_atoi(tmp);
 		if (j > stop)
-			while (j > (ft_strlen(ft_itoa(d))))
+			while (j > (ft_strlen(ft_litoa((long)d))))
 			{
 				*aff = ft_strjoin(*aff, " ");
 				j--;

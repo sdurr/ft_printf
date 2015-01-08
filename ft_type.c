@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:24:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/07 17:05:15 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 09:45:58 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,26 @@
 
 int	ft_type(char *s, int i, va_list ap, char **aff)
 {
+	int j;
+
+	j = i;
+	while (s[j] != '%')
+		j--;
 	if ((s[i - 1] == '+' && s[i] == 'd') || (s[i - 1] == '+' && s[i] == 'i'))
 	{
 		return (ft_print_d_plus(ap, aff));
 	}
-	if (s[i -1] == 'l' && s[i] == 'd' && s[i - 2] == 'l')
+	if (s[i -1] == 'l' && s[i] == 'd' && s[j + 2] == 'l')
 		return (ft_print_d_long_long(ap, s, i, aff));
-	if ((s[i] == 'D') || (s[i] == 'd' && s[i - 1] == 'l') || (s[i] == 'i' && s[i - 1] == 'l'))
+	if ((s[i] == 'D') || (s[i] == 'd' && s[j + 1] == 'l') || (s[i] == 'i' && s[j + 1] == 'l'))
 		return (ft_print_d_maj(ap, s, i, aff));
-	if (s[i] == 'd' || s[i] == 'i')
+	if (s[i] == 'd' || s[i] == 'i' || (s[j + 1] == 'h' && s[i] == 'd'))
 		return (ft_print_d(ap, s, i, aff));
-	if (s[i] == 'U' || (s[i] == 'u' && s[i - 1] == 'l'))
+	if (s[i] == 'U' || (s[i] == 'u' && s[j + 1] == 'l'))
 		return (ft_print_u_maj(ap, s, i, aff));
 	if (s[i] == 'u')
 		return (ft_print_u(ap, s, i, aff));
-	if (s[i] == 'O' || (s[i] == 'o' && s[i - 1] == 'l'))
+	if (s[i] == 'O' || (s[i] == 'o' && s[j + 1] == 'l'))
 		return (ft_print_o_long(ap, s, i, aff));
 	if (s[i] == 'o')
 		return (ft_print_o(ap, s, i, aff));
@@ -49,9 +54,9 @@ int	ft_type(char *s, int i, va_list ap, char **aff)
 		*aff = ft_strjoin(*aff, "%");
 		return (0);
 	}
-	if (s[i] == 'x' && s[i - 1] == 'l')
+	if (s[i] == 'x' && s[j + 1] == 'l')
 		return (ft_print_x_long(ap, s, i, aff));
-		if (s[i] == 'X' && s[i - 1] == 'l')
+		if (s[i] == 'X' && s[j + 1] == 'l')
 		return (ft_print_x_maj_long(ap, s, i, aff));
 	if (s[i] == 'x')
 		return (ft_print_x(ap, s, i, aff));
