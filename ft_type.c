@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:24:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 09:45:58 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 10:29:19 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,17 @@ int	ft_type(char *s, int i, va_list ap, char **aff)
 	}
 	if (s[i -1] == 'l' && s[i] == 'd' && s[j + 2] == 'l')
 		return (ft_print_d_long_long(ap, s, i, aff));
-	if ((s[i] == 'D') || (s[i] == 'd' && s[j + 1] == 'l') || (s[i] == 'i' && s[j + 1] == 'l'))
+	if (s[i - 1] == 'z')
+		return(ft_print_size_t(ap, s, i, aff));
+	if ((s[i] == 'D') || (s[i] == 'd' && s[j + 1] == 'l') || (s[i] == 'i' && s[j + 1] == 'l') || (s[i] == 'd' && s[j + 1] == 'j') || (s[i] == 'i' && s[j + 1] == 'j'))
 		return (ft_print_d_maj(ap, s, i, aff));
 	if (s[i] == 'd' || s[i] == 'i' || (s[j + 1] == 'h' && s[i] == 'd'))
 		return (ft_print_d(ap, s, i, aff));
-	if (s[i] == 'U' || (s[i] == 'u' && s[j + 1] == 'l'))
+	if (s[i] == 'U' || (s[i] == 'u' && s[j + 1] == 'l') || (s[i] == 'u' && s[j + 1] == 'j'))
 		return (ft_print_u_maj(ap, s, i, aff));
 	if (s[i] == 'u')
 		return (ft_print_u(ap, s, i, aff));
-	if (s[i] == 'O' || (s[i] == 'o' && s[j + 1] == 'l'))
+	if (s[i] == 'O' || (s[i] == 'o' && s[j + 1] == 'l') || (s[i] == 'o' && s[j + 1] == 'j'))
 		return (ft_print_o_long(ap, s, i, aff));
 	if (s[i] == 'o')
 		return (ft_print_o(ap, s, i, aff));

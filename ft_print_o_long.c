@@ -6,7 +6,7 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 22:44:50 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/07 16:34:18 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 10:43:33 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ int					ft_print_o_long(va_list ap, char *s, int j, char **aff)
 	quotient = va_arg(ap,long int);
 	if (quotient < 0)
 		return ((ft_print_o_negative_long(quotient, s, j, aff)));
+	if ((quotient == 0 && s[j - 1] == '.') || (quotient == 0 && s[j - 1] == '0' && s[j - 2] == '.'))
+		return (0);
 	if(quotient == 0 )
 	{
 		*aff = ft_strjoin(*aff, "0");

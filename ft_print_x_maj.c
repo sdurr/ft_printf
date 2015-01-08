@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/07 15:19:14 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 10:45:51 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ int		ft_print_x_maj(va_list ap, char *s, int j, char **aff)
 	quotient = va_arg(ap, int);
 	if (quotient < 0)
 		return (ft_print_x_maj_negative(quotient, s, j, aff));
+	if ((quotient == 0 && s[j - 1] == '.') || (quotient == 0 && s[j - 1] == '0'))
+		return (0);
 	if (quotient == 0)
 	{
 		*aff = ft_strjoin(*aff, "0");
