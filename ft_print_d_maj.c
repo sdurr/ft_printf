@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_d.c                                      :+:      :+:    :+:   */
+/*   ft_print_d_maj.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 13:03:34 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/08 14:22:01 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include "libft.h"
-#include <stdio.h>
-#include <stdint.h>
+#include "libftprintf.h"
+
 
 static int ft_point_space(long int d, char *s, int i, char **aff, size_t stop)
 {
@@ -45,7 +45,7 @@ static int ft_point_space(long int d, char *s, int i, char **aff, size_t stop)
 	return (0);
 }
 
-int	ft_print_d_maj(va_list ap, char *s, int i, char **aff)
+int		ft_print_d_maj(va_list ap, char *s, int i, char **aff)
 {
 	long d;
 	char *tmp;
