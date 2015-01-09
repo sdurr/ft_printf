@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2015/01/09 12:10:47 by sdurr            ###   ########.fr        #
+#    Updated: 2015/01/09 17:21:04 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,6 +18,7 @@ SRC				= ft_litoa.c \
 					ft_putwchar.c \
 					ft_putwstr.c \
 					ft_wstrlen.c \
+					ft_space_number.c \
 					ft_llitoa.c \
 					ft_llonglen.c \
 					ft_longlen.c \
