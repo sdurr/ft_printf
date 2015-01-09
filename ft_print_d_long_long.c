@@ -6,13 +6,14 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 14:17:30 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/09 11:59:43 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include "libft.h"
 #include "libftprintf.h"
+#include <limits.h>
 
 static int ft_point_space(long long int d, char *s, int i, char **aff, size_t stop)
 {
@@ -62,7 +63,12 @@ int	ft_print_d_long_long(va_list ap, char *s, int i, char **aff)
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
 	d = va_arg(ap, long long int);
-	if (d < 0 && d > -9223372036854775807)
+	if (d == LLONG_MIN)
+	{
+		*aff = ft_strjoin(*aff, "-9223372036854775808");
+		return (0);
+	}
+		if (d < 0 && d > -9223372036854775807)
 	{
 		*aff = ft_strjoin(*aff, "-");
 		d = d * - 1;

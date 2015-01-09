@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 14:29:57 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/09 11:32:41 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int		ft_print_x_maj_size_t(va_list ap, char *s, int j, char **aff)
 		*aff = ft_strjoin(*aff, "0");
 		return (0);
 	}
-	hexa = ft_strnew(15);
+	hexa = ft_strnew(30);
 	i = 0;
 	while (quotient != 0)
 	{

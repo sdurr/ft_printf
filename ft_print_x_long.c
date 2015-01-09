@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 18:33:50 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/09 12:21:53 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,55 +70,22 @@ static int			ft_number_befor(char *s1, char *s, int i, char **aff)
 		return (0);
 }
 
-static int			ft_print_x_negative_long(long long decimal, char *s, int j, char **aff)
-{
-	unsigned long	quotient;
-	int				rest;
-	int				i;
-	char			*ret;
-	char			*hexa;
-
-	quotient = ULONG_MAX + decimal;
-	hexa = ft_strnew(9);
-	i = 0;
-	while (quotient != 0)
-	{
-		rest = quotient % 16;
-		(quotient > 15) ? (quotient /= 16) : (quotient = 0);
-		(rest < 10) ? (rest += 48) : (rest += 87);
-		hexa[i++] = rest;
-	}
-	hexa[i--] = '\0';
-	ret = ft_strnew(ft_strlen(hexa) + 1);
-	rest = 0;
-	while (i >= 0)
-		ret[rest++] = hexa[i--];
-	quotient = ft_number_befor(hexa, s, j, aff);
-	if (s[j - 1] == '#' && ret[0] != '0')
-		*aff = ft_strjoin(*aff, "0x");
-	*aff = ft_strjoin(*aff, ret);
-	return (0);
-}
-
-
 int					ft_print_x_long(va_list ap, char *s, int j, char **aff)
 {
 	char			*hexa;
-	long long		quotient;
+	unsigned long long		quotient;
 	int				rest;
 	int				i;
 	char			*ret;
 
-	quotient = va_arg(ap, long long);
-	if (quotient < 0)
-		return (ft_print_x_negative_long(quotient, s, j, aff));
+	quotient = va_arg(ap, unsigned long long);
 	if (quotient == 0)
 		{
 			if (s[j - 1] != '0' && s[j - 1] != '.')
 				*aff = ft_strjoin(*aff, "0");
 			return (0);
 		}
-	if (quotient == (long long)ULONG_MAX)
+	if (quotient > ULLONG_MAX)
 	{
 		*aff = ft_strjoin(*aff, "ffffffffffffffff");
 		return (0);
