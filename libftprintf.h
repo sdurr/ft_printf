@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:12:02 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 16:17:34 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/09 10:51:41 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char		*ft_llitoa(long long ll);
 int			ft_printf(char *format, ...);
 int			ft_print_b(va_list ap, char *s, int j, char **aff);
 int			ft_print_c(va_list ap, char *s, int j, char **aff);
-int			ft_print_size_t(va_list ap, char *s, int j, char **aff);
+int			ft_print_d_size_t(va_list ap, char *s, int j, char **aff);
 int			ft_print_c_maj(va_list ap, char *s, int j);
 int			ft_print_d(va_list ap, char *s, int j, char **aff);
 int			ft_print_d_maj(va_list ap, char *s, int i, char **aff);
