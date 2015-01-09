@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/09 13:36:21 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/09 14:50:26 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,11 @@ int		ft_printf(char *format, ...)
 				while ((s[i] >= '0' && s[i] <= '9') || s[i] == '#' || s[i] == '+' || s[i] == 'l' || s[i] == ' ' || s[i] == '.' || s[i] == '-' || s[i] == 'h' || s[i] == '*' || s[i] == 'j' || s[i] == 'z')
 				i++;
 				if ((test = ft_type(s, i, ap, &aff)) == -1)
-					return (-1);
+				{
+					test = 0;
+					i--;
+				}
+//					return (-1);
 				ret = test + ret;
 		}
 		ft_putstr(aff);
