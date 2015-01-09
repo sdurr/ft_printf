@@ -6,14 +6,14 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 13:20:04 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/09 13:22:02 by sdurr            ###   ########.fr       */
 /*   Updated: 2014/12/29 22:47:45 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdarg.h>
-
+/*
 static int ft_point_space(char *d, char *s, int i, char **aff, size_t stop)
 {
 	size_t j;
@@ -40,7 +40,7 @@ static int ft_point_space(char *d, char *s, int i, char **aff, size_t stop)
 	return (0);
 }
 
-
+*/
 static int ft_number_befor(char *s1, char *s, int i, char **aff)
 {
 	char *tmp;
@@ -53,15 +53,9 @@ static int ft_number_befor(char *s1, char *s, int i, char **aff)
 		tmp[j++] = s[i--];
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
-	if ((s[i] == '.' && s[i + 1] == '0' && s[i - 1] == '%'))
-		return (0);
-	ft_point_space(s1, s, i, aff, j);
 	while (j > ft_strlen(s1))
 	{
-		if (s[i] == '.' || s[i + 1] == '0')
 			*aff = ft_strjoin (*aff, "0");
-		else
-			*aff = ft_strjoin (*aff, " ");
 		j--;
 	}
 	return (0);
@@ -92,7 +86,6 @@ static int ft_print_p_negative(int decimal, char *s, int j, char **aff)
 	rest = 0;
 	while (i >= 0)
 		ret[rest++] = hexa[i--];
-	quotient = ft_number_befor(ret, s, j, aff);
 	*aff = ft_strjoin(*aff, "0x7");
 	i = ft_strlen(ret);
 	while (i++ < 11)
@@ -109,20 +102,19 @@ int					ft_print_p(va_list ap, char *s, int j, char **aff)
 	int				i;
 	char			*ret;
 
-	while (s[j] != '%')
-		j--;
 	quotient = va_arg(ap, int);
-		i = 0;
-		if (quotient < 0)
-			return (ft_print_p_negative(quotient, s, j, aff));
+	i = 0;
+	ret = ft_strnew(1);
+	if (quotient < 0)
+		return (ft_print_p_negative(quotient, s, j, aff));
 	hexa = ft_strnew(9);
-	if ((quotient == 0 && s[j - 1] == '.') || (quotient == 0 && s[j - 1] == '0'))
-		return (0);
 	if (quotient == 0)
 	{
-		if (s[j - 1] != '0' && s[j - 1] != '.')
-			*aff = ft_strjoin(*aff, "0");
-		return (0);
+			*aff = ft_strjoin(*aff, "0x");
+			if ((quotient = ft_number_befor(ret, s, j, aff)) != 0)
+				while (quotient-- != 0)
+					*aff = ft_strjoin(*aff, "0");
+			return (0);
 	}
 	while (quotient != 0)
 	{
@@ -136,7 +128,6 @@ int					ft_print_p(va_list ap, char *s, int j, char **aff)
 	rest = 0;
 	while (i >= 0)
 		ret[rest++] = hexa[i--];
-	quotient = ft_number_befor(ret, s, j, aff);
 	*aff = ft_strjoin(*aff, "0x7");
 	i = ft_strlen(ret);
 	while (i++ < 11)
