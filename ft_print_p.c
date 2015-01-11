@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/11 10:29:14 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/11 10:47:51 by sdurr            ###   ########.fr       */
 /*   Updated: 2014/12/29 22:47:45 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -124,11 +124,6 @@ int					ft_print_p(va_list ap, char *s, int j, char **aff)
 		i = j;
 		while (s[i] != '%')
 			i--;
-		/*	if (s[i + 1] == '.')
-		{
-			*aff = ft_strjoin(*aff, "0x");
-			return (0);
-		}*/
 		ret = "0x0";
 		if (s[i + 1] == '.')
 			ret = "0x";
@@ -149,10 +144,14 @@ int					ft_print_p(va_list ap, char *s, int j, char **aff)
 	rest = 0;
 	while (i >= 0)
 		ret[rest++] = hexa[i--];
-	*aff = ft_strjoin(*aff, "0x7");
+	if (s[j - 1] != 'l')
+		*aff = ft_strjoin(*aff, "0x7");
+	else
+		*aff = ft_strjoin(*aff, "0x");
 	i = ft_strlen(ret);
-	while (i++ < 11)
-		*aff = ft_strjoin(*aff, "f");
+	if (s[j - 1] != 'l')
+		while (i++ < 11)
+			*aff = ft_strjoin(*aff, "f");
 	*aff = ft_strjoin(*aff, ret);
 	return (0);
 }

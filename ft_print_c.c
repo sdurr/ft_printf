@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/11 09:16:58 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/11 10:57:45 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,23 @@ int				ft_print_c(va_list ap, char *s, int i, char **aff)
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
 	c = (char)va_arg(ap, int);
-	if ((c == 0 && j == 0) || (c == 0 && s[i] == '.'))
+	if ((c == 0 && j == 0 && s[i] != ' ' && s[i + 1] != '0')|| (c == 0 && s[i] == '.'))
 			return (1);
-	while (j-- > 0)
+	if (s[i + 1] == '0')
+	{
+		*aff = ft_strjoin (*aff, " ");
+		j--;
+	}
+		while (j-- > 0)
 	{
 		if (s[i + 1] != '0')
 			*aff = ft_strjoin (*aff, " ");
+		else
+			*aff = ft_strjoin (*aff, "0");
 	}
-	if (tmp[0] != '\0')
+	if (s[i] == ' ' && c == 0)
+		*aff = ft_strjoin (*aff, " ");
+	if (tmp[0] != '\0' || (s[i] == ' ' && c == 0) || (s[i + 1] == '0' && c == 0))
 		return (-2);
 	tmp2[0] = c;
 	*aff = ft_strjoin(*aff, tmp2);
