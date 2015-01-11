@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/09 17:08:17 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/11 10:29:14 by sdurr            ###   ########.fr       */
 /*   Updated: 2014/12/29 22:47:45 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -53,11 +53,22 @@ static int ft_number_befor(char *s1, char *s, int i, char **aff)
 		tmp[j++] = s[i--];
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
+	if (s[i] == '-' && (ft_strcmp(s1, "0x0") == 0))
+			*aff = ft_strjoin (*aff, "0x0");
+	if (s[i] == '.' && (ft_strcmp(s1, "0x") == 0))
+		*aff = ft_strjoin (*aff, "0x");
 	while (j > ft_strlen(s1))
 	{
+		if (s[i] == '.')
 			*aff = ft_strjoin (*aff, "0");
-		j--;
+		else
+			*aff = ft_strjoin (*aff, " ");
+			j--;
 	}
+	if (s[i] == '.' && ft_atoi(tmp) > 0)
+		*aff = ft_strjoin (*aff, "00");
+		if (s[i] == '-' || s[i] == '.')
+		return (-1);
 	return (0);
 }
 
@@ -110,10 +121,20 @@ int					ft_print_p(va_list ap, char *s, int j, char **aff)
 	hexa = ft_strnew(9);
 	if (quotient == 0)
 	{
+		i = j;
+		while (s[i] != '%')
+			i--;
+		/*	if (s[i + 1] == '.')
+		{
 			*aff = ft_strjoin(*aff, "0x");
-			if ((quotient = ft_number_befor(ret, s, j, aff)) != 0)
-				while (quotient-- != 0)
-					*aff = ft_strjoin(*aff, "0");
+			return (0);
+		}*/
+		ret = "0x0";
+		if (s[i + 1] == '.')
+			ret = "0x";
+		if ((quotient = ft_number_befor(ret, s, j, aff)) == -1)
+			return (0);
+			*aff = ft_strjoin(*aff, "0x0");
 			return (0);
 	}
 	while (quotient != 0)
