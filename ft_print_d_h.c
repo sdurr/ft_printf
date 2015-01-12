@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/12 09:40:47 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/12 14:11:13 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,14 @@ int				ft_print_d_h(va_list ap, char *s, int i, char **aff)
 	int			d;
 	char		*tmp;
 	size_t		j;
+	int test;
 
+	test = 0;
 	j = 0;
 	tmp = ft_strnew(13);
 	i--;
+	if (s[i] == 'h' && s[i - 1] == 'h')
+		test = 1;
 	while (s[i] >= '0' && s[i] <= '9')
 		tmp[j++] = s[i--];
 	if (s[i] == '*')
@@ -54,14 +58,8 @@ int				ft_print_d_h(va_list ap, char *s, int i, char **aff)
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
 	d = va_arg(ap, int);
-	if ((d < 0 && d > -2147483648 && s[i + 1] == '0')
-		|| (d < 0 && d > -2147483648 && s[i] == '.'))
-	{
-		*aff = ft_strjoin(*aff, "-");
-		d = d * - 1;
-		if (j > 0 && s[i] != '.')
-			j--;
-	}
+	if (d > 127 && test == 1)
+		d = 127 - 255 + (d - 127) - 1;
 	if ((s[i] == '.' && s[i + 1] == '0' && s[i - 1] == '%')
 		|| (s[i] == '.' && d == 0))
 		return (0);
