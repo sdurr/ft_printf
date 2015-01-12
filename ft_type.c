@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:24:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/09 17:18:32 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/10 18:30:52 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,6 @@ int					ft_type(char *s, int i, va_list ap, char **aff)
 	if (s[i] == '\0')
 		return (0);
 	if (s[i - 1] >= '0' && s[i - 1] <= '9')
-		return (ft_space_number(s, i, aff))
+		return (ft_space_number(s, i, aff));
 	return (-1);
 }

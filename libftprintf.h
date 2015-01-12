@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:12:02 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/09 12:10:36 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/10 18:29:40 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int			ft_print_x_long(va_list ap, char *s, int j, char **aff);
 int			ft_print_x_maj(va_list ap, char *s, int j, char **aff);
 int			ft_print_x_maj_long(va_list ap, char *s, int j, char **aff);
 int			ft_print_x_diese(va_list ap, char **aff);
+int			ft_space_number(char *s, int i, char **aff);
 int			ft_test_type(char *s);
 int			ft_type(char *s, int i, va_list ap, char **aff);
 
