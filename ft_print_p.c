@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 11:29:33 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/12 08:51:49 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/12 15:01:36 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ static int ft_number_befor(char *s1, char *s, int i, char **aff)
 	j = ft_atoi(tmp);
 	if (s[i] == '-' && (ft_strcmp(s1, "0x0") == 0))
 		*aff = ft_strjoin (*aff, "0x0");
-	if (s[i] == '.' && (ft_strcmp(s1, "0x") == 0))
+	if ((s[i] == '.' && (ft_strcmp(s1, "0x") == 0)) || s[i + 1] == '0')
 		*aff = ft_strjoin (*aff, "0x");
 	while (j > ft_strlen(s1))
 	{
-		if (s[i] == '.')
+		if (s[i] == '.' || s[i + 1] == '0')
 			*aff = ft_strjoin (*aff, "0");
 		else
 			*aff = ft_strjoin (*aff, " ");
@@ -77,7 +77,7 @@ static int ft_number_befor(char *s1, char *s, int i, char **aff)
 	}
 	if (s[i] == '.' && ft_atoi(tmp) > 0)
 		*aff = ft_strjoin (*aff, "00");
-	if (s[i] == '-' || s[i] == '.')
+	if (s[i] == '-' || s[i] == '.' || s[i + 1] == '0')
 		return (-1);
 	return (0);
 }
@@ -135,8 +135,10 @@ int ft_print_p(va_list ap, char *s, int j, char **aff)
 		while (s[i] != '%')
 			i--;
 		ret = "0x0";
-		if (s[i + 1] == '.')
+		if (s[i + 1] == '.' || s[i + 1] == '0')
 			ret = "0x";
+//		if (s[i + 1] == '0')
+		//		*aff = ft_strjoin(*aff, "0x");
 		if ((quotient = ft_number_befor(ret, s, j, aff)) == -1)
 			return (0);
 		*aff = ft_strjoin(*aff, "0x0");
@@ -156,7 +158,7 @@ int ft_print_p(va_list ap, char *s, int j, char **aff)
 		ret[rest++] = hexa[i--];
 	if (s[j - 1] != 'l')
 		*aff = ft_strjoin(*aff, "0x7");
-	else
+	else if (ft_strchr(*aff, 'x') == NULL)
 		*aff = ft_strjoin(*aff, "0x");
 	i = ft_strlen(ret);
 	if (s[j - 1] != 'l')
