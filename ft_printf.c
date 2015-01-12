@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/11 10:58:41 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/12 09:56:32 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		ft_printf(char *format, ...)
 		if (test == -2)
 		{
 			ret += ft_strlen(aff);
-			if ((aff = ft_strchr(aff, '0')) != NULL)
+		if ((aff = ft_strchr(aff, '0')) != NULL)
 				ft_putstr(aff);
 			while (s[++i])
 				ret += 1;

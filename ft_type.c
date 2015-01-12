@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:24:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/11 09:04:00 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/12 10:04:58 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static int			ft_type_d(char *s, int i, va_list ap, char **aff)
 	j = i;
 	while (s[j] != '%')
 		j--;
-	if ((s[i - 1] == '+' && s[i] == 'd') || (s[i - 1] == '+' && s[i] == 'i'))
-		return (ft_print_d_plus(ap, aff));
+	if ((s[j + 1] == '+' && s[i] == 'd') || (s[j + 1] == '+' && s[i] == 'i') || (s[j + 2] == '+' && s[i] == 'd'))
+		return (ft_print_d_plus(ap, s, i, aff));
 	if (s[i - 1] == 'l' && s[i] == 'd' && s[j + 2] == 'l')
 		return (ft_print_d_long_long(ap, s, i, aff));
 	if ((s[i - 1] == 'z' && s[i] == 'd') || (s[i - 1] == 'z' && s[i] == 'i'))
@@ -31,10 +31,10 @@ static int			ft_type_d(char *s, int i, va_list ap, char **aff)
 		|| (s[i] == 'i' && s[j + 1] == 'l')
 		|| (s[i] == 'd' && s[j + 1] == 'j') || (s[i] == 'i' && s[i - 1] == 'j'))
 		return (ft_print_d_maj(ap, s, i, aff));
-	if (s[i] == 'd' || s[i] == 'i')
-		return (ft_print_d(ap, s, i, aff));
 	if (s[i] == 'd' && s[j + 1] == 'h')
 		return (ft_print_d_h(ap, s, i, aff));
+	if (s[i] == 'd' || s[i] == 'i')
+		return (ft_print_d(ap, s, i, aff));
 	return (-1);
 }
 
