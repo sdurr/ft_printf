@@ -6,7 +6,11 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2015/01/12 10:57:19 by sdurr            ###   ########.fr       */
+=======
+/*   Updated: 2015/01/12 10:37:23 by sdurr            ###   ########.fr       */
+>>>>>>> 5cd5b1c246542d5ace1a78bbaec5dd872436f663
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +58,13 @@ int				ft_print_d(va_list ap, char *s, int i, char **aff)
 	j = 0;
 	tmp = ft_strnew(13);
 	i--;
-	while (s[i] >= '0' && s[i] <= '9')
-		tmp[j++] = s[i--];
 
-	if (s[i] == '*')
+	if (s[i] == '.' && s[i - 1] >= '0' && s[i - 1] <= '9')
+	{
+		*aff = ft_strjoin(*aff, " ");
+		i--;
+	}
+		if (s[i] == '*')
 		i--;
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
