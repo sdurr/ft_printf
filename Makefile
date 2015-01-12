@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2015/01/09 17:21:04 by sdurr            ###   ########.fr        #
+#    Updated: 2015/01/12 14:41:27 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -29,6 +29,10 @@ SRC				= ft_litoa.c \
 					ft_print_d_long_long.c \
 					ft_print_d_maj.c \
 					ft_print_d_h.c \
+					ft_print_o_h.c \
+					ft_print_u_h.c \
+					ft_print_x_h.c \
+					ft_print_x_maj_h.c \
 					ft_print_d_plus.c \
 					ft_print_o.c \
 					ft_print_o_maj.c \

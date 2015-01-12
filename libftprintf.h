@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:12:02 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/12 14:19:55 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/12 14:41:41 by sdurr            ###   ########.fr       */
 /*   Updated: 2015/01/12 10:04:43 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -34,6 +34,10 @@ int			ft_print_d_long_long(va_list ap, char *s, int i, char **aff);
 int			ft_print_d_plus(va_list ap, char *s, int i, char **aff);
 int			ft_print_o(va_list ap, char *s, int j, char **aff);
 int			ft_print_d_h(va_list ap, char *s, int j, char **aff);
+int			ft_print_x_h(va_list ap, char *s, int j, char **aff);
+int			ft_print_x_maj_h(va_list ap, char *s, int j, char **aff);
+int			ft_print_o_h(va_list ap, char *s, int j, char **aff);
+int			ft_print_u_h(va_list ap, char *s, int j, char **aff);
 int			ft_print_o_maj(va_list ap, char *s, int j, char **aff);
 int			ft_print_p(va_list ap, char *s, int j, char **aff);
 int			ft_print_s(va_list ap, char *s, int j, char **aff);
