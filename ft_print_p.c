@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 11:29:33 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/12 15:01:36 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/12 15:46:33 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,6 @@ int ft_print_p(va_list ap, char *s, int j, char **aff)
 		ret = "0x0";
 		if (s[i + 1] == '.' || s[i + 1] == '0')
 			ret = "0x";
-//		if (s[i + 1] == '0')
-		//		*aff = ft_strjoin(*aff, "0x");
 		if ((quotient = ft_number_befor(ret, s, j, aff)) == -1)
 			return (0);
 		*aff = ft_strjoin(*aff, "0x0");
@@ -156,14 +154,16 @@ int ft_print_p(va_list ap, char *s, int j, char **aff)
 	rest = 0;
 	while (i >= 0)
 		ret[rest++] = hexa[i--];
-	if (s[j - 1] != 'l')
+	if (s[j - 1] != 'l' && ft_strlen(ret) != 7)
 		*aff = ft_strjoin(*aff, "0x7");
-	else if (ft_strchr(*aff, 'x') == NULL)
+	else if (ft_strchr(*aff, 'x') == NULL && ft_strlen(ret) != 7)
 		*aff = ft_strjoin(*aff, "0x");
+	else
+		*aff = ft_strjoin(*aff, "0x10");
 	i = ft_strlen(ret);
-	if (s[j - 1] != 'l')
-		while (i++ < 11)
-			*aff = ft_strjoin(*aff, "f");
+	if (i != 7)
+	while (i++ < 11)
+		*aff = ft_strjoin(*aff, "f");
 	*aff = ft_strjoin(*aff, ret);
 	return (0);
 }
