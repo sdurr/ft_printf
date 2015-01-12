@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/12 14:11:13 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/12 14:15:19 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,10 @@ int				ft_print_d_h(va_list ap, char *s, int i, char **aff)
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
 	d = va_arg(ap, int);
-	if (d > 127 && test == 1)
+	if (d >= 127 && test == 1)
 		d = 127 - 255 + (d - 127) - 1;
+	if (d <= -127 && test == 1)
+		d = 127 + 255 + (d - 127) + 1;
 	if ((s[i] == '.' && s[i + 1] == '0' && s[i - 1] == '%')
 		|| (s[i] == '.' && d == 0))
 		return (0);
