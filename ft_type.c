@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:24:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/12 10:04:58 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/12 11:20:01 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,9 @@ static int			ft_type_s_u_o(char *s, int i, va_list ap, char **aff)
 int					ft_type(char *s, int i, va_list ap, char **aff)
 {
 	int j;
+	char *tmp;
 
+	tmp = ft_strnew(2);
 	j = i;
 	while (s[j] != '%')
 		j--;
@@ -117,7 +119,13 @@ int					ft_type(char *s, int i, va_list ap, char **aff)
 		return (ft_print_c_maj(ap, s, i));
 	if (s[i] == '\0')
 		return (0);
-	if (s[i - 1] >= '0' && s[i - 1] <= '9')
+	if (s[i - 1] >= '0' && s[i - 1] <= '9' && s[j + 1] == '-')
+	{
+			tmp[0] = s[i];
+			*aff = ft_strjoin(*aff, tmp);
+		return (ft_space_number(s, i, aff));
+	}
+		if (s[i - 1] >= '0' && s[i - 1] <= '9')
 		return (ft_space_number(s, i, aff));
 	return (-1);
 }
