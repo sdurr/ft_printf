@@ -6,7 +6,7 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 22:44:50 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/12 14:36:04 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/12 16:12:04 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int			ft_number_befor(char *s1, char *s, int i, char **aff)
 int					ft_print_o_h(va_list ap, char *s, int j, char **aff)
 {
 	char			*octal;
-	unsigned int	quotient;
+	unsigned int				quotient;
 	int				rest;
 	int				i;
 	char			*ret;
@@ -82,7 +82,8 @@ int					ft_print_o_h(va_list ap, char *s, int j, char **aff)
 	i = j;
 	if (s[i - 1] == 'h' && s[i - 2] == 'h')
 		if (quotient > 255)
-			quotient = 127 - 255 + (quotient - 127) - 1;
+			while (quotient > 255)
+				quotient = 127 - 255 + (quotient - 127) - 1;
 	while (s[i] != '%')
 		i--;
 	if (s[i + 1] == '#')

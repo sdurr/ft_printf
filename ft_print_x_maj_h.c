@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/12 14:43:59 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/12 15:57:03 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int		ft_print_x_maj_h(va_list ap, char *s, int j, char **aff)
 	quotient = va_arg(ap, unsigned int);
 	if (s[j - 1] == 'h' && s[j - 2] == 'h')
 		if (quotient > 255)
+			while (quotient > 255)
 			quotient = 127 - 255 + (quotient - 127) - 1;
 	if ((quotient == 0 && s[j - 1] == '.') || (quotient == 0 && s[j - 1] == '0'))
 		return (0);
