@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/09 17:20:37 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/12 11:22:44 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ int				ft_space_number(char *s, int i, char **aff)
 	{
 			*aff = ft_strjoin(*aff, " ");
 	}
-	return (0);
+	if (s[i] == '-')
+		return (0);
+	return (-1);
 }

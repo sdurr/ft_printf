@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:24:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/10 18:30:52 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/12 14:20:55 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static int			ft_type_d(char *s, int i, va_list ap, char **aff)
 	j = i;
 	while (s[j] != '%')
 		j--;
-	if ((s[i - 1] == '+' && s[i] == 'd') || (s[i - 1] == '+' && s[i] == 'i'))
-		return (ft_print_d_plus(ap, aff));
+	if ((s[j + 1] == '+' && s[i] == 'd') || (s[j + 1] == '+' && s[i] == 'i') || (s[j + 2] == '+' && s[i] == 'd'))
+		return (ft_print_d_plus(ap, s, i, aff));
 	if (s[i - 1] == 'l' && s[i] == 'd' && s[j + 2] == 'l')
 		return (ft_print_d_long_long(ap, s, i, aff));
 	if ((s[i - 1] == 'z' && s[i] == 'd') || (s[i - 1] == 'z' && s[i] == 'i'))
@@ -31,10 +31,10 @@ static int			ft_type_d(char *s, int i, va_list ap, char **aff)
 		|| (s[i] == 'i' && s[j + 1] == 'l')
 		|| (s[i] == 'd' && s[j + 1] == 'j') || (s[i] == 'i' && s[i - 1] == 'j'))
 		return (ft_print_d_maj(ap, s, i, aff));
-	if (s[i] == 'd' || s[i] == 'i')
-		return (ft_print_d(ap, s, i, aff));
 	if (s[i] == 'd' && s[j + 1] == 'h')
 		return (ft_print_d_h(ap, s, i, aff));
+	if (s[i] == 'd' || s[i] == 'i')
+		return (ft_print_d(ap, s, i, aff));
 	return (-1);
 }
 
@@ -96,7 +96,9 @@ static int			ft_type_s_u_o(char *s, int i, va_list ap, char **aff)
 int					ft_type(char *s, int i, va_list ap, char **aff)
 {
 	int j;
+	char *tmp;
 
+	tmp = ft_strnew(2);
 	j = i;
 	while (s[j] != '%')
 		j--;
@@ -117,6 +119,12 @@ int					ft_type(char *s, int i, va_list ap, char **aff)
 		return (ft_print_c_maj(ap, s, i));
 	if (s[i] == '\0')
 		return (0);
+	if (s[i - 1] >= '0' && s[i - 1] <= '9' && s[j + 1] == '-')
+	{
+			tmp[0] = s[i];
+			*aff = ft_strjoin(*aff, tmp);
+		return (ft_space_number(s, i, aff));
+	}
 	if (s[i - 1] >= '0' && s[i - 1] <= '9')
 		return (ft_space_number(s, i, aff));
 	return (-1);

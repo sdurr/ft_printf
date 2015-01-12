@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/09 17:13:29 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/12 11:28:07 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ int		ft_printf(char *format, ...)
 			aff = ft_strjoin(aff, tmp);
 			i++;
 		}
+		ft_putstr(aff);
+		ret += ft_strlen(aff);
+		aff = ft_strnew(1);
 		if (s[i++] == '%')
 		{
 				while ((s[i] >= '0' && s[i] <= '9') || s[i] == '#' || s[i] == '+' || s[i] == 'l' || s[i] == ' ' || s[i] == '.' || s[i] == '-' || s[i] == 'h' || s[i] == '*' || s[i] == 'j' || s[i] == 'z')
@@ -48,9 +51,19 @@ int		ft_printf(char *format, ...)
 					test = 0;
 					i--;
 				}
-//					return (-1);
+				if (test > 0)
 				ret = test + ret;
 		}
+		if (test == -2)
+		{
+			ret += ft_strlen(aff);
+		if ((aff = ft_strchr(aff, '0')) != NULL)
+				ft_putstr(aff);
+			while (s[++i])
+				ret += 1;
+			return (ret);
+		}
+
 		ft_putstr(aff);
 		ret += ft_strlen(aff);
 		aff = ft_strnew(1);
