@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/12 13:31:37 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/12 13:40:33 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ static int		ft_point_space(int d, char *s, int i, char **aff, size_t stop)
 		if (j > stop)
 			while (j-- > (ft_strlen(ft_itoa(d))))
 			{
-				if ( s[i + 1] == '0')
-					*aff = ft_strjoin(*aff, "0");
-				else
-					*aff = ft_strjoin(*aff, " ");
-				if (j == stop)
-					return (0);
+			if ( s[i + 1] == '0')
+			*aff = ft_strjoin(*aff, "0");
+			else
+				*aff = ft_strjoin(*aff, " ");
+			if (j == stop)
+				return (0);
 			}
 	}
 	return (0);
@@ -54,13 +54,9 @@ int				ft_print_d(va_list ap, char *s, int i, char **aff)
 	j = 0;
 	tmp = ft_strnew(13);
 	i--;
-
-	if (s[i] == '.' && s[i - 1] >= '0' && s[i - 1] <= '9')
-	{
-		*aff = ft_strjoin(*aff, " ");
-		i--;
-	}
-		if (s[i] == '*')
+	while (s[i] >= '0' && s[i] <= '9')
+		tmp[j++] = s[i--];
+	if (s[i] == '*')
 		i--;
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
