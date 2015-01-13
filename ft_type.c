@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:24:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 15:07:14 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/13 18:19:13 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static int			ft_type_d(char *s, int i, va_list ap, char **aff)
 	j = i;
 	while (s[j] != '%')
 		j--;
-	if ((s[j + 1] == '+' && s[i] == 'd') || (s[j + 1] == '+' && s[i] == 'i') || (s[j + 2] == '+' && s[i] == 'd'))
+	if ((s[j + 1] == '+' && s[i] == 'd') || (s[j + 1] == '+' && s[i] == 'i')
+		|| (s[j + 2] == '+' && s[i] == 'd'))
 		return (ft_print_d_plus(ap, s, i, aff));
 	if (s[i - 1] == 'l' && s[i] == 'd' && s[j + 2] == 'l')
 		return (ft_print_d_long_long(ap, s, i, aff));
@@ -62,9 +63,7 @@ static int			ft_type_x(char *s, int i, va_list ap, char **aff)
 	if (s[i] == 'X')
 		return (ft_print_x_maj(ap, s, i, aff));
 	if (s[i] == '%')
-	{
 		return (ft_print_modulo(s, i, aff));
-	}
 	return (-1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/08 15:14:24 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/08 15:51:54 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/13 18:14:14 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ char		*ft_llitoa(long long ll)
 	int		i;
 
 	i = 0;
-	if(!(ret = (char*)malloc(sizeof(char) * ft_llonglen(ll) + 1)))
+	if (!(ret = (char*)malloc(sizeof(char) * ft_llonglen(ll) + 1)))
 		return (NULL);
 	if (ll < 0)
 	{
 		ret[i++] = '-';
 		if (ll == LONG_LONG_MIN)
 			return ("-9223372036854775808");
-		ll *= - 1;
+		ll *= -1;
 	}
 	while (ll >= 10 && ll <= LONG_LONG_MAX)
 	{

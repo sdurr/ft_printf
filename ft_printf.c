@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 11:33:43 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/13 18:18:27 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,28 +44,27 @@ int		ft_printf(char *format, ...)
 		aff = ft_strnew(1);
 		if (s[i++] == '%')
 		{
-				while ((s[i] >= '0' && s[i] <= '9') || s[i] == '#' || s[i] == '+' || s[i] == 'l' || s[i] == ' ' || s[i] == '.' || s[i] == '-' || s[i] == 'h' || s[i] == 'j' || s[i] == 'z')
+			while ((s[i] >= '0' && s[i] <= '9') || s[i] == '#' || s[i] == '+' || s[i] == 'l' || s[i] == ' ' || s[i] == '.' || s[i] == '-' || s[i] == 'h' || s[i] == 'j' || s[i] == 'z')
 				i++;
-				if ((test = ft_type(s, i, ap, &aff)) == -1)
-				{
-					test = 0;
-					i--;
-				}
-				if (test > 0)
+			if ((test = ft_type(s, i, ap, &aff)) == -1)
+			{
+				test = 0;
+				i--;
+			}
+			if (test > 0)
 				ret = test + ret;
 		}
 		if (test == -2)
 		{
 			ret += ft_strlen(aff);
 			if ((aff = ft_strchr(aff, '0')) != NULL)
-			ft_putstr(aff);
-		if (s[i - 1] == '.')
-			ret += 1;
-		while (s[++i])
+				ft_putstr(aff);
+			if (s[i - 1] == '.')
+				ret += 1;
+			while (s[++i])
 				ret += 1;
 			return (ret);
 		}
-
 		ft_putstr(aff);
 		ret += ft_strlen(aff);
 		aff = ft_strnew(1);
