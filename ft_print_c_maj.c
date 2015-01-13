@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 15:12:29 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/13 16:21:37 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 #include <wchar.h>
 #include "libftprintf.h"
 
-static int ft_point_space(char *s, int i, char **aff)
+static int			ft_point_space(char *s, int i, char **aff)
 {
-	size_t j;
-	char *tmp;
-	int test;
+	size_t			j;
+	char			*tmp;
+	int				test;
 
 	tmp = ft_strnew(13);
 	j = 0;
@@ -45,7 +45,24 @@ static int ft_point_space(char *s, int i, char **aff)
 	}
 	return (test);
 }
+/*
+static unsigned int ft_unimask(unsigned int bin, unsigned int digit)
+{
+	char			*mask_2;
+	char			*mask_3;
+	char			*mask_4;
+	char			*wc;
 
+	mask_2 = "110xxxxx10xxxxxx";
+	mask_3 = "1110xxxx10xxxxxx10xxxxxx";
+	mask_4 = "11110xxx10xxxxxx10xxxxxx10xxxxxx";
+	wc = ft_uitoa(bin);
+	if(digit >= 8 && digit <= 11)
+	{
+
+	}
+}
+*/
 static unsigned int	ft_dectobin(unsigned int dec)
 {
 	char			*bin;
@@ -73,32 +90,18 @@ static unsigned int	ft_dectobin(unsigned int dec)
 	return (i);
 }
 
-/*
-static wchar_t	*itow(unsigned long val)
-{
-	static wchar_t buf[30];
-	wchar_t *wcp = &buf[29];
-	*wcp = L'\0';
-	while (val != 0)
-	{
-		*--wcp = btowc ('0' + val % 10);
-		val /= 10;
-	}
-	if (wcp == &buf[29])
-		*--wcp = L'0';
-	return wcp;
-}
-*/
 int					ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 {
 	wchar_t			wc;
 	unsigned int	k;
 	unsigned int	digit;
+//
 	char *tmp;
 	int j;
 	int test;
-
+//
 	wc = (wchar_t)va_arg(ap, unsigned int);
+//
 	j = 0;
 	tmp = ft_strnew(13);
 	i--;
@@ -129,19 +132,21 @@ int					ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 		return (-2);
 	if (wc == 0)
 		return (1);
+//
 	k = (unsigned int)wc;
-k = ft_dectobin(k);
-	digit = ft_nbudigit(i);
-if (digit < 8)
+	k = ft_dectobin(k);
+	digit = ft_nbudigit(k);
+	if (digit < 8)
 	{
 		ft_putchar((char)wc);
 		return (1);
 	}
+/*	ft_unimask(k, digit);
 	if (digit > 7 && digit < 12)
 		ft_putwchar(wc, 2);
 	if (digit > 11 && digit < 17)
 		ft_putwchar(wc, 3);
 	else
 		ft_putwchar(wc, 4);
-	return (1);
+*/	return (1);
 }
