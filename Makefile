@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2015/01/13 14:03:04 by getrembl         ###   ########.fr        #
+#    Updated: 2015/01/13 16:04:41 by getrembl         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -55,6 +55,7 @@ SRC				= ft_atoui.c \
 					ft_putwstr.c \
 					ft_space_number.c \
 					ft_type.c \
+					ft_uitoa.c \
 					ft_wstrlen.c \
 
 OBJ				= $(SRC:.c=.o)
