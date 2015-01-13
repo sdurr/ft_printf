@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 14:36:32 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/13 15:12:29 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,37 @@
 #include <stdarg.h>
 #include <wchar.h>
 #include "libftprintf.h"
+
+static int ft_point_space(char *s, int i, char **aff)
+{
+	size_t j;
+	char *tmp;
+	int test;
+
+	tmp = ft_strnew(13);
+	j = 0;
+	if (s[i] == '.')
+	{
+		i--;
+		while (s[i] >= '0' && s[i] <= '9')
+		{
+			tmp[j] = s[i];
+			i--;
+			j++;
+		}
+		tmp = ft_revers(tmp);
+		j = ft_atoi(tmp);
+		test = j;
+		while (j-- > 1)
+		{
+			if (s[i + 1] != '0')
+				*aff = ft_strjoin(*aff, " ");
+			else
+				*aff = ft_strjoin(*aff, "0");
+		}
+	}
+	return (test);
+}
 
 static unsigned int	ft_dectobin(unsigned int dec)
 {
@@ -58,17 +89,50 @@ static wchar_t	*itow(unsigned long val)
 	return wcp;
 }
 */
-int					ft_print_c_maj(va_list ap)
+int					ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 {
 	wchar_t			wc;
-	unsigned int	i;
+	unsigned int	k;
 	unsigned int	digit;
+	char *tmp;
+	int j;
+	int test;
 
 	wc = (wchar_t)va_arg(ap, unsigned int);
-	i = (unsigned int)wc;
-	i = ft_dectobin(i);
+	j = 0;
+	tmp = ft_strnew(13);
+	i--;
+	while (s[i] >= '0' && s[i] <= '9')
+		tmp[j++] = s[i--];
+	tmp = ft_revers(tmp);
+	j = ft_atoi(tmp);
+	test = ft_point_space(s, i, aff);
+	if ((wc == 0 && j == 0 && s[i] != ' ' && s[i + 1] != '0' && test == 0)
+		|| (wc == 0 && s[i] == '.' && j == 0 && test == 0) || (wc == 0 && s[i] == '+'))
+		return (1);
+	if (s[i + 1] == '0')
+	{
+		*aff = ft_strjoin (*aff, " ");
+		j--;
+	}
+	while (j-- > 0)
+	{
+		if (s[i + 1] != '0')
+			*aff = ft_strjoin (*aff, " ");
+		else
+			*aff = ft_strjoin (*aff, "0");
+	}
+	if (s[i] == ' ' && wc == 0)
+		*aff = ft_strjoin (*aff, " ");
+	if (tmp[0] != '\0' || (s[i] == ' ' && wc == 0)
+		|| (s[i + 1] == '0' && wc == 0) || (s[i] == '.' && wc == 0))
+		return (-2);
+	if (wc == 0)
+		return (1);
+	k = (unsigned int)wc;
+k = ft_dectobin(k);
 	digit = ft_nbudigit(i);
-	if (digit < 8)
+if (digit < 8)
 	{
 		ft_putchar((char)wc);
 		return (1);
