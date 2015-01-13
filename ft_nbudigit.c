@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_nbdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
+/*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 13:29:44 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 14:21:34 by getrembl         ###   ########.fr       */
+/*   Created: 2014/11/22 15:24:02 by getrembl          #+#    #+#             */
+/*   Updated: 2015/01/13 14:19:50 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <string.h>
-#include <wchar.h>
-#include "libftprintf.h"
+#include <stdlib.h>
 
-void	ft_putwstr(wchar_t *s)
+size_t		ft_nbudigit(unsigned int n)
 {
-	while (*s != '\0')
-	{
-		ft_putwchar(*s, 4);
-		s++;
-	}
+	size_t	i;
+
+	i = 1;
+	while (n /= 10)
+		i++;
+	return (i);
 }
