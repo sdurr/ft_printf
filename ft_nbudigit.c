@@ -6,9 +6,11 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 15:24:02 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/13 13:29:28 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/13 14:19:50 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 size_t		ft_nbudigit(unsigned int n)
 {

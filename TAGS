@@ -1,4 +1,7 @@
 
+ft_atoui.c,32
+unsigned int			ft_atoui(15,912
+
 ft_litoa.c,32
 char	*ft_litoa(ft_litoa18,977
 
@@ -11,25 +14,29 @@ size_t		ft_llonglen(16,933
 ft_longlen.c,27
 size_t		ft_longlen(16,933
 
+ft_nbudigit.c,28
+size_t		ft_nbudigit(13,892
+
 ft_print_b.c,107
 static int			ft_number_befor(16,937
 static int			ft_print_b_negative(32,1228
 int					ft_print_b(60,1791
 
-ft_print_c.c,62
-static int		ft_point_space(16,932
-int				ft_print_c(41,1324
+ft_print_c.c,61
+static int ft_point_space(16,932
+int				ft_print_c(46,1369
 
-ft_print_c_maj.c,30
-int				ft_print_c_maj(18,976
+ft_print_c_maj.c,72
+static unsigned int	ft_dectobin(18,976
+int					ft_print_c_maj(60,1696
 
 ft_print_d.c,62
 static int		ft_point_space(16,932
-int				ft_print_d(40,1347
+int				ft_print_d(48,1498
 
 ft_print_d_h.c,64
-static int		ft_point_space(16,932
-int				ft_print_d_h(40,1347
+static int		ft_point_space(17,952
+int				ft_print_d_h(41,1367
 
 ft_print_d_long_long.c,68
 static int ft_point_space(18,977
@@ -39,8 +46,9 @@ ft_print_d_maj.c,64
 static int	ft_point_space(19,978
 int			ft_print_d_maj(49,1424
 
-ft_print_d_plus.c,29
-int		ft_print_d_plus(17,957
+ft_print_d_plus.c,64
+static int ft_point_space(17,957
+int		ft_print_d_plus(36,1275
 
 ft_print_d_size_t.c,67
 static int	ft_point_space(19,978
@@ -50,11 +58,20 @@ ft_print_d_size_told.c,65
 static int ft_point_space(16,932
 int	ft_print_d_size_t(41,1352
 
+ft_print_modulo.c,63
+static int ft_point_space(16,932
+int	ft_print_modulo(45,1345
+
 ft_print_o.c,143
 static int ft_point_space(17,957
 static int			ft_number_befor(47,1396
-static int			ft_print_o_negative(73,1899
-int					ft_print_o(101,2475
+static int			ft_print_o_negative(75,1937
+int					ft_print_o(103,2513
+
+ft_print_o_h.c,102
+static int ft_point_space(17,957
+static int			ft_number_befor(47,1396
+int					ft_print_o_h(73,1899
 
 ft_print_o_maj.c,153
 static int		ft_point_space(18,977
@@ -67,14 +84,19 @@ static int		ft_point_space(18,977
 static int			ft_number_befor(48,1419
 int					ft_print_o_size_t(74,1926
 
-ft_print_p.c,104
-static int ft_number_befor(44,1461
-static int ft_print_p_negative(64,1777
-int					ft_print_p(97,2440
+ft_print_p.c,100
+static int ft_number_befor(29,1905
+static int ft_print_p_negative(60,2626
+int ft_print_p(93,3288
+
+ft_print_pold.c,104
+static int ft_number_befor(17,1013
+static int ft_print_p_negative(48,1768
+int					ft_print_p(77,2327
 
 ft_print_s.c,58
 static int ft_point_space(16,932
-int	ft_print_s(40,1289
+int	ft_print_s(51,1461
 
 ft_print_s_maj.c,63
 static int		ft_point_space(18,976
@@ -88,6 +110,10 @@ ft_print_u.c,58
 static int ft_point_space(17,957
 int	ft_print_u(47,1401
 
+ft_print_u_h.c,64
+static int		ft_point_space(17,952
+int				ft_print_u_h(41,1367
+
 ft_print_u_maj.c,68
 static int			ft_point_space(18,977
 int					ft_print_u_maj(48,1448
@@ -96,11 +122,16 @@ ft_print_u_size_t.c,71
 static int			ft_point_space(18,977
 int					ft_print_u_size_t(48,1437
 
-ft_print_x.c,140
+ft_print_x.c,141
 static int		ft_point_space(17,957
 static int		ft_number_befor(42,1372
-static int		ft_print_x_negative(67,1872
-int				ft_print_x(97,2540
+static int		ft_print_x_negative(72,1952
+int				ft_print_x(102,2620
+
+ft_print_x_h.c,101
+static int		ft_point_space(17,957
+static int		ft_number_befor(42,1372
+int				ft_print_x_h(67,1872
 
 ft_print_x_long.c,105
 static int ft_point_space(17,952
@@ -112,6 +143,11 @@ static int ft_point_space(16,932
 static int ft_number_befor(46,1371
 static int			ft_print_x_maj_negative(72,1872
 int		ft_print_x_maj(103,2539
+
+ft_print_x_maj_h.c,101
+static int ft_point_space(16,932
+static int ft_number_befor(46,1371
+int		ft_print_x_maj_h(72,1872
 
 ft_print_x_maj_long.c,104
 static int ft_point_space(17,952
@@ -140,8 +176,14 @@ void	ft_putwchar(16,932
 ft_putwstr.c,24
 void	ft_putwstr(18,976
 
-ft_type.c,20
-int	ft_type(17,957
+ft_space_number.c,31
+int				ft_space_number(16,932
+
+ft_type.c,125
+static int			ft_type_d(17,957
+static int			ft_type_x(41,1858
+static int			ft_type_s_u_o(71,2730
+int					ft_type(103,3706
 
 ft_wstrlen.c,27
 size_t		ft_wstrlen(16,932
@@ -153,7 +195,7 @@ main_1.c,18
 int		main(16,932
 
 libftprintf.h,30
-# define	LIBFTPRINTF_H14,915
+# define	LIBFTPRINTF_H15,996
 
 libft/ft_atoi.c,59
 static int	gestion_overflow(16,931

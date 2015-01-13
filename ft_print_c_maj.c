@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 13:59:17 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/13 14:36:32 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static unsigned int	ft_dectobin(unsigned int dec)
 	unsigned int	rest;
 	unsigned int	i;
 
+	quotient = dec;
 	bin = ft_strnew(33);
 	i = 0;
 	while (quotient != 0)
@@ -35,9 +36,9 @@ static unsigned int	ft_dectobin(unsigned int dec)
 	bin[i--] = '\0';
 	tmp_ret = ft_strnew(ft_strlen(bin) + 1);
 	rest = 0;
-	while (i >= 0)
-		ret[rest++] = bin[i--];
-	i = ft_atoui(ret);
+	while (i)
+		tmp_ret[rest++] = bin[i--];
+	i = ft_atoui(tmp_ret);
 	return (i);
 }
 
@@ -57,7 +58,7 @@ static wchar_t	*itow(unsigned long val)
 	return wcp;
 }
 */
-int					ft_print_c_maj(va_list ap, char *s, int i)
+int					ft_print_c_maj(va_list ap)
 {
 	wchar_t			wc;
 	unsigned int	i;
@@ -66,10 +67,10 @@ int					ft_print_c_maj(va_list ap, char *s, int i)
 	wc = (wchar_t)va_arg(ap, unsigned int);
 	i = (unsigned int)wc;
 	i = ft_dectobin(i);
-	digit = ft_nbdigit(i);
+	digit = ft_nbudigit(i);
 	if (digit < 8)
 	{
-		ft_putchar((char)c);
+		ft_putchar((char)wc);
 		return (1);
 	}
 	if (digit > 7 && digit < 12)
