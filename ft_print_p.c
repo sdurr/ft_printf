@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 11:29:33 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/12 15:46:33 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/13 09:26:28 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,7 @@
 
 #include "libft.h"
 #include <stdarg.h>
-/*
-  static int ft_point_space(char *d, char *s, int i, char **aff, size_t stop)
-  {
-  size_t j;
-  char*tmp;
-  tmp = ft_strnew(13);
-  j = 0;
-  if (s[i] == '.')
-  {
-  i--;
-  while (s[i] >= '0' && s[i] <= '9')
-  tmp[j++] = s[i--];
-  tmp = ft_revers(tmp);
-  j = ft_atoi(tmp);
-  if (j > stop)
-  while (j-- > (ft_strlen(d)))
-  {
-  *aff = ft_strjoin(*aff, " ");
-  if (j == stop)
-  return (0);
-  }
-  *aff = ft_strjoin(*aff, " ");
-  }
-  return (0);
-  }
-*/
+
 static int ft_number_befor(char *s1, char *s, int i, char **aff)
 {
 	char *tmp;
@@ -161,9 +136,9 @@ int ft_print_p(va_list ap, char *s, int j, char **aff)
 	else
 		*aff = ft_strjoin(*aff, "0x10");
 	i = ft_strlen(ret);
-	if (i != 7)
-	while (i++ < 11)
-		*aff = ft_strjoin(*aff, "f");
+	if (i != 7 && s[j - 1] != 'l')
+		while (i++ < 11)
+			*aff = ft_strjoin(*aff, "f");
 	*aff = ft_strjoin(*aff, ret);
 	return (0);
 }

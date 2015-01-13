@@ -6,7 +6,7 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 22:44:50 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/08 18:20:10 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/13 09:02:55 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,11 @@ int					ft_print_o_maj(va_list ap, char *s, int j, char **aff)
 	if (quotient == (long long)ULONG_MAX)
 	{
 		*aff = ft_strjoin(*aff, "1777777777777777777777");
+		return (0);
+	}
+		if (quotient == LONG_MIN)
+	{
+		*aff = ft_strjoin(*aff, "1000000000000000000000");
 		return (0);
 	}
 	if (quotient < 0)
