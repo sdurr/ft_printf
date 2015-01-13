@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 11:29:33 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 09:26:28 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/13 10:35:11 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,14 +129,14 @@ int ft_print_p(va_list ap, char *s, int j, char **aff)
 	rest = 0;
 	while (i >= 0)
 		ret[rest++] = hexa[i--];
-	if (s[j - 1] != 'l' && ft_strlen(ret) != 7)
+	if (s[j - 1] != 'l' && ft_strlen(ret) != 7 && s[j - 1] != ' ' && s[j - 1] != '+')
 		*aff = ft_strjoin(*aff, "0x7");
 	else if (ft_strchr(*aff, 'x') == NULL && ft_strlen(ret) != 7)
 		*aff = ft_strjoin(*aff, "0x");
 	else
 		*aff = ft_strjoin(*aff, "0x10");
 	i = ft_strlen(ret);
-	if (i != 7 && s[j - 1] != 'l')
+	if (i != 7 && s[j - 1] != 'l' && s[j - 1] != ' ' && s[j - 1] != '+')
 		while (i++ < 11)
 			*aff = ft_strjoin(*aff, "f");
 	*aff = ft_strjoin(*aff, ret);
