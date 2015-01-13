@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:24:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 09:54:16 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/13 10:02:59 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ static int			ft_type_x(char *s, int i, va_list ap, char **aff)
 		return (ft_print_x_maj(ap, s, i, aff));
 	if (s[i] == '%')
 	{
-		*aff = ft_strjoin(*aff, "%");
-		return (0);
+		return (ft_print_modulo(s, i, aff));
 	}
 	return (-1);
 }
