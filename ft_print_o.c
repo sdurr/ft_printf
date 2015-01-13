@@ -6,7 +6,7 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 22:44:50 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/08 13:54:14 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/13 09:41:46 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ static int			ft_number_befor(char *s1, char *s, int i, char **aff)
 		tmp[j++] = s[i--];
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
+	if (s[i - 1] == '#' && j > 0)
+		j--;
 	if ((s[i] == '.' && s[i + 1] == '0' && s[i - 1] == '%'))
 		return (0);
 	ft_point_space(s1, s, i, aff, j);
