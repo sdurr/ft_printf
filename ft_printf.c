@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 10:50:56 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/13 11:33:43 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,11 @@ int		ft_printf(char *format, ...)
 		if (test == -2)
 		{
 			ret += ft_strlen(aff);
-		if ((aff = ft_strchr(aff, '0')) != NULL)
-				ft_putstr(aff);
-			while (s[++i])
+			if ((aff = ft_strchr(aff, '0')) != NULL)
+			ft_putstr(aff);
+		if (s[i - 1] == '.')
+			ret += 1;
+		while (s[++i])
 				ret += 1;
 			return (ret);
 		}
