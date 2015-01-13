@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2015/01/13 09:59:34 by sdurr            ###   ########.fr        #
+#    Updated: 2015/01/13 14:03:04 by getrembl         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -14,14 +14,12 @@ NAME			= libftprintf.a
 
 CPATH			= ./src/
 
-SRC				= ft_litoa.c \
-					ft_putwchar.c \
-					ft_putwstr.c \
-					ft_wstrlen.c \
-					ft_space_number.c \
+SRC				= ft_atoui.c \
+					ft_litoa.c \
 					ft_llitoa.c \
 					ft_llonglen.c \
 					ft_longlen.c \
+					ft_nbudigit.c \
 					ft_print_modulo.c \
 					ft_print_b.c \
 					ft_print_c.c \
@@ -53,7 +51,11 @@ SRC				= ft_litoa.c \
 					ft_print_o_size_t.c \
 					ft_printf.c \
 					ft_putnbr_long.c \
+					ft_putwchar.c \
+					ft_putwstr.c \
+					ft_space_number.c \
 					ft_type.c \
+					ft_wstrlen.c \
 
 OBJ				= $(SRC:.c=.o)
 

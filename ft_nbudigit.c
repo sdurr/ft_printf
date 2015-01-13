@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_nbdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
+/*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 11:56:02 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 13:55:13 by getrembl         ###   ########.fr       */
+/*   Created: 2014/11/22 15:24:02 by getrembl          #+#    #+#             */
+/*   Updated: 2015/01/13 13:29:28 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <wchar.h>
-
-void	ft_putwchar(wchar_t c, size_t nbyte)
+size_t		ft_nbudigit(unsigned int n)
 {
-	write (1, &c, nbyte);
+	size_t	i;
+
+	i = 1;
+	while (n /= 10)
+		i++;
+	return (i);
 }

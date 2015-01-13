@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_c.c                                       :+:      :+:    :+:   */
+/*   ft_print_c_maj.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/12 18:05:20 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/13 13:59:17 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,34 @@
 #include <stdarg.h>
 #include <wchar.h>
 #include "libftprintf.h"
-/*
-static int		ft_dectobin(wchar_t c)
+
+static unsigned int	ft_dectobin(unsigned int dec)
 {
-	return (0);
+	char			*bin;
+	char			*tmp_ret;
+	unsigned int	quotient;
+	unsigned int	rest;
+	unsigned int	i;
+
+	bin = ft_strnew(33);
+	i = 0;
+	while (quotient != 0)
+	{
+		rest = quotient & 1;
+		(quotient > 1) ? (quotient = quotient >> 1) : (quotient = 0);
+		rest = rest + 48;
+		bin[i++] = rest;
+	}
+	bin[i--] = '\0';
+	tmp_ret = ft_strnew(ft_strlen(bin) + 1);
+	rest = 0;
+	while (i >= 0)
+		ret[rest++] = bin[i--];
+	i = ft_atoui(ret);
+	return (i);
 }
 
+/*
 static wchar_t	*itow(unsigned long val)
 {
 	static wchar_t buf[30];
@@ -35,27 +57,26 @@ static wchar_t	*itow(unsigned long val)
 	return wcp;
 }
 */
-int				ft_print_c_maj(va_list ap, char *s, int i)
+int					ft_print_c_maj(va_list ap, char *s, int i)
 {
-	wchar_t		c;
-	char		*tmp;
-	int			j;
+	wchar_t			wc;
+	unsigned int	i;
+	unsigned int	digit;
 
-	j = 0;
-	tmp = ft_strnew(13);
-	i--;
-	while (s[i] >= '0' && s[i] <= '9')
-		tmp[j++] = s[i--];
-	tmp = ft_revers(tmp);
-	j = ft_atoi(tmp);
-	c = (wchar_t)va_arg(ap, unsigned int);
-	while (j-- > 1)
-		ft_putchar (' ');
-	if (c >= 0x0000 && c <= 0x007F)
+	wc = (wchar_t)va_arg(ap, unsigned int);
+	i = (unsigned int)wc;
+	i = ft_dectobin(i);
+	digit = ft_nbdigit(i);
+	if (digit < 8)
+	{
 		ft_putchar((char)c);
-	if (c >= 0x0080 && c <= 0x1F8FF)
-		ft_putwchar(c);
-	else
 		return (1);
+	}
+	if (digit > 7 && digit < 12)
+		ft_putwchar(wc, 2);
+	if (digit > 11 && digit < 17)
+		ft_putwchar(wc, 3);
+	else
+		ft_putwchar(wc, 4);
 	return (1);
 }
