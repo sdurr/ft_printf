@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:12:02 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 15:06:21 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/13 16:24:57 by sdurr            ###   ########.fr       */
 /*   Updated: 2015/01/12 10:04:43 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -20,6 +20,7 @@
 
 char			*ft_litoa(long n);
 char			*ft_llitoa(long long ll);
+char			*ft_op_base_16(char *hexa, int rest, unsigned int *q);
 
 int				ft_printf(char *format, ...);
 int				ft_print_b(va_list ap, char *s, int j, char **aff);
@@ -55,6 +56,7 @@ int				ft_print_x_diese(va_list ap, char **aff);
 int				ft_space_number(char *s, int i, char **aff);
 int				ft_test_type(char *s);
 int				ft_type(char *s, int i, va_list ap, char **aff);
+int				ft_max_plus(int i);
 
 size_t			ft_llonglen(long long ll);
 size_t			ft_longlen(long l);
@@ -62,6 +64,7 @@ size_t			ft_nbudigit(unsigned int n);
 size_t			ft_wstrlen(wchar_t *s);
 
 unsigned int	ft_atoui(const char *str);
+unsigned int	ft_max_plus_unsigned (unsigned int i);
 
 void			ft_putnbr_long(long n);
 void			ft_putwstr(wchar_t *s);
