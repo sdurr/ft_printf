@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:12:02 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 16:42:56 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/13 18:08:00 by sdurr            ###   ########.fr       */
 /*   Updated: 2015/01/12 10:04:43 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -21,9 +21,13 @@
 char			*ft_litoa(long n);
 char			*ft_llitoa(long long ll);
 char			*ft_op_base_16(char *hexa, int rest, unsigned int *q);
+char			*ft_op_base_16_int(char *hexa, int rest, int *q);
+char			*ft_op_base_16_size_t(char *hexa, int rest, size_t *q);
+char			*ft_op_base_16_long(char *hexa, int rest, unsigned long long *q);
 char			*ft_uitoa(unsigned int n);
 
 int				ft_printf(char *format, ...);
+int				ft_number_befor_char(char *s1, char *s, int j, char **aff);
 int				ft_print_b(va_list ap, char *s, int j, char **aff);
 int				ft_print_c(va_list ap, char *s, int j, char **aff);
 int				ft_print_c_maj(va_list ap, char *s, int i, char **aff);

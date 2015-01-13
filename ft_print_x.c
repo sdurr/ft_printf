@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 09:46:33 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/13 18:00:45 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,22 @@
 #include <stdarg.h>
 #include "libftprintf.h"
 
-static int		ft_point_space(char *s1, char *s, int i, char **aff, size_t stop)
+static int		ft_point_space(char *s, int i, char **aff, size_t stop)
 {
 	size_t		j;
 	char		*tmp;
 
 	tmp = ft_strnew(13);
 	j = 0;
-	if (s[i] == '.')
+	if (s[i--] == '.')
 	{
-		i--;
 		while (s[i] >= '0' && s[i] <= '9')
 			tmp[j++] = s[i--];
 		tmp = ft_revers(tmp);
 		j = ft_atoi(tmp);
 		if (j > stop)
-			while (j-- > (ft_strlen(s1)))
-			{
+			while (j-- > stop)
 				*aff = ft_strjoin(*aff, " ");
-				if (j == stop)
-					return (0);
-			}
 	}
 	return (0);
 }
@@ -51,14 +46,11 @@ static int		ft_number_befor(char *s1, char *s, int i, char **aff)
 		tmp[j++] = s[i--];
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
-	if (s[i - 1] == '#' && j > 0)
-	{
+	if (s[i - 1] == '#' && j-- > 0)
 		*aff = ft_strjoin (*aff, "0x0");
-		j--;
-	}
-		if ((s[i] == '.' && s[i + 1] == '0' && s[i - 1] == '%'))
+	if ((s[i] == '.' && s[i + 1] == '0' && s[i - 1] == '%'))
 		return (0);
-	ft_point_space(s1, s, i, aff, j);
+	ft_point_space(s, i, aff, j);
 	while (j-- > ft_strlen(s1))
 	{
 		if (s[i] == '.' || s[i + 1] == '0')
@@ -71,72 +63,44 @@ static int		ft_number_befor(char *s1, char *s, int i, char **aff)
 
 static int		ft_print_x_negative(int decimal, char *s, int j, char **aff)
 {
-	unsigned int	quotient;
-	int				rest;
-	int				i;
-	char			*ret;
+	unsigned int	q;
 	char			*hexa;
 
-	quotient = 4294967296 + decimal;
+	q = 4294967296 + decimal;
 	hexa = ft_strnew(9);
-	i = 0;
-	while (quotient != 0)
-	{
-		rest = quotient % 16;
-		(quotient > 15) ? (quotient /= 16) : (quotient = 0);
-		(rest < 10) ? (rest += 48) : (rest += 87);
-		hexa[i++] = rest;
-	}
-	hexa[i--] = '\0';
-	ret = ft_strnew(ft_strlen(hexa) + 1);
-	rest = 0;
-	while (i >= 0)
-		ret[rest++] = hexa[i--];
-	quotient = ft_number_befor(hexa, s, j, aff);
-	if (s[j - 1] == '#' && ret[0] != '0')
+	hexa = ft_op_base_16(hexa, 0, &q);
+	hexa = ft_revers(hexa);
+	q = ft_number_befor(hexa, s, j, aff);
+	if (s[j - 1] == '#' && hexa[0] != '0')
 		*aff = ft_strjoin(*aff, "0x");
-	*aff = ft_strjoin(*aff, ret);
+	*aff = ft_strjoin(*aff, hexa);
 	return (0);
 }
 
 int				ft_print_x(va_list ap, char *s, int j, char **aff)
 {
 	char			*hexa;
-	int				quotient;
-	int				rest;
-	int				i;
-	char			*ret;
+	int				q;
 
 	if (s[j - 1] == 'z')
 		return (ft_print_x_size_t(ap, s, j, aff));
-	quotient = va_arg(ap, int);
-	if (quotient < 0)
-		return (ft_print_x_negative(quotient, s, j, aff));
-	if ((quotient == 0 && s[j - 1] == '.') || (quotient == 0 && s[j - 1] == '0'))
+	q = va_arg(ap, int);
+	if (q < 0)
+		return (ft_print_x_negative(q, s, j, aff));
+	if ((q == 0 && s[j - 1] == '.') || (q == 0 && s[j - 1] == '0'))
 		return (0);
-	if (quotient == 0)
+	if (q == 0)
 	{
 		if (s[j - 1] != '0' && s[j - 1] != '.')
 			*aff = ft_strjoin(*aff, "0");
 		return (0);
 	}
-	i = 0;
 	hexa = ft_strnew(9);
-	while (quotient != 0)
-	{
-		rest = quotient % 16;
-		(quotient > 15) ? (quotient /= 16) : (quotient = 0);
-		(rest < 10) ? (rest += 48) : (rest += 87);
-		hexa[i++] = rest;
-	}
-	hexa[i--] = '\0';
-	ret = ft_strnew(ft_strlen(hexa) + 1);
-	rest = 0;
-	while (i >= 0)
-		ret[rest++] = hexa[i--];
-	quotient = ft_number_befor(hexa, s, j, aff);
-	if (s[j - 1] == '#' && ret[0] != '0')
+	hexa = ft_op_base_16_int(hexa, 0, &q);
+	hexa = ft_revers(hexa);
+	q = ft_number_befor(hexa, s, j, aff);
+	if (s[j - 1] == '#' && hexa[0] != '0')
 		*aff = ft_strjoin(*aff, "0x");
-	*aff = ft_strjoin(*aff, ret);
+	*aff = ft_strjoin(*aff, hexa);
 	return (0);
 }

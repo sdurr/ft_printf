@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2015/01/13 16:42:32 by sdurr            ###   ########.fr        #
+#    Updated: 2015/01/13 18:08:15 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,7 +22,11 @@ SRC				= ft_atoui.c \
 					ft_max_plus.c \
 					ft_max_plus_unsigned.c \
 					ft_nbudigit.c \
+					ft_number_befor_char.c \
 					ft_op_base_16.c \
+					ft_op_base_16_int.c \
+					ft_op_base_16_size_t.c \
+					ft_op_base_16_long.c \
 					ft_print_modulo.c \
 					ft_print_b.c \
 					ft_print_c.c \

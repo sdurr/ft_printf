@@ -6,13 +6,13 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 16:21:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 16:53:11 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/13 17:56:11 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		*ft_op_base_16_maj(char *hexa, int rest, unsigned int *q)
+static char		*ft_op_long(char *hexa, int rest, unsigned long long *q)
 {
 	int		i;
 
@@ -29,14 +29,14 @@ static char		*ft_op_base_16_maj(char *hexa, int rest, unsigned int *q)
 	return (hexa);
 }
 
-char			*ft_op_base_16(char *hexa, int rest, unsigned int *q)
+char			*ft_op_base_16_long(char *hexa, int rest, unsigned long long *q)
 {
 	int		i;
 
 	i = 0;
 	hexa = ft_strnew(9);
 	if (rest == 1)
-		return (ft_op_base_16_maj(hexa, 0, q));
+		return (ft_op_long(hexa, 0, q));
 	while (*q != 0)
 	{
 		rest = *q % 16;
