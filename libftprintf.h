@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:12:02 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/16 14:35:03 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/16 14:52:02 by getrembl         ###   ########.fr       */
 /*   Updated: 2015/01/12 10:04:43 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -58,6 +58,7 @@ int					ft_print_x_long(va_list ap, char *s, int j, char **aff);
 int					ft_print_x_maj(va_list ap, char *s, int j, char **aff);
 int					ft_print_x_maj_long(va_list ap, char *s, int j, char **aff);
 int					ft_print_x_diese(va_list ap, char **aff);
+int					ft_recursive_power(int nb, int power);
 int					ft_space_number(char *s, int i, char **aff);
 int					ft_test_type(char *s);
 int					ft_type(char *s, int i, va_list ap, char **aff);
