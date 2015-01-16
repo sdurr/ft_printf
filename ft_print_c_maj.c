@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/16 13:08:18 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/16 14:41:18 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,15 @@ static char			*ft_wcinmask(char *mask, char *wc)
 
 	i = ft_strlen(mask);
 	j = ft_strlen(wc);
-	while (i > 0)
+	while (j >= 0)
 	{
 		if (mask[i] == 'x')
 		{
 			mask[i] = wc[j];
-			i--;
+			j--;
 		}
 		if (mask[i] != 'x')
 			i--;
-		j--;
 	}
 	while (mask[i] == 'x')
 	{
@@ -124,9 +123,10 @@ static unsigned int		*ft_otoc(char *s, unsigned int nbyte)
 
 	bkp = ft_strnew((ft_strlen(s) /nbyte) + 1);
 	ret =  malloc(sizeof(int) * nbyte + 1);
+	ft_putnbr(nbyte);
 	i_s = 0;
 	i_ret = 0;
-	while (s[i_s])
+	while (i_s <= ft_strlen(s))
 	{
 		i_bkp = 0;
 		while (i_bkp < 8)
@@ -150,7 +150,25 @@ static unsigned int		*ft_split(char *s)
 		nb = 4;
 	return (ft_otoc(s, nb));
 }
+static unsigned int *ft_bintodec(unsigned int *k, int j)
+{
+	int i;
+	int quotient;
 
+	i = 0;
+	while(i <= j)
+	{
+		quotient = k[i];
+		while (quotient != 0)
+		{
+//			OPERATION transformation binaire en decimal;
+			//		k[i] = ft_atoi(convertion );
+		}
+		i++;
+	}
+
+
+}
 int					ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 {
 	unsigned int	wc;
@@ -163,9 +181,6 @@ int					ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 //
 	wc = va_arg(ap, unsigned int);
 //
-	ft_putstr("wc=");
-	ft_putnbr(wc);
-	ft_putchar('\n');
 	j = 0;
 	tmp = ft_strnew(13);
 	i--;
@@ -203,17 +218,17 @@ int					ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 		ft_putchar((char)wc);
 		return (1);
 	}
-//	ft_putnbr(wc);
-	//ft_putchar('\n');
 	tmp = ft_dectobin(wc);
-//	digit = ft_nbudigit(tmp);
-//	ft_putnbr(digit);
-//	ft_putchar('\n');
-
 	tmp = ft_unimask(tmp, ft_strlen(tmp));
 	k = ft_split(tmp);
-	ft_putchar('\n');
-	ft_putstr("k[0] =");
-	ft_putnbr(k[0]);
+	j = 0;
+	if (ft_strlen(s) > 8 && ft_strlen(s) <= 16)
+		j = 2;
+	else if (ft_strlen(s) > 16 && ft_strlen(s) <= 24)
+		j = 3;
+	else
+		j = 4;
+	k = ft_bintodec(k);
+	ft_putwchar(k, j);
 	return (1);
 }
