@@ -1,5 +1,8 @@
 
-ft_atoui.c,39
+ft_atoui.c,33
+unsigned int			ft_atoull(15,912
+
+ft_atoull.c,39
 unsigned long long			ft_atoull(15,912
 
 ft_litoa.c,32
@@ -56,19 +59,15 @@ ft_print_c.c,61
 static int ft_point_space(16,932
 int				ft_print_c(46,1369
 
-<<<<<<< HEAD
-ft_print_c_maj.c,110
-static int			ft_point_space(18,976
-static unsigned int	ft_dectobin(96,2230
-int					ft_print_c_maj(123,2730
-=======
-ft_print_c_maj.c,227
-static int			ft_point_space(18,976
-static char			*ft_wcinmask(ft_wcinmask49,1417
-static char			*ft_unimask(ft_unimask75,1722
-static char 	*ft_dectobin(ft_dectobin94,2160
-static unsigned int		*ft_split(ft_split116,2542
->>>>>>> f6ac03c12fa916f13097c9e1889058ed4872c58b
+ft_print_c_maj.c,363
+static int			ft_point_space(19,996
+static char			*ft_wcinmask(ft_wcinmask50,1437
+static char			*ft_unimask(ft_unimask75,1736
+static char 	*ft_dectobin(ft_dectobin94,2207
+static unsigned int		*ft_otoc(ft_otoc116,2589
+static unsigned int		*ft_split(ft_split140,3034
+static unsigned int *ft_bintodec(ft_bintodec153,3265
+int					ft_print_c_maj(172,3525
 
 ft_print_d.c,62
 static int		ft_point_space(16,932
@@ -112,12 +111,6 @@ ft_print_o_h.c,102
 static int ft_point_space(17,957
 static int			ft_number_befor(47,1396
 int					ft_print_o_h(73,1899
-
-ft_print_o_long.c,153
-static int ft_point_space(17,957
-static int			ft_number_befor(47,1396
-static int			ft_print_o_negative_long(73,1900
-int					ft_print_o_long(101,2491
 
 ft_print_o_maj.c,153
 static int		ft_point_space(18,977
@@ -206,7 +199,7 @@ ft_putnbr_long.c,28
 void	ft_putnbr_long(15,912
 
 ft_putwchar.c,28
-void				ft_putwchar(16,932
+void				ft_putwchar(17,952
 
 ft_putwstr.c,24
 void	ft_putwstr(18,976
@@ -239,8 +232,9 @@ int		main(16,932
 libftprintf.h,30
 # define	LIBFTPRINTF_H15,996
 
-libft/ft_atoi.c,21
-int		ft_atoi(13,892
+libft/ft_atoi.c,59
+static int	gestion_overflow(16,931
+int			ft_atoi(30,1329
 
 libft/ft_bzero.c,22
 void	ft_bzero(15,913
@@ -249,7 +243,7 @@ libft/ft_copy_tmp.c,25
 int		ft_copy_tmp(13,892
 
 libft/ft_count_char.c,27
-int		ft_count_char(13,892
+int		ft_count_char(15,913
 
 libft/ft_isalnum.c,24
 int		ft_isalnum(13,892
@@ -275,8 +269,20 @@ char	**ft_last_line(ft_last_line16,932
 libft/ft_long_int.c,25
 int		ft_long_int(13,892
 
-libft/ft_long_long.c,27
-long		ft_long_long(13,892
+libft/ft_lstadd.c,24
+void		ft_lstadd(15,912
+
+libft/ft_lstdel.c,24
+void		ft_lstdel(16,932
+
+libft/ft_lstdelone.c,27
+void		ft_lstdelone(16,932
+
+libft/ft_lstiter.c,24
+void	ft_lstiter(15,912
+
+libft/ft_lstmap.c,37
+t_list		*ft_lstmap(ft_lstmap15,912
 
 libft/ft_lstnew.c,37
 t_list		*ft_lstnew(ft_lstnew16,932
@@ -401,8 +407,10 @@ char	*ft_strnstr(ft_strnstr15,913
 libft/ft_strrchr.c,36
 char	*ft_strrchr(ft_strrchr16,932
 
-libft/ft_strsplit.c,39
-char	**ft_strsplit(ft_strsplit17,952
+libft/ft_strsplit.c,131
+static char		**ft_error(ft_error16,932
+static char		**ft_transfer(ft_transfer28,1104
+char			**ft_strsplit(ft_strsplit53,1566
 
 libft/ft_strstr.c,34
 char	*ft_strstr(ft_strstr16,933
@@ -422,130 +430,9 @@ int		ft_toupper(13,892
 libft/ft_word_long.c,26
 int		ft_word_long(13,892
 
-libft/maintest.c,3234
-#define D_ERROR	31,1314
-#define D_ADD_HCTEST(32,1406
-#define D_ADD_TEST(33,1494
-#define D_TEST	34,1561
-#define RANDT	35,1579
-#define LONG	36,1597
-typedef struct	s_test87,2965
-}				t_test;92,3043
-void				uf_add_test(94,3057
-int					main(106,3261
-#define	D_MEMSET123,3631
-#define	D_BZERO125,3671
-#define	D_MEMCPY127,3709
-#define	D_MEMCCPY129,3749
-#define	D_MEMMOVE131,3791
-#define	D_MEMCHR133,3833
-#define	D_MEMCMP135,3912
-#define	D_STRLEN137,3953
-#define	D_STRDUP139,3991
-#define	D_STRCPY141,4029
-#define	D_STRNCPY143,4069
-#define	D_STRCAT145,4111
-#define	D_STRNCAT147,4149
-#define	D_STRLCAT149,4189
-#define	D_STRCHR151,4229
-#define	D_STRRCHR153,4267
-#define	D_STRSTR155,4307
-#define	D_STRNSTR157,4345
-#define	D_STRCMP159,4385
-#define	D_STRNCMP161,4423
-#define	D_ATOI163,4463
-#define	D_ISALPHA165,4499
-#define	D_ISDIGIT167,4541
-#define	D_ISALNUM169,4583
-#define	D_ISASCII171,4625
-#define	D_ISPRINT173,4667
-#define	D_TOUPPER175,4709
-#define	D_TOLOWER177,4751
-#define	D_MEMALLOC_AND_DEL179,4793
-#define	D_STRNEW181,4851
-#define	D_STRDEL183,4889
-#define	D_STRCLR185,4927
-#define	D_STRITER187,4965
-#define	D_STRITERI189,5005
-#define	D_STRMAP191,5047
-#define	D_STRMAPI193,5085
-#define	D_STREQU195,5125
-#define	D_STRNEQU197,5163
-#define	D_STRSUB199,5203
-#define	D_STRJOIN201,5241
-#define	D_STRSPLIT203,5281
-#define	D_STRTRIM207,5361
-void	uf_del_callback(240,5903
-int					uf_test_lstiter(252,6080
-int					uf_test_lstadd(274,6464
-int					uf_test_lstdelone(297,6818
-int					uf_test_lstdel(320,7314
-int					uf_test_lstnew(337,7626
-int					uf_free_tab(364,8106
-int					uf_test_strtrim(381,8302
-int					uf_test_strsplit(421,9500
-int				uf_test_strjoin(550,14668
-int				uf_test_strsub(594,15371
-void			uf_striteri_callback(619,15753
-void			uf_striter_callback(624,15825
-char			uf_strmap_callback(629,15880
-char			uf_strmapi_callback(634,15936
-int				uf_test_itoa(640,16023
-int				uf_test_strnequ(688,17385
-int				uf_test_strequ(732,18769
-int				uf_test_strmapi(785,20427
-int				uf_test_strmap(806,20791
-int				uf_test_striteri(826,21128
-int				uf_test_striter(840,21359
-int				uf_test_strclr(854,21584
-int				uf_test_strdel(873,21797
-int				uf_test_strnew(891,22032
-int				uf_test_memalloc_and_del(912,22261
-int				uf_test_tolower(925,22424
-int				uf_test_toupper(941,22599
-int				uf_test_isprint(957,22774
-int				uf_test_isascii(973,22949
-int				uf_test_isalnum(989,23124
-int				uf_test_isdigit(1005,23299
-int				uf_test_isalpha(1021,23474
-int				uf_test_atoi(1037,23646
-int				uf_test_strncmp(1091,24678
-int				uf_test_strcmp(1149,25570
-int				uf_test_strnstr(1187,26135
-int				uf_test_strstr(1209,26651
-int				uf_test_strrchr(1230,27106
-int				uf_test_strchr(1259,27781
-int				uf_test_strlcat(1283,28227
-int				uf_test_strncat(1321,28984
-int				uf_test_strcat(1350,29658
-int				uf_test_strncpy(1371,30066
-int				uf_test_strcpy(1408,30614
-int				uf_test_strdup(1455,31527
-int				uf_test_strlen(1477,31853
-int				uf_test_memmove(1490,32063
-int				uf_test_memchr(1531,33074
-int				uf_test_memcmp(1565,33704
-int				uf_test_memccpy(1612,35087
-int					uf_test_memcpy(1666,36576
-int					uf_test_memset(1717,37886
-int					uf_test_bzero(1767,39199
-
-libft/test_itoa.c,17
-int main(16,931
-
-libft/test_split.c,17
-int main(16,931
-
-libft/testnstr.c,17
-int main(18,971
-
-libft/testrchr.c,17
-int main(17,951
-
-libft/testtrim.c,17
-int main(16,931
-
-libft/libft.h,24
+libft/libft.h,76
 # define LIBFT_H14,908
+typedef struct		s_list18,948
+}					t_list;23,1037
 
 test.c,0
