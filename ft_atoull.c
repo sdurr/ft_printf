@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_atoull.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
+/*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 13:29:44 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/16 13:38:17 by sdurr            ###   ########.fr       */
+/*   Created: 2015/01/13 11:56:59 by getrembl          #+#    #+#             */
+/*   Updated: 2015/01/16 13:27:57 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
-#include <wchar.h>
-#include "libftprintf.h"
 
-void	ft_putwstr(wchar_t *s)
+unsigned long long			ft_atoull(const char *str)
 {
-	while (*s != '\0')
+	unsigned long long		nb;
+	unsigned int			i;
+
+	i = 0;
+	nb = 0;
+	if (str)
 	{
-//		ft_putwchar();
-		s++;
+		while (str[i] >= 1 && str[i] <= 32)
+				i++;
+		while (str[i] >= '0' && str[i] <= '9')
+			nb = (nb * 10) + (str[i++] - '0');
 	}
+	return (nb);
 }

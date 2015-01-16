@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/15 16:15:45 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/16 14:41:18 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdarg.h>
 #include <wchar.h>
 #include "libftprintf.h"
+#include <stdlib.h>
 
 static int			ft_point_space(char *s, int i, char **aff)
 {
@@ -45,7 +46,7 @@ static int			ft_point_space(char *s, int i, char **aff)
 	}
 	return (test);
 }
-/*
+
 static char			*ft_wcinmask(char *mask, char *wc)
 {
 	int				i;
@@ -53,16 +54,15 @@ static char			*ft_wcinmask(char *mask, char *wc)
 
 	i = ft_strlen(mask);
 	j = ft_strlen(wc);
-	while (i > 0)
+	while (j >= 0)
 	{
 		if (mask[i] == 'x')
 		{
 			mask[i] = wc[j];
-			i--;
+			j--;
 		}
 		if (mask[i] != 'x')
 			i--;
-		j--;
 	}
 	while (mask[i] == 'x')
 	{
@@ -72,31 +72,28 @@ static char			*ft_wcinmask(char *mask, char *wc)
 	return (mask);
 }
 
-static unsigned int ft_unimask(unsigned int bin, unsigned int digit)
+static char			*ft_unimask(char *bin, size_t digit)
 {
 	char			*mask_2;
 	char			*mask_3;
 	char			*mask_4;
-	char			*wc;
 
-	mask_2 = "110xxxxx10xxxxxx";
-	mask_3 = "1110xxxx10xxxxxx10xxxxxx";
-	mask_4 = "11110xxx10xxxxxx10xxxxxx10xxxxxx";
-	wc = ft_uitoa(bin);
+	mask_2 = ft_strdup("110xxxxx10xxxxxx");
+	mask_3 = ft_strdup("1110xxxx10xxxxxx10xxxxxx");
+	mask_4 = ft_strdup("11110xxx10xxxxxx10xxxxxx10xxxxxx");
 	if (digit >= 8 && digit <= 11)
-		wc = ft_wcinmask(mask_2, wc);
+		bin = ft_wcinmask(mask_2, bin);
 	if (digit >= 12 && digit <= 16)
-		wc = ft_wcinmask(mask_3, wc);
+		bin = ft_wcinmask(mask_3, bin);
 	if (digit >= 17 && digit <= 21)
-		wc = ft_wcinmask(mask_4, wc);
-	bin = ft_atoui(wc);
+		bin = ft_wcinmask(mask_4, bin);
 	return (bin);
 }
-*/
-static unsigned int	ft_dectobin(unsigned int dec)
+
+
+static char 	*ft_dectobin(unsigned int dec)
 {
 	char			*bin;
-	char			*tmp_ret;
 	unsigned int	quotient;
 	unsigned int	rest;
 	unsigned int	i;
@@ -106,31 +103,83 @@ static unsigned int	ft_dectobin(unsigned int dec)
 	i = 0;
 	while (quotient != 0)
 	{
-		rest = quotient & 1;
-		(quotient > 1) ? (quotient = quotient >> 1) : (quotient = 0);
+		rest = quotient % 2;
+		(quotient > 1) ? (quotient = quotient / 2) : (quotient = 0);
 		rest = rest + 48;
 		bin[i++] = rest;
 	}
 	bin[i--] = '\0';
-	tmp_ret = ft_strnew(ft_strlen(bin) + 1);
-	rest = 0;
-	while (i)
-		tmp_ret[rest++] = bin[i--];
-	i = ft_atoui(tmp_ret);
-	return (i);
+	bin = ft_revers(bin);
+	return (bin);
 }
 
+static unsigned int		*ft_otoc(char *s, unsigned int nbyte)
+{
+	unsigned int		*ret;
+	char				*bkp;
+	size_t				i_s;
+	size_t				i_bkp;
+	size_t				i_ret;
+
+	bkp = ft_strnew((ft_strlen(s) /nbyte) + 1);
+	ret =  malloc(sizeof(int) * nbyte + 1);
+	ft_putnbr(nbyte);
+	i_s = 0;
+	i_ret = 0;
+	while (i_s <= ft_strlen(s))
+	{
+		i_bkp = 0;
+		while (i_bkp < 8)
+			bkp[i_bkp++] = s[i_s++];
+		bkp[i_bkp] = '\0';
+		ret[i_ret++] = ft_atoull(bkp);
+	}
+	return (ret);
+}
+
+static unsigned int		*ft_split(char *s)
+{
+	unsigned int		nb;
+
+	nb = 0;
+	if (ft_strlen(s) > 8 && ft_strlen(s) <= 16)
+		nb = 2;
+	else if (ft_strlen(s) > 16 && ft_strlen(s) <= 24)
+		nb = 3;
+	else
+		nb = 4;
+	return (ft_otoc(s, nb));
+}
+static unsigned int *ft_bintodec(unsigned int *k, int j)
+{
+	int i;
+	int quotient;
+
+	i = 0;
+	while(i <= j)
+	{
+		quotient = k[i];
+		while (quotient != 0)
+		{
+//			OPERATION transformation binaire en decimal;
+			//		k[i] = ft_atoi(convertion );
+		}
+		i++;
+	}
+
+
+}
 int					ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 {
-	wchar_t			wc;
-	unsigned int	k;
-	unsigned int	digit;
+	unsigned int	wc;
+	unsigned int	*k;
+//	unsigned int	digit;
 //
 	char *tmp;
 	int j;
 	int test;
 //
-	wc = (unsigned int)va_arg(ap, wchar_t);
+	wc = va_arg(ap, unsigned int);
 //
 	j = 0;
 	tmp = ft_strnew(13);
@@ -163,20 +212,23 @@ int					ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 	if (wc == 0)
 		return (1);
 //
-	k = (unsigned int)wc;
-	k = ft_dectobin(k);
-	digit = ft_nbudigit(k);
-	if (digit < 8)
+
+	if (wc <= 127)
 	{
 		ft_putchar((char)wc);
 		return (1);
 	}
-/*	wc = ft_unimask(k, digit);
-	if (digit > 7 && digit < 12)
-		ft_putwchar(wc, 2);
-	if (digit > 11 && digit < 17)
-		ft_putwchar(wc, 3);
+	tmp = ft_dectobin(wc);
+	tmp = ft_unimask(tmp, ft_strlen(tmp));
+	k = ft_split(tmp);
+	j = 0;
+	if (ft_strlen(s) > 8 && ft_strlen(s) <= 16)
+		j = 2;
+	else if (ft_strlen(s) > 16 && ft_strlen(s) <= 24)
+		j = 3;
 	else
-		ft_putwchar(wc, 4);
-*/	return (1);
+		j = 4;
+	k = ft_bintodec(k);
+	ft_putwchar(k, j);
+	return (1);
 }
