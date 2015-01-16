@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2015/01/13 18:08:15 by sdurr            ###   ########.fr        #
+#    Updated: 2015/01/16 12:35:33 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,6 +15,7 @@ NAME			= libftprintf.a
 CPATH			= ./src/
 
 SRC				= ft_atoui.c \
+					ft_atoull.c \
 					ft_litoa.c \
 					ft_llitoa.c \
 					ft_llonglen.c \

@@ -6,16 +6,16 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 11:56:59 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/16 12:35:08 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/16 12:00:48 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int			ft_atoull(const char *str)
+unsigned long long			ft_atoull(const char *str)
 {
-	unsigned int		nb;
-	size_t				i;
+	unsigned long long		nb;
+	unsigned int			i;
 
 	i = 0;
 	nb = 0;
