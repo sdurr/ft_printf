@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/16 14:41:18 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/16 15:45:39 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,25 +150,25 @@ static unsigned int		*ft_split(char *s)
 		nb = 4;
 	return (ft_otoc(s, nb));
 }
-static unsigned int *ft_bintodec(unsigned int *k, int j)
+
+static unsigned int		ft_bintodec(unsigned int n)
 {
-	int i;
-	int quotient;
+	int					dec;
+	int					i;
+	int					rem;
 
+	dec = 0;
 	i = 0;
-	while(i <= j)
+	while (n != 0)
 	{
-		quotient = k[i];
-		while (quotient != 0)
-		{
-//			OPERATION transformation binaire en decimal;
-			//		k[i] = ft_atoi(convertion );
-		}
-		i++;
+		rem = n % 10;
+		n /= 10;
+		dec += rem * ft_recursive_power(2,i);
+		++i;
 	}
-
-
+	return (dec);
 }
+
 int					ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 {
 	unsigned int	wc;
@@ -228,7 +228,12 @@ int					ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 		j = 3;
 	else
 		j = 4;
-	k = ft_bintodec(k);
+	i = 0;
+	while (i < j)
+	{
+		k[i] = ft_bintodec(k[i]);
+		i++;
+	}
 	ft_putwchar(k, j);
 	return (1);
 }
