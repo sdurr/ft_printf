@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/16 17:10:27 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/18 10:17:28 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,16 @@ static char			*ft_wcinmask(char *mask, char *wc)
 	j = ft_strlen(wc);
 	while (j >= 0)
 	{
-		if (mask[i] != 'x')
-			i--;
 		if (mask[i] == 'x')
 		{
 			mask[i] = wc[j];
 			j--;
 		}
+		if (mask[i] != 'x')
+			i--;
 	}
-	while (i >= 0)
+	i = ft_strlen(mask);
+	while (i >=0)
 	{
 		if (mask[i] == 'x')
 			mask[i] = '0';
@@ -79,17 +80,15 @@ static char			*ft_unimask(char *bin, size_t digit)
 	char			*mask_3;
 	char			*mask_4;
 
-	mask_2 = ft_strdup("110xxxxx10xxxxxx");
-	mask_3 = ft_strdup("1110xxxx10xxxxxx10xxxxxx");
-	mask_4 = ft_strdup("11110xxx10xxxxxx10xxxxxx10xxxxxx");
+	mask_2 = ft_strdup("110xxxxx10xxxxxxx");
+	mask_3 = ft_strdup("1110xxxx10xxxxxx10xxxxxxx");
+	mask_4 = ft_strdup("11110xxx10xxxxxx10xxxxxx10xxxxxxx");
 	if (digit >= 8 && digit <= 11)
 		bin = ft_wcinmask(mask_2, bin);
 	if (digit >= 12 && digit <= 16)
 		bin = ft_wcinmask(mask_3, bin);
 	if (digit >= 17 && digit <= 21)
 		bin = ft_wcinmask(mask_4, bin);
-	ft_putstr("\n bin =");
-	ft_putstr(bin);
 	return (bin);
 }
 
@@ -153,23 +152,19 @@ static unsigned int		*ft_split(char *s)
 	return (ft_otoc(s, nb));
 }
 
-static unsigned int		ft_bintodec(unsigned int bin)
+static unsigned int		ft_bintodec(unsigned int n)
 {
-	unsigned int		quotient;
-	unsigned int		dec;
+	int					dec;
 	int					i;
-	unsigned int		rest;
+	int					rem;
 
-	ft_putchar('\n');
-	ft_putnbr(bin);
-	quotient = bin;
 	dec = 0;
 	i = 0;
-	while (quotient != 0)
+	while (n != 0)
 	{
-		rest = quotient % 10;
-		dec += rest * ft_recursive_power(2,i);
-		quotient /= 10;
+		rem = n % 10;
+		n /= 10;
+		dec += rem * ft_recursive_power(2,i);
 		++i;
 	}
 	return (dec);
@@ -179,14 +174,11 @@ int					ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 {
 	unsigned int	wc;
 	unsigned int	*k;
-//	unsigned int	digit;
-//
 	char *tmp;
 	int j;
 	int test;
-//
+
 	wc = va_arg(ap, unsigned int);
-//
 	j = 0;
 	tmp = ft_strnew(13);
 	i--;
@@ -217,8 +209,6 @@ int					ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 		return (-2);
 	if (wc == 0)
 		return (1);
-//
-
 	if (wc <= 127)
 	{
 		ft_putchar((char)wc);
@@ -228,9 +218,9 @@ int					ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 	tmp = ft_unimask(tmp, ft_strlen(tmp));
 	k = ft_split(tmp);
 	j = 0;
-	if (ft_strlen(tmp) > 8 && ft_strlen(tmp) <= 16)
+	if (ft_strlen(s) > 8 && ft_strlen(s) <= 16)
 		j = 2;
-	else if (ft_strlen(tmp) > 16 && ft_strlen(tmp) <= 24)
+	else if (ft_strlen(s) > 16 && ft_strlen(s) <= 24)
 		j = 3;
 	else
 		j = 4;
@@ -238,11 +228,8 @@ int					ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 	while (i < j && k[i] > 0)
 	{
 		k[i] = ft_bintodec(k[i]);
-		ft_putchar ('\n');
-		ft_putnbr(k[i]);
-		ft_putchar ('\n');
 		i++;
 	}
 	ft_putwchar(k, j);
-	return (1);
+	return (i);
 }
