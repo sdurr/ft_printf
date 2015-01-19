@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:24:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/14 09:53:45 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/19 17:13:15 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ static int			ft_type_z(char *s, int i, va_list ap, char **aff)
 		return (ft_print_x_maj_size_t(ap, s, i, aff));
 	if ((s[i - 1] == 'z' && s[i] == 'd') || (s[i - 1] == 'z' && s[i] == 'i'))
 		return (ft_print_d_size_t(ap, s, i, aff));
+	if (s[i] == 'C' || (s[i] == 'c' && s[i - 1] == 'l'))
+		return (ft_print_c_maj(ap, s, i, aff));
 	if (s[i] == 'c')
 		return (ft_print_c(ap, s, i, aff));
-	if (s[i] == 'C')
-		return (ft_print_c_maj(ap, s, i, aff));
 	if (s[i] == 'b')
 		return (ft_print_b(ap, s, i, aff));
 	if (s[i] == 'p')
