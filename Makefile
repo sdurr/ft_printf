@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2015/01/16 14:51:14 by getrembl         ###   ########.fr        #
+#    Updated: 2015/01/19 15:18:17 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,6 +15,12 @@ NAME			= libftprintf.a
 CPATH			= ./src/
 
 SRC				= ft_atoui.c \
+					ft_unimask.c \
+					ft_dectobin.c \
+					ft_split_int_etoile.c \
+					ft_calc_and_print_wchar.c \
+					ft_bintodec.c \
+					ft_otoc.c \
 					ft_atoull.c \
 					ft_litoa.c \
 					ft_llitoa.c \
