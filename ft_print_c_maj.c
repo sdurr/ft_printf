@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/16 15:45:39 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/16 16:43:46 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,6 @@ static unsigned int		*ft_otoc(char *s, unsigned int nbyte)
 
 	bkp = ft_strnew((ft_strlen(s) /nbyte) + 1);
 	ret =  malloc(sizeof(int) * nbyte + 1);
-	ft_putnbr(nbyte);
 	i_s = 0;
 	i_ret = 0;
 	while (i_s <= ft_strlen(s))
@@ -151,20 +150,32 @@ static unsigned int		*ft_split(char *s)
 	return (ft_otoc(s, nb));
 }
 
-static unsigned int		ft_bintodec(unsigned int n)
+static unsigned int		ft_bintodec(unsigned int bin)
 {
-	int					dec;
-	int					i;
-	int					rem;
+	unsigned int		quotient;
+	unsigned int		dec;
+//	int					i;
+	int					j;
+	unsigned int		rest;
 
+	quotient = bin;
 	dec = 0;
-	i = 0;
-	while (n != 0)
+//	i = 0;
+	j = 1;/*
+	while (quotient != 0)
 	{
-		rem = n % 10;
-		n /= 10;
-		dec += rem * ft_recursive_power(2,i);
+		rest = quotient % 10;
+		quotient /= 10;
+		dec += rest * ft_recursive_power(2,i);
 		++i;
+	}
+	return (dec);*/
+	while(quotient != 0)
+	{
+		rest = quotient % 10;
+		dec = dec + rest * j;
+		j = j * 2;
+		quotient = quotient / 10;
 	}
 	return (dec);
 }
@@ -222,16 +233,19 @@ int					ft_print_c_maj(va_list ap, char *s, int i, char **aff)
 	tmp = ft_unimask(tmp, ft_strlen(tmp));
 	k = ft_split(tmp);
 	j = 0;
-	if (ft_strlen(s) > 8 && ft_strlen(s) <= 16)
+	if (ft_strlen(tmp) > 8 && ft_strlen(tmp) <= 16)
 		j = 2;
-	else if (ft_strlen(s) > 16 && ft_strlen(s) <= 24)
+	else if (ft_strlen(tmp) > 16 && ft_strlen(tmp) <= 24)
 		j = 3;
 	else
 		j = 4;
 	i = 0;
-	while (i < j)
+	while (i < j && k[i] > 0)
 	{
 		k[i] = ft_bintodec(k[i]);
+		ft_putchar ('\n');
+		ft_putnbr(k[i]);
+		ft_putchar ('\n');
 		i++;
 	}
 	ft_putwchar(k, j);
