@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_split_int_etoile.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 13:29:44 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/19 17:05:39 by sdurr            ###   ########.fr       */
+/*   Created: 2015/01/19 15:00:28 by sdurr             #+#    #+#             */
+/*   Updated: 2015/01/19 15:03:31 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
-#include <wchar.h>
 #include "libftprintf.h"
 
-void	ft_putwstr(wchar_t *s)
+
+unsigned int		*ft_split_int_etoile(char *s)
 {
-	while (*s != '\0')
-	{
-//		ft_putwchar();
-		s++;
-	}
+	unsigned int nb;
+
+	nb = 0;
+	if (ft_strlen(s) > 8 && ft_strlen(s) <= 16)
+		nb = 2;
+	else if (ft_strlen(s) > 16 && ft_strlen(s) <= 24)
+		nb = 3;
+	else
+		nb = 4;
+	return (ft_otoc(s, nb));
 }

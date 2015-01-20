@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_otoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 13:29:44 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/19 17:05:39 by sdurr            ###   ########.fr       */
+/*   Created: 2015/01/19 14:34:26 by sdurr             #+#    #+#             */
+/*   Updated: 2015/01/19 14:49:52 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <string.h>
-#include <wchar.h>
+#include <stdlib.h>
 #include "libftprintf.h"
 
-void	ft_putwstr(wchar_t *s)
+unsigned int	*ft_otoc(char *s, unsigned int nbyte)
 {
-	while (*s != '\0')
+	unsigned int	*ret;
+	char			*bkp;
+	size_t			i_s;
+	size_t			i_bkp;
+	size_t			i_ret;
+
+	bkp = ft_strnew((ft_strlen(s) /nbyte) + 1);
+	ret =  malloc(sizeof(int) * nbyte + 1);
+	i_s = 0;
+	i_ret = 0;
+	while (i_s <= ft_strlen(s))
 	{
-//		ft_putwchar();
-		s++;
+		i_bkp = 0;
+		while (i_bkp < 8)
+			bkp[i_bkp++] = s[i_s++];
+		bkp[i_bkp] = '\0';
+		ret[i_ret++] = ft_atoull(bkp);
 	}
+	return (ret);
 }

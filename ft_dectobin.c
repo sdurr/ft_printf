@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_dectobin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 13:29:44 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/19 17:05:39 by sdurr            ###   ########.fr       */
+/*   Created: 2015/01/19 14:50:46 by sdurr             #+#    #+#             */
+/*   Updated: 2015/01/19 14:51:34 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
-#include <wchar.h>
-#include "libftprintf.h"
 
-void	ft_putwstr(wchar_t *s)
+char *ft_dectobin(unsigned int dec)
 {
-	while (*s != '\0')
+	char *bin;
+	unsigned int quotient;
+	unsigned int rest;
+	unsigned int i;
+
+	quotient = dec;
+	bin = ft_strnew(33);
+	i = 0;
+	while (quotient != 0)
 	{
-//		ft_putwchar();
-		s++;
+		rest = quotient % 2;
+		(quotient > 1) ? (quotient = quotient / 2) : (quotient = 0);
+		rest = rest + 48;
+		bin[i++] = rest;
 	}
+	bin[i--] = '\0';
+	bin = ft_revers(bin);
+	return (bin);
 }

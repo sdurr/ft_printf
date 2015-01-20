@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 15:57:33 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/19 18:03:08 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ft_print_s_maj(va_list ap, char *s, int i)
 	}
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
-	s1 = va_arg(ap, wchar_t *);
+	s1 = va_arg(ap, wchar_t*);
 	ret += ft_point_space(s1, s, i);
 	if (!s1 || !ap)
 	{
@@ -79,7 +79,12 @@ int	ft_print_s_maj(va_list ap, char *s, int i)
 		}
 		j--;
 	}
-	ft_putwstr(s1);
-	ret += ft_wstrlen(s1);
+	i = 0;
+	while (*s1)
+	{
+		j = 0;
+		tmp = ft_strnew(13);
+		ret +=ft_calc_and_print_wchar(*s1++, j, tmp);
+	}
 	return (ret);
 }

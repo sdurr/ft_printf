@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_bintodec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 13:29:44 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/19 17:05:39 by sdurr            ###   ########.fr       */
+/*   Created: 2015/01/19 14:56:42 by sdurr             #+#    #+#             */
+/*   Updated: 2015/01/19 14:57:52 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <string.h>
-#include <wchar.h>
 #include "libftprintf.h"
 
-void	ft_putwstr(wchar_t *s)
+unsigned int		ft_bintodec(unsigned int n)
 {
-	while (*s != '\0')
+	int dec;
+	int i;
+	int rem;
+
+	dec = 0;
+	i = 0;
+	while (n != 0)
 	{
-//		ft_putwchar();
-		s++;
+		rem = n % 10;
+		n /= 10;
+		dec += rem * ft_recursive_power(2,i);
+		++i;
 	}
+	return (dec);
 }

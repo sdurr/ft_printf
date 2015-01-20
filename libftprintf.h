@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:12:02 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/16 14:52:02 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/19 15:23:30 by sdurr            ###   ########.fr       */
 /*   Updated: 2015/01/12 10:04:43 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -25,6 +25,8 @@ char				*ft_op_base_16_int(char *hexa, int rest, int *q);
 char				*ft_op_base_16_size_t(char *hexa, int rest, size_t *q);
 char				*ft_op_base_16_long(char *hexa, int rest, unsigned long long *q);
 char				*ft_uitoa(unsigned int n);
+char				*ft_dectobin(unsigned int dec);
+char				*ft_unimask(char *bin, size_t digit);
 
 int					ft_printf(char *format, ...);
 int					ft_number_befor_char(char *s1, char *s, int j, char **aff);
@@ -63,14 +65,18 @@ int					ft_space_number(char *s, int i, char **aff);
 int					ft_test_type(char *s);
 int					ft_type(char *s, int i, va_list ap, char **aff);
 int					ft_max_plus(int i);
+int					ft_calc_and_print_wchar(unsigned int wc, int j, char *tmp);
 
 size_t				ft_llonglen(long long ll);
 size_t				ft_longlen(long l);
 size_t				ft_nbudigit(unsigned int n);
 size_t				ft_wstrlen(wchar_t *s);
 
+unsigned int		*ft_otoc(char *s, unsigned int nbyte);
 unsigned int		ft_atoui(const char *str);
 unsigned int		ft_max_plus_unsigned (unsigned int i);
+unsigned int		ft_bintodec(unsigned int n);
+unsigned int		*ft_split_int_etoile(char *s);
 
 unsigned long long	ft_atoull(const char *str);
 
