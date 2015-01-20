@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/19 18:03:08 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/20 10:44:28 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,10 @@ int	ft_print_s_maj(va_list ap, char *s, int i)
 	{
 		j = 0;
 		tmp = ft_strnew(13);
-		ret +=ft_calc_and_print_wchar(*s1++, j, tmp);
+		ft_putnbr(i++);
+
+		ret += ft_calc_and_print_wchar((unsigned int)*s1, j, tmp);
+		s1++;
 	}
 	return (ret);
 }
