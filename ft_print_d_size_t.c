@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 10:32:27 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/21 11:20:05 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,10 @@ static int	ft_point_space(size_t d, char *s, int i, char **aff, size_t stop)
 
 	tmp = ft_strnew(13);
 	j = 0;
-	if (s[i] == '.')
+	if (s[i--] == '.')
 	{
-		i--;
 		while (s[i] >= '0' && s[i] <= '9')
-		{
-			tmp[j] = s[i];
-			i--;
-			j++;
-		}
+			tmp[j++] = s[i--];
 		tmp = ft_revers(tmp);
 		j = ft_atoi(tmp);
 		if (j > stop)

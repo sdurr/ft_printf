@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_s.c                                       :+:      :+:    :+:   */
+/*   ft_op_base_16.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/21 11:16:03 by sdurr            ###   ########.fr       */
+/*   Created: 2015/01/13 16:21:23 by sdurr             #+#    #+#             */
+/*   Updated: 2015/01/21 09:57:45 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "libftprintf.h"
-#include <stdarg.h>
 
-int	ft_print_modulo(char *s, int i, char **aff)
+char			*ft_op_base_8_unsigned_long(char *octal, int rest, unsigned long *q)
 {
-	char	*tmp;
-	size_t	j;
+	int		i;
 
-	tmp = ft_strnew(13);
-	j = i;
-	i--;
-	while (s[i] >= '0' && s[i] <= '9')
-		tmp[j++] = s[i--];
-	ft_number_befor_char(" ", s, j, aff);
-	j = 0;
-	tmp = ft_strdup("%");
-	*aff = ft_strjoin(*aff, tmp);
-	return (0);
+	i = 0;
+	octal = ft_strnew(9);
+	while (*q != 0)
+	{
+		rest = *q % 8;
+		(*q > 7) ? (*q /= 8) : (*q = 0);
+		rest = rest + 48;
+		octal[i++] = rest;
+	}
+	octal[i--] = '\0';
+	octal = ft_revers(octal);
+	return (octal);
 }

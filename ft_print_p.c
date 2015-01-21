@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 16:03:22 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/20 16:19:47 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/21 10:58:44 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int		ft_print_p_negative(int decimal, char *s, int j, char **aff)
 	return (0);
 }
 
-static void			test_aff(char *s, char *hexa, int j, char **aff)
+static void		test_aff(char *s, char *hexa, int j, char **aff)
 {
 	if (s[j - 1] != 'l' && ft_strlen(hexa) != 7
 		&& s[j - 1] != ' ' && s[j - 1] != '+')

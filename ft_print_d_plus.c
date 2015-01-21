@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 13:57:27 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/12 10:08:48 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/21 11:18:54 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include <stdarg.h>
 #include "libftprintf.h"
 
-static int ft_point_space(int d, char *s, int i, char **aff)
+static int		ft_point_space(int d, char *s, int i, char **aff)
 {
-	size_t j;
-	char*tmp;
+	size_t		j;
+	char		*tmp;
 
 	tmp = ft_strnew(13);
 	j = 0;
@@ -33,7 +33,7 @@ static int ft_point_space(int d, char *s, int i, char **aff)
 	return (0);
 }
 
-int		ft_print_d_plus(va_list ap, char *s, int i, char **aff)
+int			ft_print_d_plus(va_list ap, char *s, int i, char **aff)
 {
 	int d;
 

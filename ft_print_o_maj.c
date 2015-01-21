@@ -6,7 +6,7 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 22:44:50 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/13 09:02:55 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/21 10:24:03 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdarg.h>
 #include <limits.h>
 
-static int		ft_point_space(char *s1, char *s, int i, char **aff, size_t stop)
+static int		ft_point_space(size_t stop, char *s, int i, char **aff)
 {
 	size_t		j;
 	char		*tmp;
@@ -26,128 +26,78 @@ static int		ft_point_space(char *s1, char *s, int i, char **aff, size_t stop)
 	{
 		i--;
 		while (s[i] >= '0' && s[i] <= '9')
-		{
-			tmp[j] = s[i];
-			i--;
-			j++;
-		}
+			tmp[j++] = s[i--];
 		tmp = ft_revers(tmp);
 		j = ft_atoi(tmp);
 		if (j > stop)
-			while (j > (ft_strlen(s1)))
-			{
+			while (j-- > stop)
 				*aff = ft_strjoin(*aff, " ");
-				j--;
-				if (j == stop)
-					return (0);
-			}
 	}
 	return (0);
 }
 
-static int			ft_number_befor(char *s1, char *s, int i, char **aff)
+static int		ft_number_befor(char *s1, char *s, int i, char **aff)
 {
 	char			*tmp;
 	size_t			j;
 
 	j = 0;
 	tmp = ft_strnew(40);
-	i--;
 	while (s[i] >= '0' && s[i] <= '9')
 		tmp[j++] = s[i--];
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
 	if ((s[i] == '.' && s[i + 1] == '0' && s[i - 1] == '%'))
 		return (0);
-	ft_point_space(s1, s, i, aff, j);
-	while (j > ft_strlen(s1))
+	ft_point_space(j, s, i, aff);
+	while (j-- > ft_strlen(s1))
 	{
 		if (s[i] == '.' || s[i + 1] == '0')
 			*aff = ft_strjoin (*aff, "0");
 		else
 			*aff = ft_strjoin(*aff, " ");
-		j--;
 	}
 	return (0);
 }
 
-static int			ft_print_o_negative_long(long int decimal, char *s, int j, char **aff)
+static int		ft_print_o_neg_long(long int d, char *s, int j, char **aff)
 {
 	unsigned long	quotient;
-	int				rest;
-	int				i;
 	char			*octal;
-	char			*ret;
 
 	octal = ft_strnew(12);
-	quotient = ULONG_MAX + decimal;
-	i = 0;
-	while (quotient != 0)
-	{
-		rest = quotient % 8;
-		(quotient > 7) ? (quotient /= 8) : (quotient = 0);
-		rest = rest + 48;
-		octal[i++] = rest;
-	}
-	octal[i--] = '\0';
-	ret = ft_strnew(ft_strlen(octal) + 1);
-	rest = 0;
-	while (i >=0)
-		ret[rest++] = octal[i--];
-	quotient = ft_number_befor(octal, s, j, aff);
-	*aff = ft_strjoin(*aff, ret);
+	quotient = ULONG_MAX + d;
+	octal = ft_op_base_8_unsigned_long(octal, 0, &quotient);
+	quotient = ft_number_befor(octal, s, --j, aff);
+	*aff = ft_strjoin(*aff, octal);
 	return (0);
 }
 
-int					ft_print_o_maj(va_list ap, char *s, int j, char **aff)
+int				ft_print_o_maj(va_list ap, char *s, int j, char **aff)
 {
 	char			*octal;
-	long long		quotient;
-	int				rest;
+	long long		q;
 	int				i;
-	char			*ret;
 
-	quotient = va_arg(ap,long long);
+	q = va_arg(ap, long long);
 	i = j;
 	while (s[i] != '%')
 		i--;
-	if (s[i + 1] == '#')
+	if ((octal = ft_strnew(12)) && s[i + 1] == '#')
 		*aff = ft_strjoin(*aff, "0");
-	if (quotient == (long long)ULONG_MAX)
-	{
-		*aff = ft_strjoin(*aff, "1777777777777777777777");
+	if (q == (long long)ULONG_MAX
+		&& (*aff = ft_strjoin(*aff, "1777777777777777777777")))
 		return (0);
-	}
-		if (quotient == LONG_MIN)
-	{
-		*aff = ft_strjoin(*aff, "1000000000000000000000");
+	if (q == LONG_MIN && (*aff = ft_strjoin(*aff, "1000000000000000000000")))
 		return (0);
-	}
-	if (quotient < 0)
-		return ((ft_print_o_negative_long(quotient, s, j, aff)));
-	if ((quotient == 0 && s[j - 1] == '.')
-		|| (quotient == 0 && s[j - 1] == '0' && s[j - 2] == '.'))
+	if (q < 0)
+		return ((ft_print_o_neg_long(q, s, j, aff)));
+	if ((q == 0 && s[j - 1] == '.')
+		|| (q == 0 && s[j - 1] == '0' && s[j - 2] == '.')
+		|| (q == 0 && (*aff = ft_strjoin(*aff, "0"))))
 		return (0);
-	if(quotient == 0)
-	{
-		*aff = ft_strjoin(*aff, "0");
-		return (0);
-	}
-	octal = ft_strnew(12);
-	i = 0;
-	while (quotient != 0)
-	{
-		rest = quotient % 8;
-		(quotient > 7) ? (quotient /= 8) : (quotient = 0);
-		rest = rest + 48;
-		octal[i++] = rest;
-	}
-	octal[i--] = '\0';
-	ret = ft_strnew(ft_strlen(octal) + 1);
-	rest = 0;
-	while (i >=0)
-		ret[rest++] = octal[i--];
-	quotient = ft_number_befor(octal, s, j, aff);
-	*aff = 	ft_strjoin(*aff, ret);
+	octal = ft_op_base_8_long(octal, 0, &q);
+	q = ft_number_befor(octal, s, --j, aff);
+	*aff = ft_strjoin(*aff, octal);
 	return (0);
 }
