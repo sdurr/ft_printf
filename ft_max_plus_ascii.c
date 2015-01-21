@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dectobin.c                                      :+:      :+:    :+:   */
+/*   ft_max_plus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/19 14:50:46 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/21 15:08:57 by sdurr            ###   ########.fr       */
+/*   Created: 2015/01/13 15:18:16 by sdurr             #+#    #+#             */
+/*   Updated: 2015/01/21 15:07:28 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char *ft_dectobin(unsigned int dec)
+int			ft_max_plus_ascii(int i)
 {
-	char			*bin;
-	unsigned int	quotient;
-	unsigned int	rest;
-	unsigned int	i;
-
-	quotient = dec;
-	bin = ft_strnew(33);
-	i = 0;
-	while (quotient != 0)
-	{
-		rest = quotient % 2;
-		(quotient > 1) ? (quotient /= 2) : (quotient = 0);
-		rest = rest + 48;
-		bin[i++] = rest;
-	}
-	bin[i--] = '\0';
-	bin = ft_revers(bin);
-	return (bin);
+	if (i > 127)
+		while (i > 127)
+			i = 127 - 255 + (i - 127) - 1;
+	if (i < -128)
+		while (i < -128)
+			i = 127 + 255 + (i - 127) + 1;
+	return (i);
 }

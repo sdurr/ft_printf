@@ -6,7 +6,7 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 22:44:50 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/21 10:24:03 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/21 14:03:38 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static int		ft_print_o_neg_long(long int d, char *s, int j, char **aff)
 
 	octal = ft_strnew(12);
 	quotient = ULONG_MAX + d;
-	octal = ft_op_base_8_unsigned_long(octal, 0, &quotient);
+	octal = ft_base_8_unsig_long(octal, 0, &quotient);
 	quotient = ft_number_befor(octal, s, --j, aff);
 	*aff = ft_strjoin(*aff, octal);
 	return (0);

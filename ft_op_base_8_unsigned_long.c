@@ -6,13 +6,13 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 16:21:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/21 09:57:45 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/21 14:02:01 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_op_base_8_unsigned_long(char *octal, int rest, unsigned long *q)
+char			*ft_base_8_unsig_long(char *octal, int rest, unsigned long *q)
 {
 	int		i;
 

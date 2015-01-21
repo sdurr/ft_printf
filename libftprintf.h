@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:12:02 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/21 10:41:40 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/21 14:48:27 by sdurr            ###   ########.fr       */
 /*   Updated: 2015/01/12 10:04:43 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -23,8 +23,8 @@ char				*ft_llitoa(long long ll);
 char				*ft_op_base_16(char *hexa, int rest, unsigned int *q);
 char				*ft_op_base_8(char *octal, int rest, size_t *q);
 char				*ft_op_base_8_long(char *octal, int rest, long long *q);
-char				*ft_op_base_8_unsigned_long(char *octal, int rest, unsigned long *q);
-char				*ft_op_base_8_unsigned_int(char *octal, int rest, unsigned int *q);
+char				*ft_base_8_unsig_long(char *octal, int rest, unsigned long *q);
+char				*ft_op_base_8_unsigned_int(char *oc, int rest, unsigned int *q);
 char				*ft_op_base_16_int(char *hexa, int rest, int *q);
 char				*ft_op_base_16_size_t(char *hexa, int rest, size_t *q);
 char				*ft_op_base_16_long(char *hexa, int rest, unsigned long long *q);
@@ -69,6 +69,7 @@ int					ft_space_number(char *s, int i, char **aff);
 int					ft_test_type(char *s);
 int					ft_type(char *s, int i, va_list ap, char **aff);
 int					ft_max_plus(int i);
+int					ft_max_plus_ascii(int i);
 int					ft_calc_and_print_wchar(unsigned int wc, int j, char *tmp);
 
 size_t				ft_llonglen(long long ll);

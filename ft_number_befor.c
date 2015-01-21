@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 17:37:31 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 18:17:05 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/21 14:06:19 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int		ft_point_space(char *s, int i, char **aff, size_t stop)
 	return (0);
 }
 
-int				ft_number_befor_char(char *s1, char *s, int i, char **aff)
+int				ft_number_befor(char *s1, char *s, int i, char **aff)
 {
 	char		*tmp;
 	size_t		j;

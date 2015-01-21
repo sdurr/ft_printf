@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 17:37:31 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 17:48:44 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/21 15:07:17 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include "libft.h"
 #include <stdarg.h>
 
-static int 		ft_point_space(char *s, int i, char **aff, size_t stop)
+static int		ft_point_space(char *s, int i, char **aff, size_t stop)
 {
-	size_t 		j;
-	char *tmp;
+	size_t		j;
+	char		*tmp;
 
 	tmp = ft_strnew(13);
 	j = 0;
@@ -34,10 +34,10 @@ static int 		ft_point_space(char *s, int i, char **aff, size_t stop)
 	return (0);
 }
 
-int			ft_number_befor_char(char *s1, char *s, int i, char **aff)
+int				ft_number_befor_char(char *s1, char *s, int i, char **aff)
 {
-	char *tmp;
-	size_t j;
+	char		*tmp;
+	size_t		j;
 
 	j = 0;
 	tmp = ft_strnew(13);

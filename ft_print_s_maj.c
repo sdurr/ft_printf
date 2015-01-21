@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/20 15:31:33 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/21 15:35:24 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,80 +14,60 @@
 #include <stdarg.h>
 #include <wchar.h>
 #include "libftprintf.h"
-/*
-static int		ft_point_space(wchar_t *s1, char *s, int i)
-{
-	size_t		j;
-	char		*tmp;
-	int			ret;
+#include <stdlib.h>
 
-	tmp = ft_strnew(13);
-	j = 0;
-	ret = 0;
-	if (s[i] == '.')
-	{
-		i--;
-		while (s[i] >= '0' && s[i] <= '9')
-		{
-			tmp[j] = s[i];
-			i--;
-			j++;
-		}
-		tmp = ft_revers(tmp);
-		j = ft_atoi(tmp);
-			while (j > (ft_wstrlen(s1)))
-			{
-				ft_putstr(" ");
-				ret++;
-				j--;
-			}
-	}
-	return (ret);
-}
-*/
-int	ft_print_s_maj(va_list ap, char *s, int i)
+int		ft_print_s_maj(va_list ap, char *s, int i)
 {
-	wchar_t *s1;
-	char *tmp;
-	size_t j;
-	int ret;
+	wchar_t		*tmp1;
+	wchar_t		*s1;
+	char		*tmp;
+	size_t		j;
+	int			ret;
+	unsigned int *k;
+
 
 	j = 0;
 	ret = 0;
 	tmp = ft_strnew(13);
 	i--;
 	while (s[i] >= '0' && s[i] <= '9')
-	{
-		tmp[j++] = s[i];
-		i--;
-	}
+		tmp[j++] = s[i--];
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
  	s1 = va_arg(ap, wchar_t *);
-	//ret += ft_point_space(s1, s, i);
-	if (!s1 || !ap)
+	if (!s1)
 	{
 		ft_putstr("(null)");
 		return (6);
 	}
-/*	while (j > ft_wstrlen(s1))
+	tmp1 = s1;
+	while (*tmp1 != '\0')
 	{
-		if (s[i] != '.')
-		{
-			ft_putstr(" ");
-			ret++;
-		}
-		j--;
-		}*/
-	i = 0;
-	while (i < 6)
-	{
-	ft_calc_and_print_wchar(*s1, j, tmp);
-	s1++;
-	tmp = ft_strnew(13);
-	j = 0;
-	i++;
+		i++;
+		tmp1++;
 	}
-		ft_putstr("test");
+	k = malloc(sizeof(int) * i + 1);
+	i = 0;
+	tmp1 = s1;
+	while (*tmp1 != '\0')
+	{
+		ft_putchar ('\n');
+		ft_putstr("k[i] = ");
+		k[i]= (unsigned int)*tmp1;
+		ft_putnbr(k[i]);
+		ft_putchar ('\n');
+		tmp1++;
+		i++;
+	}
+	i = 0;
+	while (k[i] > 0)
+	{
+		ft_putnbr(k[i]);
+		ret += ft_calc_and_print_wchar(k[i], j, tmp);
+		i++;
+		tmp = ft_strnew(13);
+		j = 0;
+		ft_putnbr(k[i]);
+	}
 	return (ret);
 }

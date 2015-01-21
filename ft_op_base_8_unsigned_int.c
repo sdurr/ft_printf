@@ -6,26 +6,26 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 16:21:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/21 10:41:23 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/21 14:01:14 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_op_base_8_unsigned_int(char *octal, int rest, unsigned int *q)
+char			*ft_op_base_8_unsigned_int(char *oc, int rest, unsigned int *q)
 {
 	int		i;
 
 	i = 0;
-	octal = ft_strnew(9);
+	oc = ft_strnew(9);
 	while (*q != 0)
 	{
 		rest = *q % 8;
 		(*q > 7) ? (*q /= 8) : (*q = 0);
 		rest = rest + 48;
-		octal[i++] = rest;
+		oc[i++] = rest;
 	}
-	octal[i--] = '\0';
-	octal = ft_revers(octal);
-	return (octal);
+	oc[i--] = '\0';
+	oc = ft_revers(oc);
+	return (oc);
 }

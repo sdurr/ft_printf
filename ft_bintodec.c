@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 14:56:42 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/19 14:57:52 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/21 15:07:53 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ unsigned int		ft_bintodec(unsigned int n)
 	{
 		rem = n % 10;
 		n /= 10;
-		dec += rem * ft_recursive_power(2,i);
+		dec += rem * ft_recursive_power(2, i);
 		++i;
 	}
 	return (dec);

@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 14:34:26 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/19 14:49:52 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/21 15:06:22 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ unsigned int	*ft_otoc(char *s, unsigned int nbyte)
 	size_t			i_bkp;
 	size_t			i_ret;
 
-	bkp = ft_strnew((ft_strlen(s) /nbyte) + 1);
-	ret =  malloc(sizeof(int) * nbyte + 1);
+	bkp = ft_strnew((ft_strlen(s) / nbyte) + 1);
+	ret = malloc(sizeof(int) * nbyte + 1);
 	i_s = 0;
 	i_ret = 0;
 	while (i_s <= ft_strlen(s))
