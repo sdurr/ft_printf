@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:12:02 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/21 14:48:27 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/22 08:57:57 by sdurr            ###   ########.fr       */
 /*   Updated: 2015/01/12 10:04:43 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -87,6 +87,6 @@ unsigned long long	ft_atoull(const char *str);
 
 void				ft_putnbr_long(long n);
 void				ft_putwstr(wchar_t *s);
-void				ft_putwchar(unsigned int *c, int nbprint);
+void				ft_putwchar(unsigned int *c);
 
 #endif

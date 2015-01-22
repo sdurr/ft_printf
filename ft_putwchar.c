@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 11:56:02 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/20 12:31:00 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/22 08:57:46 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <wchar.h>
 #include <locale.h>
 
-void				ft_putwchar(unsigned int *c, int nbprint)
+void				ft_putwchar(unsigned int *c)
 {
 	int	i;
 
 	i = 0;
-	while (i <= nbprint)
+	while (c[i] > 0)
 	{
 		write(1, &(c[i]), 1);
 		i++;
