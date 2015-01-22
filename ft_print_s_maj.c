@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/20 10:44:28 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/22 15:32:02 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <stdarg.h>
 #include <wchar.h>
 #include "libftprintf.h"
+#include <stdlib.h>
+
 
 static int		ft_point_space(wchar_t *s1, char *s, int i)
 {
@@ -45,12 +47,12 @@ static int		ft_point_space(wchar_t *s1, char *s, int i)
 	return (ret);
 }
 
-int	ft_print_s_maj(va_list ap, char *s, int i)
+int					ft_print_s_maj(va_list ap, char *s, size_t i)
 {
-	wchar_t *s1;
-	char *tmp;
-	size_t j;
-	int ret;
+	wchar_t			*s1;
+	char			*tmp;
+	size_t			j;
+	int				ret;
 
 	j = 0;
 	ret = 0;
@@ -63,13 +65,12 @@ int	ft_print_s_maj(va_list ap, char *s, int i)
 	}
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
-	s1 = va_arg(ap, wchar_t*);
-	ret += ft_point_space(s1, s, i);
-	if (!s1 || !ap)
+	if (!(s1 = va_arg(ap, wchar_t *)) || !s1 || !ap)
 	{
 		ft_putstr("(null)");
 		return (6);
 	}
+	ret += ft_point_space(s1, s, i);
 	while (j > ft_wstrlen(s1))
 	{
 		if (s[i] != '.')
@@ -80,14 +81,8 @@ int	ft_print_s_maj(va_list ap, char *s, int i)
 		j--;
 	}
 	i = 0;
-	while (*s1)
-	{
-		j = 0;
-		tmp = ft_strnew(13);
-		ft_putnbr(i++);
-
-		ret += ft_calc_and_print_wchar((unsigned int)*s1, j, tmp);
-		s1++;
-	}
+	while (s1[i])
+		ret = ret + (ft_calc_and_print_wchar(s1[i++], tmp));
+	free(tmp);
 	return (ret);
 }

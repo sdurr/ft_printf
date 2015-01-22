@@ -6,18 +6,18 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 14:50:46 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/19 14:51:34 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/21 19:06:23 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_dectobin(unsigned int dec)
+char				*ft_dectobin(unsigned int dec)
 {
-	char *bin;
-	unsigned int quotient;
-	unsigned int rest;
-	unsigned int i;
+	char			*bin;
+	unsigned int	quotient;
+	unsigned int	rest;
+	unsigned int	i;
 
 	quotient = dec;
 	bin = ft_strnew(33);

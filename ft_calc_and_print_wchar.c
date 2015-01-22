@@ -6,44 +6,44 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 15:12:48 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/19 17:17:09 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/22 11:05:09 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "libftprintf.h"
+#include <limits.h>
+#include <stdlib.h>
 
-int			ft_calc_and_print_wchar(unsigned int wc, int j, char *tmp)
+static int			ft_calc_and_print_wchar_suite(unsigned int wc, char *tmp)
 {
-	int i;
-	unsigned int *k;
+	int				ret;
+	unsigned int	*k;
 
-	i = 0;
-	j = 0;
+	ret = 0;
 	tmp = ft_strnew(13);
-	if (wc == 0)
-		return (1);
-	if (wc <= 127)
-	{
-		ft_putchar((char)wc);
-		return (1);
-	}
 	tmp = ft_dectobin(wc);
 	tmp = ft_unimask(tmp, ft_strlen(tmp));
 	k = ft_split_int_etoile(tmp);
-	j = 0;
-	if (ft_strlen(tmp) > 8 && ft_strlen(tmp) <= 16)
-		j = 2;
-	else if (ft_strlen(tmp) > 16 && ft_strlen(tmp) <= 24)
-		j = 3;
-	else
-		j = 4;
-	i = 0;
-	while (i < j && k[i] > 0)
+	while (k[ret] > 0)
 	{
-		k[i] = ft_bintodec(k[i]);
-		i++;
+		k[ret] = ft_bintodec(k[ret]);
+		ret++;
 	}
-	ft_putwchar(k, j);
-	return (i);
+	ft_putwchar(k);
+	return (ret);
+}
+
+int					ft_calc_and_print_wchar(wchar_t wc, char *tmp)
+{
+	unsigned int	ui;
+
+	ui = (unsigned int)wc;
+	if (ui <= UCHAR_MAX)
+	{
+		ft_putchar((unsigned char)ui);
+		return (1);
+	}
+	else
+		return (ft_calc_and_print_wchar_suite(ui, tmp));
 }

@@ -5,6 +5,15 @@ unsigned int			ft_atoull(15,912
 ft_atoull.c,39
 unsigned long long			ft_atoull(15,912
 
+ft_bintodec.c,34
+unsigned int		ft_bintodec(15,918
+
+ft_calc_and_print_wchar.c,38
+int			ft_calc_and_print_wchar(17,957
+
+ft_dectobin.c,38
+char *ft_dectobin(ft_dectobin15,912
+
 ft_litoa.c,32
 char	*ft_litoa(ft_litoa18,977
 
@@ -50,6 +59,9 @@ ft_op_base_16_size_t.c,117
 static char		*ft_op_base_16_maj(ft_op_base_16_maj15,912
 char			*ft_op_base_16_size_t(ft_op_base_16_size_t32,1200
 
+ft_otoc.c,38
+unsigned int	*ft_otoc(ft_otoc16,938
+
 ft_print_b.c,107
 static int			ft_number_befor(16,937
 static int			ft_print_b_negative(32,1228
@@ -59,15 +71,8 @@ ft_print_c.c,61
 static int ft_point_space(16,932
 int				ft_print_c(46,1369
 
-ft_print_c_maj.c,363
-static int			ft_point_space(19,996
-static char			*ft_wcinmask(ft_wcinmask50,1437
-static char			*ft_unimask(ft_unimask75,1736
-static char 	*ft_dectobin(ft_dectobin94,2207
-static unsigned int		*ft_otoc(ft_otoc116,2589
-static unsigned int		*ft_split(ft_split140,3034
-static unsigned int *ft_bintodec(ft_bintodec153,3265
-int					ft_print_c_maj(172,3525
+ft_print_c_maj.c,31
+int					ft_print_c_maj(19,996
 
 ft_print_d.c,62
 static int		ft_point_space(16,932
@@ -137,9 +142,8 @@ ft_print_s.c,58
 static int ft_point_space(16,932
 int	ft_print_s(51,1461
 
-ft_print_s_maj.c,63
-static int		ft_point_space(18,976
-int	ft_print_s_maj(48,1366
+ft_print_s_maj.c,32
+int					ft_print_s_maj(50,1391
 
 ft_print_size_t.c,63
 static int ft_point_space(16,932
@@ -198,8 +202,8 @@ int		ft_printf(18,977
 ft_putnbr_long.c,28
 void	ft_putnbr_long(15,912
 
-ft_putwchar.c,28
-void				ft_putwchar(17,952
+ft_putwchar.c,27
+void			ft_putwchar(17,952
 
 ft_putwstr.c,24
 void	ft_putwstr(18,976
@@ -210,18 +214,25 @@ int		ft_recursive_power(13,892
 ft_space_number.c,31
 int				ft_space_number(16,932
 
+ft_split_int_etoile.c,63
+unsigned int		*ft_split_int_etoile(ft_split_int_etoile17,938
+
 ft_type.c,157
 static int			ft_type_d(17,957
 static int			ft_type_x(41,1742
 static int			ft_type_z(65,2440
-static int			ft_type_s_u_o(88,3202
-int					ft_type(116,4014
+static int			ft_type_s_u_o(88,3238
+int					ft_type(116,4050
 
 ft_uitoa.c,35
 char				*ft_uitoa(ft_uitoa18,977
 
+ft_unimask.c,83
+static char		*ft_wcinmask(ft_wcinmask15,912
+char	*ft_unimask(ft_unimask44,1270
+
 ft_wstrlen.c,27
-size_t		ft_wstrlen(16,932
+size_t		ft_wstrlen(17,951
 
 main.c,17
 int main(19,997
