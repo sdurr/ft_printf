@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_s.c                                       :+:      :+:    :+:   */
+/*   calc_and_print_wcha.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/22 11:17:49 by sdurr            ###   ########.fr       */
+/*   Created: 2015/01/19 15:12:48 by sdurr             #+#    #+#             */
+/*   Updated: 2015/01/22 14:51:16 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "libftprintf.h"
-#include <stdarg.h>
 
-int	ft_print_modulo(char *s, int i, char **aff)
+int			ft_calc_wstr(unsigned int wc, int j, char *tmp)
 {
-	char	*tmp;
-	size_t	j;
+	int				i;
+	unsigned int	*k;
 
+	i = 0;
+	j = j - 1;
 	tmp = ft_strnew(13);
-	j = i;
-	i--;
-	while (s[i] >= '0' && s[i] <= '9')
-		tmp[j++] = s[i--];
-	ft_number_befor_char(" ", s, j, aff);
-	j = 0;
-	tmp = ft_strdup("%");
-
-	*aff = ft_strjoin(*aff, tmp);
-	return (0);
+	if (wc <= 127)
+		return (1);
+	tmp = ft_dectobin(wc);
+	tmp = ft_unimask(tmp, ft_strlen(tmp));
+	k = ft_split_int_etoile(tmp);
+	i = 0;
+	while (k[i] > 0)
+	{
+		k[i] = ft_bintodec(k[i]);
+		i++;
+	}
+	return (i);
 }

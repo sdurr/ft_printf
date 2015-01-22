@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:12:02 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/22 08:57:57 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/22 11:57:25 by sdurr            ###   ########.fr       */
 /*   Updated: 2015/01/12 10:04:43 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -71,6 +71,7 @@ int					ft_type(char *s, int i, va_list ap, char **aff);
 int					ft_max_plus(int i);
 int					ft_max_plus_ascii(int i);
 int					ft_calc_and_print_wchar(unsigned int wc, int j, char *tmp);
+int					ft_calc_wstr(unsigned int wc, int j, char *tmp);
 
 size_t				ft_llonglen(long long ll);
 size_t				ft_longlen(long l);

@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 15:12:48 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/22 09:04:02 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/22 11:55:22 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,12 @@
 
 int			ft_calc_and_print_wchar(unsigned int wc, int j, char *tmp)
 {
-	int i;
-	unsigned int *k;
+	int				i;
+	unsigned int	*k;
 
 	i = 0;
 	j = j - 1;
 	tmp = ft_strnew(13);
-	if (wc == 0)
-		return (1);
 	if (wc <= 127)
 	{
 		ft_putchar((char)wc);

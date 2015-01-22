@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2015/01/21 14:48:42 by sdurr            ###   ########.fr        #
+#    Updated: 2015/01/22 11:57:41 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -19,6 +19,7 @@ SRC				= ft_atoui.c \
 					ft_dectobin.c \
 					ft_split_int_etoile.c \
 					ft_calc_and_print_wchar.c \
+					ft_calc_wstr.c \
 					ft_bintodec.c \
 					ft_otoc.c \
 					ft_atoull.c \
