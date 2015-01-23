@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 15:05:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/20 12:30:23 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/23 11:14:34 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ static char		*ft_wcinmask(char *mask, char *wc)
 			i--;
 	}
 	i = ft_strlen(tmp) + 1;
-	while (i-- >=0)
+	while (i-- >= 0)
 		if (tmp[i] == 'x')
 			tmp[i] = '0';
 	return (tmp);
 }
 
-char	*ft_unimask(char *bin, size_t digit)
+char			*ft_unimask(char *bin, size_t digit)
 {
 	char	*mask_2;
 	char	*mask_3;
@@ -52,4 +52,3 @@ char	*ft_unimask(char *bin, size_t digit)
 		bin = ft_wcinmask(mask_4, bin);
 	return (bin);
 }
-

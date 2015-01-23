@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/21 14:58:29 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/23 19:06:20 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@ static int		ft_point_space(char *s, int i, char **aff, size_t stop)
 			tmp[j++] = s[i--];
 		tmp = ft_revers(tmp);
 		j = ft_atoi(tmp);
-		if (s[i] == ' ' || s[i + 1] == '0')
+		if ((s[i] == ' ' && j > 0 )|| (s[i + 1] == '0' && j > 0))
 		{
 			*aff = ft_strjoin(*aff, " ");
 			j--;
 		}
+		if (j > 0)
 		while (j-- > stop)
 		{
 			if (s[i + 1] == '0')
@@ -65,7 +66,7 @@ int				ft_print_d(va_list ap, char *s, int i, char **aff)
 			j--;
 	}
 	if ((s[i] == '.' && s[i + 1] == '0' && s[i - 1] == '%')
-		|| (s[i] == '.' && d == 0 && s[i - 1] == '%'))
+		|| (s[i] == '.' && d == 0 && s[i - 1] == '%' && j == 0))
 		return (0);
 	if (s[i] == ' ' && d >= 0)
 		*aff = ft_strjoin(*aff, " ");

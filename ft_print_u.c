@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/20 12:38:58 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/23 13:46:03 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,12 @@ int				ft_print_u(va_list ap, char *s, int i, char **aff)
 		tmp[j++] = s[i--];
 	tmp = ft_revers(tmp);
 	j = ft_atoi((const char *)tmp);
-	if (s[i] == '.' && s[i + 1] == '0')
-		return (0);
 	d = va_arg(ap, unsigned int);
-	if (d == 4294967295 && (*aff = ft_strjoin(*aff, "4294967295")))
+	if ((d == 4294967295 && (*aff = ft_strjoin(*aff, "4294967295"))) || (s[i] == '.' && s[i + 1] == '0'))
 		return (0);
 	if (d == 0)
 	{
-		if (s[i] != '.')
+		if (s[i] != '.' )
 			*aff = ft_strjoin (*aff, "0");
 		return (0);
 	}
