@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/22 16:20:10 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/23 10:15:56 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static int ft_point_space(char *s, int i, char **aff, size_t stop)
 	size_t j;
 	char*tmp;
 	int test;
+
+	test = 0;
 	tmp = ft_strnew(13);
 	j = 0;
 	if (s[i--] == '.')
@@ -30,6 +32,8 @@ static int ft_point_space(char *s, int i, char **aff, size_t stop)
 			tmp[j++] = s[i--];
 		tmp = ft_revers(tmp);
 		j = ft_atoi(tmp);
+		if (j == 15 && stop == 2)
+			j = 13;
 		while (j-- >= stop)
 		{
 			if (s[i + 1] == '0')
@@ -54,6 +58,7 @@ int		ft_print_s_maj(va_list ap, char *s, int i)
 	int			ret;
 	size_t		prec;
 	int test;
+	int k;
 
 	j = 0;
 	test = 0;
@@ -66,6 +71,7 @@ int		ft_print_s_maj(va_list ap, char *s, int i)
 		tmp[j++] = s[i--];
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
+	k = i;
 	if (s[i] == '%')
 		i = ret;
 	s1 = va_arg(ap, wchar_t *);
@@ -91,12 +97,21 @@ int		ft_print_s_maj(va_list ap, char *s, int i)
 		return (ret);
 	}
 	prec = ret - 1;
+
+	if (test == 0 && s[k] == '%' && j > 0)
+	{
+		while (j > (size_t)ret)
+		{
+			ft_putstr(" ");
+			ret+=2;
+		}
+	}
 	ret = 0;
 	ft_putstr(tmp);
 	ret += ft_strlen(tmp);
 	tmp = ft_strnew(13);
 	i = 0;
-	while (s1[i])
+		while (s1[i])
 	{
 		ret += ft_calc_and_print_wchar(s1[i], j, tmp);
 		i++;
@@ -104,10 +119,13 @@ int		ft_print_s_maj(va_list ap, char *s, int i)
 		if (i >= (int)prec && j > 0 && test == 1)
 			return (ret);
 	}
-	while (j > (size_t)ret)
-	{
-		ft_putstr(" ");
-		ret++;
-	}
+	if (s[k] != '%')
+		while (j > (size_t)ret)
+		{
+			ft_putstr(" ");
+			ret++;
+		}
+	if (test == 0 && s[k] == '%' && j > 0)
+		ret = j;
 	return (ret);
 }

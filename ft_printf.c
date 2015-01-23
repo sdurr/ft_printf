@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 18:18:27 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/23 11:10:03 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		ft_printf(char *format, ...)
 				test = 0;
 				i--;
 			}
-			if (test > 0)
+			if (test > 0 && test != -2)
 				ret = test + ret;
 		}
 		if (test == -2)
