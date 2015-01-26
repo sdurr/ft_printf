@@ -6,12 +6,11 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 22:44:50 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/21 11:15:24 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/24 11:44:42 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include "libft.h"
 #include <stdarg.h>
 
 static int			ft_point_space(char *s, int i, char **aff, size_t stop)

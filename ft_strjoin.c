@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_llitoa.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/08 15:14:24 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/24 11:56:00 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/04 14:43:55 by sdurr             #+#    #+#             */
+/*   Updated: 2015/01/24 11:55:04 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdlib.h>
-#include <limits.h>
+#include <string.h>
 
-char		*ft_llitoa(long long ll)
+char		*ft_strjoin(char const *s1, char const *s2)
 {
+	int		c;
 	char	*ret;
 	int		i;
 
 	i = 0;
-	if (!(ret = (char*)malloc(sizeof(char) * ft_llonglen(ll) + 1)))
+	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	if (ll < 0)
+	c = ft_strlen(s1) + ft_strlen(s2) + 1;
+	if (!(ret = (char *)malloc(sizeof(char*) * c)))
+		return (NULL);
+	while (*s1 != '\0')
 	{
-		ret[i++] = '-';
-		if (ll == LONG_LONG_MIN)
-			return ("-9223372036854775808");
-		ll *= -1;
+		ret[i++] = *s1;
+		s1++;
 	}
-	while (ll >= 10 && ll <= LONG_LONG_MAX)
+	while (*s2 != '\0')
 	{
-		ret[i++] = ll % 10 + '0';
-		ll /= 10;
+		ret[i++] = *s2;
+		s2++;
 	}
-	if (ll < 10)
-		ret[i++] = ll + '0';
-	ret = ft_revers(ret);
+	ret[i] = '\0';
 	return (ret);
 }

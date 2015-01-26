@@ -6,11 +6,11 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 16:21:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/21 14:01:14 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/24 11:52:23 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 char			*ft_op_base_8_unsigned_int(char *oc, int rest, unsigned int *q)
 {

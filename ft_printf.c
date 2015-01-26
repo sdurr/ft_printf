@@ -6,14 +6,13 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/23 13:41:56 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/24 11:33:14 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libftprintf.h"
 #include <stdarg.h>
-#include "libft.h"
 
 int		ft_printf(char *format, ...)
 {

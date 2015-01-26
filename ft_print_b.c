@@ -6,12 +6,11 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 21:15:03 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/21 15:05:38 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/24 11:32:07 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include "libft.h"
 
 static int			ft_number_befor(char *s1, char *s, int i, char **aff)
 {

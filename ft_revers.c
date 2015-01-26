@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_and_print_wcha.c                              :+:      :+:    :+:   */
+/*   ft_revers.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/19 15:12:48 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/24 11:55:36 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/13 09:54:05 by sdurr             #+#    #+#             */
+/*   Updated: 2015/01/24 11:59:05 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int			ft_calc_and_print_wchar(unsigned int wc, int j, char *tmp)
+char	*ft_revers(char *str)
 {
-	int				i;
-	unsigned int	*k;
+	int		len;
+	int		i;
+	char	tmp;
 
+	len = ft_strlen(str) - 1;
 	i = 0;
-	j = j - 1;
-	tmp = ft_strnew(13);
-	if (wc <= 127)
-	{
-		ft_putchar((char)wc);
-		return (1);
-	}
-	tmp = ft_dectobin(wc);
-	tmp = ft_unimask(tmp, ft_strlen(tmp));
-	k = ft_split_int_etoile(tmp);
-	i = 0;
-	while (k[i] > 0)
-	{
-		k[i] = ft_bintodec(k[i]);
+	if (str[i] == '-')
 		i++;
+	while (i < len)
+	{
+		tmp = str[i];
+		str[i] = str[len];
+		str[len] = tmp;
+		i++;
+		len--;
 	}
-	ft_putwchar(k);
-	return (i);
+	return (str);
 }

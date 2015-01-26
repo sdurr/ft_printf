@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_llitoa.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/08 15:14:24 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/24 11:56:00 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/12 17:11:27 by sdurr             #+#    #+#             */
+/*   Updated: 2015/01/24 11:35:17 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdlib.h>
-#include <limits.h>
 
-char		*ft_llitoa(long long ll)
+char	*ft_itoa(int n)
 {
 	char	*ret;
 	int		i;
 
 	i = 0;
-	if (!(ret = (char*)malloc(sizeof(char) * ft_llonglen(ll) + 1)))
+	if (!(ret = (char *)malloc(sizeof(char) * ft_long_int(n) + 1)))
 		return (NULL);
-	if (ll < 0)
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	if (n < 0)
 	{
 		ret[i++] = '-';
-		if (ll == LONG_LONG_MIN)
-			return ("-9223372036854775808");
-		ll *= -1;
+		n = n * -1;
 	}
-	while (ll >= 10 && ll <= LONG_LONG_MAX)
+	while (n >= 10 && n <= 2147483647)
 	{
-		ret[i++] = ll % 10 + '0';
-		ll /= 10;
+		ret[i++] = n % 10 + '0';
+		n = n / 10;
 	}
-	if (ll < 10)
-		ret[i++] = ll + '0';
+	if (n < 10)
+		ret[i++] = n + '0';
+	ret[i] = '\0';
 	ret = ft_revers(ret);
 	return (ret);
 }

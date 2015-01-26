@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_and_print_wcha.c                              :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/19 15:12:48 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/24 11:55:36 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/06 15:43:09 by sdurr             #+#    #+#             */
+/*   Updated: 2015/01/26 10:22:31 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include <string.h>
 
-int			ft_calc_and_print_wchar(unsigned int wc, int j, char *tmp)
+int		ft_atoi(const char *str)
 {
-	int				i;
-	unsigned int	*k;
+	int					nb;
+	int					i;
+	int					neg;
 
 	i = 0;
-	j = j - 1;
-	tmp = ft_strnew(13);
-	if (wc <= 127)
+	nb = 0;
+	neg = 1;
+	if (str)
 	{
-		ft_putchar((char)wc);
-		return (1);
+		while (str[i] >= 1 && str[i] <= 32)
+			i++;
+		if ((str[i] == '-') || (str[i] == '+'))
+		{
+			if (str[i] == '-')
+				neg = -1;
+			i++;
+		}
+		while (str[i] >= '0' && str[i] <= '9')
+			nb = (nb * 10) + (str[i++] - '0');
 	}
-	tmp = ft_dectobin(wc);
-	tmp = ft_unimask(tmp, ft_strlen(tmp));
-	k = ft_split_int_etoile(tmp);
-	i = 0;
-	while (k[i] > 0)
-	{
-		k[i] = ft_bintodec(k[i]);
-		i++;
-	}
-	ft_putwchar(k);
-	return (i);
+	return (nb * neg);
 }

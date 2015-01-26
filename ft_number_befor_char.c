@@ -6,13 +6,13 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 17:37:31 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/22 11:17:02 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/24 11:58:39 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
-#include "libft.h"
 #include <stdarg.h>
+#include "libftprintf.h"
 
 static int		ft_point_space(char *s, int i, char **aff, size_t stop)
 {

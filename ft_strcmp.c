@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_and_print_wcha.c                              :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/19 15:12:48 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/24 11:55:36 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/04 19:08:53 by sdurr             #+#    #+#             */
+/*   Updated: 2014/12/01 11:25:49 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include <string.h>
 
-int			ft_calc_and_print_wchar(unsigned int wc, int j, char *tmp)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	int				i;
-	unsigned int	*k;
-
-	i = 0;
-	j = j - 1;
-	tmp = ft_strnew(13);
-	if (wc <= 127)
+	while ((*s1 != '\0' && *s1 == *s2))
 	{
-		ft_putchar((char)wc);
-		return (1);
+		s1++;
+		s2++;
 	}
-	tmp = ft_dectobin(wc);
-	tmp = ft_unimask(tmp, ft_strlen(tmp));
-	k = ft_split_int_etoile(tmp);
-	i = 0;
-	while (k[i] > 0)
-	{
-		k[i] = ft_bintodec(k[i]);
-		i++;
-	}
-	ft_putwchar(k);
-	return (i);
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }

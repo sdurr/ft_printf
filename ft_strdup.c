@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_and_print_wcha.c                              :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/19 15:12:48 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/24 11:55:36 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/03 13:45:17 by sdurr             #+#    #+#             */
+/*   Updated: 2015/01/24 11:54:53 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdlib.h>
+#include <string.h>
 
-int			ft_calc_and_print_wchar(unsigned int wc, int j, char *tmp)
+char	*ft_strdup(const char *s1)
 {
-	int				i;
-	unsigned int	*k;
+	char	*dest;
+	int		cpt;
+	int		i;
 
 	i = 0;
-	j = j - 1;
-	tmp = ft_strnew(13);
-	if (wc <= 127)
+	cpt = ft_strlen(s1);
+	if (!(dest = (char *)malloc(sizeof(char*) * cpt + 1)))
+		return (NULL);
+	while (s1[i] != '\0')
 	{
-		ft_putchar((char)wc);
-		return (1);
-	}
-	tmp = ft_dectobin(wc);
-	tmp = ft_unimask(tmp, ft_strlen(tmp));
-	k = ft_split_int_etoile(tmp);
-	i = 0;
-	while (k[i] > 0)
-	{
-		k[i] = ft_bintodec(k[i]);
+		dest[i] = s1[i];
 		i++;
 	}
-	ft_putwchar(k);
-	return (i);
+	dest[i] = '\0';
+	return (dest);
 }

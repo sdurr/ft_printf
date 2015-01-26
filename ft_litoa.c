@@ -6,11 +6,10 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/12 17:11:27 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/08 15:40:29 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/24 11:59:45 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include <stdlib.h>
 #include "libftprintf.h"
 #include "limits.h"

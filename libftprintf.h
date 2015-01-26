@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:12:02 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/22 11:57:25 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/24 11:57:14 by sdurr            ###   ########.fr       */
 /*   Updated: 2015/01/12 10:04:43 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -14,9 +14,22 @@
 #ifndef		LIBFTPRINTF_H
 # define	LIBFTPRINTF_H
 
-# include "libft/libft.h"
 # include <stdarg.h>
 # include <wchar.h>
+# include <string.h>
+
+size_t				ft_strlen(const char *s);
+char				*ft_strnew(size_t size);
+char				*ft_strchr(const char *s, int c);
+char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strdup(const char *s1);
+char				*ft_revers(char *str);
+char				*ft_itoa(int n);
+int					ft_strcmp(const char *s1, const char *s2);
+int					ft_atoi(const char *str);
+int					ft_long_int(int n);
+void				ft_putstr(char const *s);
+void				ft_putchar(char c);
 
 char				*ft_litoa(long n);
 char				*ft_llitoa(long long ll);
@@ -87,7 +100,6 @@ unsigned int		*ft_split_int_etoile(char *s);
 unsigned long long	ft_atoull(const char *str);
 
 void				ft_putnbr_long(long n);
-void				ft_putwstr(wchar_t *s);
 void				ft_putwchar(unsigned int *c);
 
 #endif
