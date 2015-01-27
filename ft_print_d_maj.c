@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/24 11:43:49 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/27 12:54:34 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,12 @@ int			ft_print_d_maj(va_list ap, char *s, int i, char **aff)
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
 	d = va_arg(ap, long);
-	if (d < 0 && d > LONG_MIN && (*aff = ft_strjoin(*aff, "-")))
+	if (d < 0 && d >= LONG_MIN && (*aff = ft_strjoin(*aff, "-")))
 		d = d * -1;
 	if ((s[i] == '.' && s[i + 1] == '0' && s[i - 1] == '%'))
 		return (0);
+	if (j < ft_strlen (ft_litoa(d)) && d > 0 && j > 0)
+		j = ft_strlen (ft_litoa(d));
 	if (s[i] == ' ' && j == 0 && d >= 0)
 		*aff = ft_strjoin(*aff, " ");
 	ft_point_space(s, i, aff, j);
