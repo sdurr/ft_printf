@@ -6,11 +6,11 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 15:05:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/22 18:24:38 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/28 13:33:13 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 static char		*ft_wcinmask(char *mask, char *wc)
 {

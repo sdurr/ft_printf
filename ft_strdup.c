@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_op_base_16.c                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/13 16:21:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/24 11:52:23 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/03 13:45:17 by sdurr             #+#    #+#             */
+/*   Updated: 2015/01/24 11:54:53 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdlib.h>
+#include <string.h>
 
-char			*ft_op_base_8_unsigned_int(char *oc, int rest, unsigned int *q)
+char	*ft_strdup(const char *s1)
 {
+	char	*dest;
+	int		cpt;
 	int		i;
 
 	i = 0;
-	oc = ft_strnew(9);
-	while (*q != 0)
+	cpt = ft_strlen(s1);
+	if (!(dest = (char *)malloc(sizeof(char*) * cpt + 1)))
+		return (NULL);
+	while (s1[i] != '\0')
 	{
-		rest = *q % 8;
-		(*q > 7) ? (*q /= 8) : (*q = 0);
-		rest = rest + 48;
-		oc[i++] = rest;
+		dest[i] = s1[i];
+		i++;
 	}
-	oc[i--] = '\0';
-	oc = ft_revers(oc);
-	return (oc);
+	dest[i] = '\0';
+	return (dest);
 }

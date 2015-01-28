@@ -6,11 +6,11 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 20:41:22 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 18:20:29 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/24 11:59:29 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 void	ft_putnbr_long(long n)
 {

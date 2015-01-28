@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2015/01/22 18:43:08 by getrembl         ###   ########.fr        #
+#    Updated: 2015/01/28 13:52:10 by getrembl         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -14,8 +14,7 @@ NAME			= libftprintf.a
 
 CPATH			= ./src/
 
-SRC				= ft_atoui.c \
-					ft_unimask.c \
+SRC				= 	ft_unimask.c \
 					ft_dectobin.c \
 					ft_split_int_etoile.c \
 					ft_calc_and_print_wchar.c \
@@ -72,12 +71,24 @@ SRC				= ft_atoui.c \
 					ft_printf.c \
 					ft_putnbr_long.c \
 					ft_putwchar.c \
-					ft_putwstr.c \
 					ft_recursive_power.c \
 					ft_space_number.c \
 					ft_type.c \
 					ft_uitoa.c \
 					ft_wstrlen.c \
+					ft_atoi.c \
+					ft_atoull.c \
+					ft_itoa.c \
+					ft_putchar.c \
+					ft_putstr.c \
+					ft_revers.c \
+					ft_strchr.c \
+					ft_strcmp.c \
+					ft_strdup.c \
+					ft_strjoin.c \
+					ft_strlen.c \
+					ft_strnew.c \
+					ft_long_int.c \
 
 OBJ				= $(SRC:.c=.o)
 
@@ -87,20 +98,15 @@ export CFLAGS	= -Wall -Wextra -Werror
 
 HPATH       	= -I libft
 
-LIBFT_DIR		= libft
+LIB				= -lftprintf
 
-LIBFT			= (LIBFT_DIR) /libft
-
-LIB				= -lft -lftprintf
-
-all			:	$(NAME) $(LIBFT)
+all			:	$(NAME)
 
 $(NAME)		:	$(OBJ)
 					ar rc $(NAME) $(OBJ)
 					ranlib $(NAME)
 
-$(LIBFT)	:
-					@(cd $(LIBFT_DIR) && $(MAKE) -f Makefile)
+
 
 .c.o		:	$(CPATH)%.c
 					$(CC) $(CFLAGS) $(HPATH) -c $(SRC) $(LIB)
@@ -108,11 +114,8 @@ $(LIBFT)	:
 clean		:
 					rm -rf $(OBJ)
 					rm -rf *~
-					@(cd $(LIBFT_DIR) && $(MAKE) $@)
 
 fclean		:	clean
 					rm -rf $(NAME)
-					@(cd $(LIBFT_DIR) && $(MAKE) $@)
 
 re			:	fclean all
-					@(cd $(LIBFT_DIR) && $(MAKE) $@)

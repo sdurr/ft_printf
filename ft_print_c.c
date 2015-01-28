@@ -6,11 +6,11 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/22 18:38:00 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/28 13:47:34 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 #include <stdarg.h>
 
 static int		ft_point_space(char *s, int i, char **aff)
@@ -21,6 +21,7 @@ static int		ft_point_space(char *s, int i, char **aff)
 
 	tmp = ft_strnew(13);
 	j = 0;
+	test = 0;
 	if (s[i--] == '.')
 	{
 		while (s[i] >= '0' && s[i] <= '9')
@@ -31,6 +32,8 @@ static int		ft_point_space(char *s, int i, char **aff)
 		while (j-- > 1)
 			(s[i + 1] != '0') ? (*aff = ft_strjoin(*aff, " "))
 				: (*aff = ft_strjoin(*aff, "0"));
+		if (s[i + 1] != '0')
+		return (-2);
 	}
 	return (test);
 }
@@ -69,7 +72,13 @@ int				ft_print_c(va_list ap, char *s, int i, char **aff)
 	if ((c == 0 && j == 0 && s[i] != ' ' && s[i + 1] != '0' && test == 0)
 		|| (c == 0 && s[i] == '.' && j == 0 && test == 0))
 		return (1);
-	if (s[i + 1] == '0' && (j--))
+	if (test == -2)
+	{
+		if (c != 0)
+			ft_putchar (c);
+		return (1);
+	}
+		if (s[i + 1] == '0' && (j--))
 		*aff = ft_strjoin (*aff, " ");
 	while (j-- > 0)
 		(s[i + 1] != '0') ? (*aff = ft_strjoin (*aff, " "))

@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_op_base_16.c                                    :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/13 16:21:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/24 11:52:23 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/04 10:11:09 by sdurr             #+#    #+#             */
+/*   Updated: 2014/11/28 11:53:55 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include <stdlib.h>
+#include <string.h>
 
-char			*ft_op_base_8_unsigned_int(char *oc, int rest, unsigned int *q)
+char		*ft_strnew(size_t size)
 {
+	char	*ret;
 	int		i;
 
 	i = 0;
-	oc = ft_strnew(9);
-	while (*q != 0)
+	if (!(ret = (char *)malloc(sizeof(char*) * size)))
+		return (NULL);
+	while (size != 0)
 	{
-		rest = *q % 8;
-		(*q > 7) ? (*q /= 8) : (*q = 0);
-		rest = rest + 48;
-		oc[i++] = rest;
+		ret[i] = '\0';
+		size--;
+		i++;
 	}
-	oc[i--] = '\0';
-	oc = ft_revers(oc);
-	return (oc);
+	return (ret);
 }

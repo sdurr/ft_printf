@@ -6,11 +6,11 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 11:56:59 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/21 15:06:43 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/24 11:55:50 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 unsigned long long			ft_atoull(const char *str)
 {

@@ -6,11 +6,11 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 14:50:46 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/22 15:34:25 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/28 13:51:35 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 char				*ft_dectobin(unsigned int dec)
 {
