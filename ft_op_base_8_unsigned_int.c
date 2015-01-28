@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_op_base_16.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 11:56:02 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/22 15:37:10 by getrembl         ###   ########.fr       */
+/*   Created: 2015/01/13 16:21:23 by sdurr             #+#    #+#             */
+/*   Updated: 2015/01/21 14:01:14 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <wchar.h>
-#include <locale.h>
+#include "libft.h"
 
-void			ft_putwchar(unsigned int *k)
+char			*ft_op_base_8_unsigned_int(char *oc, int rest, unsigned int *q)
 {
-	int			index;
+	int		i;
 
-	index = 0;
-	while (k[index] > 0)
-		write(1, &(k[index++]), 1);
+	i = 0;
+	oc = ft_strnew(9);
+	while (*q != 0)
+	{
+		rest = *q % 8;
+		(*q > 7) ? (*q /= 8) : (*q = 0);
+		rest = rest + 48;
+		oc[i++] = rest;
+	}
+	oc[i--] = '\0';
+	oc = ft_revers(oc);
+	return (oc);
 }

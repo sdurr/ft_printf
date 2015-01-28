@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_max_plus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 11:56:02 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/22 15:37:10 by getrembl         ###   ########.fr       */
+/*   Created: 2015/01/13 15:18:16 by sdurr             #+#    #+#             */
+/*   Updated: 2015/01/21 15:07:28 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <wchar.h>
-#include <locale.h>
-
-void			ft_putwchar(unsigned int *k)
+int			ft_max_plus_ascii(int i)
 {
-	int			index;
-
-	index = 0;
-	while (k[index] > 0)
-		write(1, &(k[index++]), 1);
+	if (i > 127)
+		while (i > 127)
+			i = 127 - 255 + (i - 127) - 1;
+	if (i < -128)
+		while (i < -128)
+			i = 127 + 255 + (i - 127) + 1;
+	return (i);
 }

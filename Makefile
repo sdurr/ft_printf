@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2015/01/19 15:18:17 by sdurr            ###   ########.fr        #
+#    Updated: 2015/01/22 18:43:08 by getrembl         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -19,6 +19,7 @@ SRC				= ft_atoui.c \
 					ft_dectobin.c \
 					ft_split_int_etoile.c \
 					ft_calc_and_print_wchar.c \
+					ft_calc_wstr.c \
 					ft_bintodec.c \
 					ft_otoc.c \
 					ft_atoull.c \
@@ -27,10 +28,15 @@ SRC				= ft_atoui.c \
 					ft_llonglen.c \
 					ft_longlen.c \
 					ft_max_plus.c \
+					ft_max_plus_ascii.c \
 					ft_max_plus_unsigned.c \
 					ft_nbudigit.c \
 					ft_number_befor_char.c \
 					ft_op_base_16.c \
+					ft_op_base_8.c \
+					ft_op_base_8_long.c \
+					ft_op_base_8_ulong.c \
+					ft_op_base_8_uint.c \
 					ft_op_base_16_int.c \
 					ft_op_base_16_size_t.c \
 					ft_op_base_16_long.c \

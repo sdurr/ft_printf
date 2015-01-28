@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/15 11:45:50 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/22 18:54:24 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,8 @@ int				ft_print_u(va_list ap, char *s, int i, char **aff)
 	}
 	ft_point_space(s, i, aff, j);
 	while (j-- > ft_strlen(ft_litoa(d)) && d > 0)
-	{
-		if (s[i] == '.' || s[i + 1] == '0')
-			*aff = ft_strjoin(*aff, "0");
-		else
-			*aff = ft_strjoin(*aff, " ");
-	}
+		(s[i] == '.' || s[i + 1] == '0') ? (*aff = ft_strjoin(*aff, "0"))
+			: (*aff = ft_strjoin(*aff, " "));
 	*aff = ft_strjoin(*aff, ft_litoa(d));
 	return (0);
 }

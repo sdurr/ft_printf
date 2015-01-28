@@ -5,35 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/11 11:29:33 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 10:35:11 by sdurr            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_print_x.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/11 10:47:51 by sdurr            ###   ########.fr       */
-/*   Updated: 2014/12/29 22:47:45 by getrembl         ###   ########.fr       */
+/*   Created: 2015/01/20 16:03:22 by sdurr             #+#    #+#             */
+/*   Updated: 2015/01/21 10:58:44 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "libftprintf.h"
 #include <stdarg.h>
 
-static int ft_number_befor(char *s1, char *s, int i, char **aff)
+static int		ft_number_befor(char *s1, char *s, int i, char **aff)
 {
-	char *tmp;
-	size_t j;
+	char		*tmp;
+	size_t		j;
 
 	j = 0;
 	tmp = ft_strnew(13);
-	i--;
 	while (s[i] >= '0' && s[i] <= '9')
 		tmp[j++] = s[i--];
 	tmp = ft_revers(tmp);
@@ -42,13 +29,12 @@ static int ft_number_befor(char *s1, char *s, int i, char **aff)
 		*aff = ft_strjoin (*aff, "0x0");
 	if ((s[i] == '.' && (ft_strcmp(s1, "0x") == 0)) || s[i + 1] == '0')
 		*aff = ft_strjoin (*aff, "0x");
-	while (j > ft_strlen(s1))
+	while (j-- > ft_strlen(s1))
 	{
 		if (s[i] == '.' || s[i + 1] == '0')
 			*aff = ft_strjoin (*aff, "0");
 		else
 			*aff = ft_strjoin (*aff, " ");
-		j--;
 	}
 	if (s[i] == '.' && ft_atoi(tmp) > 0)
 		*aff = ft_strjoin (*aff, "00");
@@ -57,88 +43,65 @@ static int ft_number_befor(char *s1, char *s, int i, char **aff)
 	return (0);
 }
 
-static int ft_print_p_negative(int decimal, char *s, int j, char **aff)
+static int		ft_print_p_negative(int decimal, char *s, int j, char **aff)
 {
-	unsigned int quotient;
-	int rest;
-	int i;
-	char*ret;
-	char*hexa;
+	unsigned int	quotient;
+	int				i;
+	char			*hexa;
 
 	if (s)
 		j = j - 1;
 	quotient = 4294967296 + decimal;
 	hexa = ft_strnew(9);
 	i = 0;
-	while (quotient != 0)
-	{
-		rest = quotient % 16;
-		(quotient > 15) ? (quotient /= 16) : (quotient = 0);
-		(rest < 10) ? (rest += 48) : (rest += 87);
-		hexa[i++] = rest;
-	}
-	hexa[i--] = '\0';
-	ret = ft_strnew(ft_strlen(hexa) + 1);
-	rest = 0;
-	while (i >= 0)
-		ret[rest++] = hexa[i--];
+	hexa = ft_op_base_16(hexa, 0, &quotient);
+	hexa = ft_revers(hexa);
 	*aff = ft_strjoin(*aff, "0x7");
-	i = ft_strlen(ret);
+	i = ft_strlen(hexa);
 	while (i++ < 11)
 		*aff = ft_strjoin(*aff, "f");
-	*aff = ft_strjoin(*aff, ret);
+	*aff = ft_strjoin(*aff, hexa);
 	return (0);
 }
 
-int ft_print_p(va_list ap, char *s, int j, char **aff)
+static void		test_aff(char *s, char *hexa, int j, char **aff)
 {
-	char *hexa;
-	int quotient;
-	int rest;
-	int i;
-	char *ret;
-
-	quotient = va_arg(ap, int);
-	i = 0;
-	ret = ft_strnew(1);
-	if (quotient < 0)
-		return (ft_print_p_negative(quotient, s, j, aff));
-	hexa = ft_strnew(9);
-	if (quotient == 0)
-	{
-		i = j;
-		while (s[i] != '%')
-			i--;
-		ret = "0x0";
-		if (s[i + 1] == '.' || s[i + 1] == '0')
-			ret = "0x";
-		if ((quotient = ft_number_befor(ret, s, j, aff)) == -1)
-			return (0);
-		*aff = ft_strjoin(*aff, "0x0");
-		return (0);
-	}
-	while (quotient != 0)
-	{
-		rest = quotient % 16;
-		(quotient > 15) ? (quotient /= 16) : (quotient = 0);
-		(rest < 10) ? (rest += 48) : (rest += 87);
-		hexa[i++] = rest;
-	}
-	hexa[i--] = '\0';
-	ret = ft_strnew(ft_strlen(hexa) + 1);
-	rest = 0;
-	while (i >= 0)
-		ret[rest++] = hexa[i--];
-	if (s[j - 1] != 'l' && ft_strlen(ret) != 7 && s[j - 1] != ' ' && s[j - 1] != '+')
+	if (s[j - 1] != 'l' && ft_strlen(hexa) != 7
+		&& s[j - 1] != ' ' && s[j - 1] != '+')
 		*aff = ft_strjoin(*aff, "0x7");
-	else if (ft_strchr(*aff, 'x') == NULL && ft_strlen(ret) != 7)
+	else if (ft_strchr(*aff, 'x') == NULL && ft_strlen(hexa) != 7)
 		*aff = ft_strjoin(*aff, "0x");
 	else
 		*aff = ft_strjoin(*aff, "0x10");
-	i = ft_strlen(ret);
-	if (i != 7 && s[j - 1] != 'l' && s[j - 1] != ' ' && s[j - 1] != '+')
+}
+
+int				ft_print_p(va_list ap, char *s, int j, char **aff)
+{
+	char		*hexa;
+	int			quotient;
+	int			i;
+
+	quotient = va_arg(ap, int);
+	if (quotient < 0)
+		return (ft_print_p_negative(quotient, s, j, aff));
+	hexa = ft_strnew(9);
+	if (quotient == 0 && (i = j))
+	{
+		while (s[i] != '%')
+			i--;
+		if (((hexa = "0x0") && s[i + 1] == '.') || s[i + 1] == '0')
+			hexa = "0x";
+		if ((quotient = ft_number_befor(hexa, s, j - 1, aff)) != -1)
+			*aff = ft_strjoin(*aff, "0x0");
+		return (0);
+	}
+	hexa = ft_op_base_16(hexa, 0, (unsigned int *)&quotient);
+	hexa = ft_revers(hexa);
+	test_aff(s, hexa, j, aff);
+	i = ft_strlen(hexa);
+	if (i > 7 && s[j - 1] != 'l' && s[j - 1] != ' ' && s[j - 1] != '+')
 		while (i++ < 11)
 			*aff = ft_strjoin(*aff, "f");
-	*aff = ft_strjoin(*aff, ret);
+	*aff = ft_strjoin(*aff, hexa);
 	return (0);
 }

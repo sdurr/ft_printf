@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 15:05:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/22 11:11:13 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/22 18:24:38 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ static char		*ft_wcinmask(char *mask, char *wc)
 	return (tmp);
 }
 
-char	*ft_unimask(char *bin, size_t digit)
+char			*ft_unimask(char *bin, size_t digit)
 {
-	char	*mask_2;
-	char	*mask_3;
-	char	*mask_4;
+	char		*mask_2;
+	char		*mask_3;
+	char		*mask_4;
 
 	mask_2 = ft_strdup("110xxxxx10xxxxxxx");
 	mask_3 = ft_strdup("1110xxxx10xxxxxx10xxxxxxx");
@@ -52,4 +52,3 @@ char	*ft_unimask(char *bin, size_t digit)
 		bin = ft_wcinmask(mask_4, bin);
 	return (bin);
 }
-
