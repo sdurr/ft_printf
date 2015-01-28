@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/27 11:37:50 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/28 14:07:55 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int		ft_point_space(char *s, int i, char **aff, size_t stop)
 			tmp[j++] = s[i--];
 		tmp = ft_revers(tmp);
 		j = ft_atoi(tmp);
-		if ((s[i] == ' ' && j > 0 ) || (s[i + 1] == '0' && j > 0))
+		if ((s[i] == ' ' && j > 0) || (s[i + 1] == '0' && j > 0))
 		{
 			*aff = ft_strjoin(*aff, " ");
 			j--;
@@ -79,7 +79,7 @@ int				ft_print_d(va_list ap, char *s, int i, char **aff)
 	if (s[i] == ' ' && d >= -9)
 		*aff = ft_strjoin(*aff, " ");
 	if (test == -1)
-			ft_point_space(s, test, aff, j);
+		ft_point_space(s, test, aff, j);
 	else
 		ft_point_space(s, i, aff, j);
 	if (s[i] == '-')

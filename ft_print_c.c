@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/28 13:47:34 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/28 14:00:18 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int		ft_point_space(char *s, int i, char **aff)
 			(s[i + 1] != '0') ? (*aff = ft_strjoin(*aff, " "))
 				: (*aff = ft_strjoin(*aff, "0"));
 		if (s[i + 1] != '0')
-		return (-2);
+			return (-2);
 	}
 	return (test);
 }
@@ -70,15 +70,13 @@ int				ft_print_c(va_list ap, char *s, int i, char **aff)
 	c = (char)va_arg(ap, int);
 	test = ft_point_space(s, i, aff);
 	if ((c == 0 && j == 0 && s[i] != ' ' && s[i + 1] != '0' && test == 0)
-		|| (c == 0 && s[i] == '.' && j == 0 && test == 0))
-		return (1);
-	if (test == -2)
+		|| (c == 0 && s[i] == '.' && j == 0 && test == 0) || (test == -2))
 	{
 		if (c != 0)
 			ft_putchar (c);
 		return (1);
 	}
-		if (s[i + 1] == '0' && (j--))
+	if (s[i + 1] == '0' && (j--))
 		*aff = ft_strjoin (*aff, " ");
 	while (j-- > 0)
 		(s[i + 1] != '0') ? (*aff = ft_strjoin (*aff, " "))

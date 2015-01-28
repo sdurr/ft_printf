@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/28 13:42:27 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/28 14:28:57 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,8 @@ static int		ft_point_space(char *s1, char *s, int i, char **aff)
 				*aff = ft_strjoin(*aff, " ");
 		else
 			while (j--)
-			{
-				if (s[i + 1] != '0')
-					*aff = ft_strjoin(*aff, " ");
-				else
-					*aff = ft_strjoin(*aff, "0");
-			}
+				(s[i + 1] != '0') ? (*aff = ft_strjoin(*aff, " "))
+					: (*aff = ft_strjoin(*aff, "0"));
 	}
 	return (test);
 }
@@ -71,12 +67,8 @@ int				ft_print_s(va_list ap, char *s, int i, char **aff)
 		}
 	else
 		while (j--)
-		{
-			if (s[i - 1] != '0')
-				*aff = ft_strjoin(*aff, " ");
-			else
-				*aff = ft_strjoin(*aff, "0");
-		}
+			(s[i - 1] != '0') ? (*aff = ft_strjoin(*aff, " "))
+				: (*aff = ft_strjoin(*aff, "0"));
 	if (s1)
 		*aff = ft_strjoin(*aff, s1);
 	return (0);

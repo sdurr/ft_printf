@@ -6,12 +6,13 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/28 13:35:29 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/28 14:16:37 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include "libftprintf.h"
+#include "limits.h"
 
 static int		ft_point_space(char *s, int i, char **aff, size_t stop)
 {
@@ -47,11 +48,10 @@ int				ft_print_u(va_list ap, char *s, int i, char **aff)
 	tmp = ft_revers(tmp);
 	j = ft_atoi((const char *)tmp);
 	d = va_arg(ap, unsigned int);
-	if ((d == 4294967295 && (*aff = ft_strjoin(*aff, "4294967295"))) || (s[i] == '.' && s[i + 1] == '0'))
-		return (0);
-	if (d == 0)
+	if ((d == UINT_MAX && (*aff = ft_strjoin(*aff, "4294967295")))
+		|| (s[i] == '.' && s[i + 1] == '0') || (d == 0))
 	{
-		if (s[i] != '.' )
+		if (d == 0 && s[i] != '.')
 			*aff = ft_strjoin (*aff, "0");
 		return (0);
 	}

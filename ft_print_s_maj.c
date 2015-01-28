@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/28 13:39:40 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/28 14:19:05 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int		ft_point_space(char *s, int i, char **aff, size_t stop)
 	if (s[i + 1] == '0')
 		return (-2);
 	if (test == 1)
-			return (1);
+		return (1);
 	return (0);
 }
 
@@ -51,8 +51,8 @@ int				ft_print_s_maj(va_list ap, char *s, size_t i)
 	size_t		j;
 	int			ret;
 	size_t		prec;
-	int test;
-	int k;
+	int			test;
+	int			k;
 
 	j = 0;
 	test = 0;
@@ -90,13 +90,12 @@ int				ft_print_s_maj(va_list ap, char *s, size_t i)
 		return (ret);
 	}
 	prec = ret - 1;
-
 	if (test == 0 && s[k] == '%' && j > 0)
 	{
 		while (j > (size_t)ret)
 		{
 			ft_putstr(" ");
-			ret+=2;
+			ret += 2;
 		}
 	}
 	ret = 0;
@@ -104,12 +103,12 @@ int				ft_print_s_maj(va_list ap, char *s, size_t i)
 	ret += ft_strlen(tmp);
 	tmp = ft_strnew(13);
 	i = 0;
-		while (s1[i])
+	while (s1[i])
 	{
 		ret += ft_calc_and_print_wchar(s1[i], tmp);
 		i++;
 		tmp = ft_strnew(13);
-		if (i >= (int)prec && j > 0 && test == 1)
+		if (i >= prec && j > 0 && test == 1)
 			return (ret);
 	}
 	if (s[k] != '%')
