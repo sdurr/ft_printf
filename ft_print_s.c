@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/28 14:28:57 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/30 09:31:02 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,15 @@ int				ft_print_s(va_list ap, char *s, int i, char **aff)
 	int			test;
 
 	j = 0;
-	tmp = ft_strnew(13);
-	i--;
-	while (s[i] >= '0' && s[i] <= '9')
-		tmp[j++] = s[i--];
+	if ((tmp = ft_strnew(13)) && (i--))
+		while (s[i] >= '0' && s[i] <= '9')
+			tmp[j++] = s[i--];
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);
 	s1 = va_arg(ap, char *);
 	test = ft_point_space(s1, s, i, aff);
-	if ((!s1 && test == 0) || (!ap && test == 0))
-	{
-		*aff = ft_strjoin(*aff, "(null)");
+	if ((!s1 && test == 0 && (*aff = ft_strjoin(*aff, "(null)"))))
 		return (0);
-	}
 	if (s1)
 		while (j > ft_strlen(s1))
 		{

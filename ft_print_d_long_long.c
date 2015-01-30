@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/28 13:45:07 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/30 09:07:33 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ int				ft_print_d_long_long(va_list ap, char *s, int i, char **aff)
 		return (0);
 	if (d < 0 && d > -9223372036854775807 && (*aff = ft_strjoin(*aff, "-")))
 		d = d * -1;
-	if ((s[i] == '.' && s[i + 1] == '0' && s[i - 1] == '%')
-		|| (s[i] == '.' && d == 0))
+	if (s[i] == '.' && s[i + 1] == '0' && s[i - 1] == '%')
 		return (0);
 	if (s[i] == ' ' && j == 0 && d >= 0)
 		*aff = ft_strjoin(*aff, " ");

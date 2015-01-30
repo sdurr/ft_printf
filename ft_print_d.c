@@ -1,3 +1,4 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -6,7 +7,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/28 14:07:55 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/30 09:16:55 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +50,12 @@ static int		ft_point_space(char *s, int i, char **aff, size_t stop)
 int				ft_print_d(va_list ap, char *s, int i, char **aff)
 {
 	int			d;
-	char		*tmp;
 	size_t		j;
-	int			test;
+	char		*tmp;
 
 	j = 0;
 	tmp = ft_strnew(13);
 	i--;
-	test = 0;
 	while (s[i] >= '0' && s[i] <= '9')
 		tmp[j++] = s[i--];
 	tmp = ft_revers(tmp);
@@ -67,21 +66,15 @@ int				ft_print_d(va_list ap, char *s, int i, char **aff)
 	{
 		*aff = ft_strjoin(*aff, "-");
 		d = d * -1;
-		test = -1;
 		if (j > 0 && s[i] != '.')
 			j--;
 	}
-	if (j < ft_strlen (ft_itoa(d)) && d > 0)
-		j = ft_strlen (ft_itoa(d));
 	if ((s[i] == '.' && s[i + 1] == '0' && s[i - 1] == '%')
 		|| (s[i] == '.' && d == 0 && s[i - 1] == '%' && j == 0))
 		return (0);
 	if (s[i] == ' ' && d >= -9)
 		*aff = ft_strjoin(*aff, " ");
-	if (test == -1)
-		ft_point_space(s, test, aff, j);
-	else
-		ft_point_space(s, i, aff, j);
+	ft_point_space(s, i, aff, j);
 	if (s[i] == '-')
 		*aff = ft_strjoin(*aff, ft_itoa(d));
 	if (s[i] == ' ' && j > 0)
