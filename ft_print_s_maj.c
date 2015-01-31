@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/28 14:19:05 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/31 11:04:30 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,7 @@ int				ft_print_s_maj(va_list ap, char *s, size_t i)
 	test = 0;
 	ret = i;
 	tmp = ft_strnew(13);
-	i--;
-	if (s[i] == '.')
+	if (s[--i] == '.')
 		test = 1;
 	while (s[i] >= '0' && s[i] <= '9')
 		tmp[j++] = s[i--];
@@ -75,12 +74,8 @@ int				ft_print_s_maj(va_list ap, char *s, size_t i)
 	}
 	prec = 0;
 	ret = 0;
-	tmp = ft_strnew(13);
 	while (s1[ret] && prec <= j)
-	{
-		prec += ft_calc_wstr(s1[ret], j, tmp);
-		ret++;
-	}
+		prec += ft_calc_wstr(s1[ret++], j, tmp);
 	tmp = ft_strnew(13);
 	if ((test = ft_point_space(s, i, &tmp, ret)) == -2)
 	{
@@ -91,23 +86,18 @@ int				ft_print_s_maj(va_list ap, char *s, size_t i)
 	}
 	prec = ret - 1;
 	if (test == 0 && s[k] == '%' && j > 0)
-	{
 		while (j > (size_t)ret)
 		{
 			ft_putstr(" ");
 			ret += 2;
 		}
-	}
 	ret = 0;
 	ft_putstr(tmp);
 	ret += ft_strlen(tmp);
-	tmp = ft_strnew(13);
 	i = 0;
 	while (s1[i])
 	{
-		ret += ft_calc_and_print_wchar(s1[i], tmp);
-		i++;
-		tmp = ft_strnew(13);
+		ret += ft_calc_and_print_wchar(s1[i++], tmp);
 		if (i >= prec && j > 0 && test == 1)
 			return (ret);
 	}
