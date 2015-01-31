@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/31 11:04:30 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/31 18:38:29 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,14 @@ static int		ft_point_space(char *s, int i, char **aff, size_t stop)
 	return (0);
 }
 
+static int		ft_suite(int ret, char *tmp)
+{
+	ret = 0;
+	ft_putstr(tmp);
+	ret += ft_strlen(tmp);
+	return (ret);
+}
+
 int				ft_print_s_maj(va_list ap, char *s, size_t i)
 {
 	wchar_t		*s1;
@@ -78,12 +86,7 @@ int				ft_print_s_maj(va_list ap, char *s, size_t i)
 		prec += ft_calc_wstr(s1[ret++], j, tmp);
 	tmp = ft_strnew(13);
 	if ((test = ft_point_space(s, i, &tmp, ret)) == -2)
-	{
-		ret = 0;
-		ft_putstr(tmp);
-		ret += ft_strlen(tmp);
-		return (ret);
-	}
+		return (ft_suite(ret, tmp));
 	prec = ret - 1;
 	if (test == 0 && s[k] == '%' && j > 0)
 		while (j > (size_t)ret)
@@ -91,9 +94,8 @@ int				ft_print_s_maj(va_list ap, char *s, size_t i)
 			ft_putstr(" ");
 			ret += 2;
 		}
-	ret = 0;
 	ft_putstr(tmp);
-	ret += ft_strlen(tmp);
+	ret = ft_strlen(tmp);
 	i = 0;
 	while (s1[i])
 	{

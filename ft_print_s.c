@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/30 09:31:02 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/31 18:33:41 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,24 @@ static int		ft_point_space(char *s1, char *s, int i, char **aff)
 	return (test);
 }
 
+static void		ft_suite_2(size_t j, char **aff, char s, char *s1)
+{
+	while (j > ft_strlen(s1))
+	{
+		if (s != '.')
+			*aff = ft_strjoin (*aff, " ");
+		j--;
+	}
+	*aff = ft_strjoin(*aff, s1);
+}
+
+static void		ft_suite(size_t j, char **aff, char *s, int i)
+{
+	while (j--)
+		(s[i - 1] != '0') ? (*aff = ft_strjoin(*aff, " "))
+			: (*aff = ft_strjoin(*aff, "0"));
+}
+
 int				ft_print_s(va_list ap, char *s, int i, char **aff)
 {
 	char		*s1;
@@ -55,17 +73,8 @@ int				ft_print_s(va_list ap, char *s, int i, char **aff)
 	if ((!s1 && test == 0 && (*aff = ft_strjoin(*aff, "(null)"))))
 		return (0);
 	if (s1)
-		while (j > ft_strlen(s1))
-		{
-			if (s[i] != '.')
-				*aff = ft_strjoin (*aff, " ");
-			j--;
-		}
+		ft_suite_2(j, aff, s[i], s1);
 	else
-		while (j--)
-			(s[i - 1] != '0') ? (*aff = ft_strjoin(*aff, " "))
-				: (*aff = ft_strjoin(*aff, "0"));
-	if (s1)
-		*aff = ft_strjoin(*aff, s1);
+		ft_suite(j, aff, s, i);
 	return (0);
 }

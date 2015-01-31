@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/31 11:00:33 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/31 18:25:54 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ static void		test_r(char **aff, int d, char s, int test)
 		*aff = ft_strjoin(*aff, ft_itoa(d));
 }
 
+static int		ft_suite(int d, char s, char **aff, size_t j)
+{
+	d = ft_max_plus_ascii(d);
+	if (s == ' ' && j == 0 && d >= 0)
+		*aff = ft_strjoin(*aff, " ");
+	return (d);
+}
+
 int				ft_print_d_h(va_list ap, char *s, int i, char **aff)
 {
 	int			d;
@@ -61,9 +69,7 @@ int				ft_print_d_h(va_list ap, char *s, int i, char **aff)
 	j = ft_atoi(tmp);
 	d = va_arg(ap, int);
 	if (test == 1)
-		d = ft_max_plus_ascii(d);
-	if (s[i] == ' ' && j == 0 && d >= 0)
-		*aff = ft_strjoin(*aff, " ");
+		d = ft_suite(d, s[i], aff, j);
 	test = ft_point_space(s, i, aff, j);
 	test_r(aff, d, s[i], test);
 	while (j-- > (ft_strlen(ft_itoa(d))))

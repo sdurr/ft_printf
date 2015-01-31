@@ -6,7 +6,7 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/22 18:22:45 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/28 13:32:59 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/01/31 18:39:29 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,4 @@ unsigned long long	ft_atoull(const char *str);
 
 void				ft_putnbr_long(long n);
 void				ft_putwchar(unsigned int *c);
-
 #endif
