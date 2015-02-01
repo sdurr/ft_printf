@@ -6,11 +6,11 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 16:21:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/13 17:56:11 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/24 11:51:18 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 static char		*ft_op_long(char *hexa, int rest, unsigned long long *q)
 {

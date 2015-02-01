@@ -6,12 +6,12 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/20 15:33:20 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/24 11:46:58 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
-#include "libft.h"
+#include "libftprintf.h"
 
 int			ft_print_size_t(va_list ap, char *s, int i, char **aff)
 {

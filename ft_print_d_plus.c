@@ -6,11 +6,14 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 13:57:27 by sdurr             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2015/01/22 18:51:34 by getrembl         ###   ########.fr       */
+=======
+/*   Updated: 2015/01/24 11:26:54 by sdurr            ###   ########.fr       */
+>>>>>>> 5fedfb12a0f083662ba9297865fa4cdfbcf4e522
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include <stdarg.h>
 #include "libftprintf.h"
 

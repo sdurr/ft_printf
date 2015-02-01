@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_op_base_16.c                                    :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/13 16:21:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/24 11:52:23 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/04 19:08:53 by sdurr             #+#    #+#             */
+/*   Updated: 2014/12/01 11:25:49 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include <string.h>
 
-char			*ft_op_base_8_unsigned_int(char *oc, int rest, unsigned int *q)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	int		i;
-
-	i = 0;
-	oc = ft_strnew(9);
-	while (*q != 0)
+	while ((*s1 != '\0' && *s1 == *s2))
 	{
-		rest = *q % 8;
-		(*q > 7) ? (*q /= 8) : (*q = 0);
-		rest = rest + 48;
-		oc[i++] = rest;
+		s1++;
+		s2++;
 	}
-	oc[i--] = '\0';
-	oc = ft_revers(oc);
-	return (oc);
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }

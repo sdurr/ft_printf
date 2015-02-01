@@ -6,12 +6,15 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2015/01/22 19:17:53 by getrembl         ###   ########.fr       */
+=======
+/*   Updated: 2015/01/27 18:24:20 by sdurr            ###   ########.fr       */
+>>>>>>> 5fedfb12a0f083662ba9297865fa4cdfbcf4e522
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
-#include "libft.h"
 #include "libftprintf.h"
 #include <limits.h>
 
@@ -51,6 +54,8 @@ int			ft_print_d_maj(va_list ap, char *s, int i, char **aff)
 		d = d * -1;
 	if ((s[i] == '.' && s[i + 1] == '0' && s[i - 1] == '%'))
 		return (0);
+	if (j < ft_strlen (ft_litoa(d)) && d > 0 && j > 0)
+		j = ft_strlen (ft_litoa(d));
 	if (s[i] == ' ' && j == 0 && d >= 0)
 		*aff = ft_strjoin(*aff, " ");
 	ft_point_space(s, i, aff, j);

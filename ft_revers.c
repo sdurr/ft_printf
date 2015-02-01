@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_op_base_16.c                                    :+:      :+:    :+:   */
+/*   ft_revers.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/13 16:21:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/24 11:52:23 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/13 09:54:05 by sdurr             #+#    #+#             */
+/*   Updated: 2015/01/24 11:59:05 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char			*ft_op_base_8_unsigned_int(char *oc, int rest, unsigned int *q)
+char	*ft_revers(char *str)
 {
+	int		len;
 	int		i;
+	char	tmp;
 
+	len = ft_strlen(str) - 1;
 	i = 0;
-	oc = ft_strnew(9);
-	while (*q != 0)
+	if (str[i] == '-')
+		i++;
+	while (i < len)
 	{
-		rest = *q % 8;
-		(*q > 7) ? (*q /= 8) : (*q = 0);
-		rest = rest + 48;
-		oc[i++] = rest;
+		tmp = str[i];
+		str[i] = str[len];
+		str[len] = tmp;
+		i++;
+		len--;
 	}
-	oc[i--] = '\0';
-	oc = ft_revers(oc);
-	return (oc);
+	return (str);
 }
