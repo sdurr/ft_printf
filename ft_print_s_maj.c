@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/28 13:39:40 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/02/01 16:38:38 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,86 +40,105 @@ static int		ft_point_space(char *s, int i, char **aff, size_t stop)
 	if (s[i + 1] == '0')
 		return (-2);
 	if (test == 1)
-			return (1);
+		return (1);
 	return (0);
 }
 
-int				ft_print_s_maj(va_list ap, char *s, size_t i)
+static int		ft_suite(int ret, char *tmp, int test, int j)
 {
-	wchar_t		*s1;
-	char		*tmp;
-	size_t		j;
-	int			ret;
-	size_t		prec;
-	int test;
-	int k;
-
-	j = 0;
-	test = 0;
-	ret = i;
-	tmp = ft_strnew(13);
-	i--;
-	if (s[i] == '.')
-		test = 1;
-	while (s[i] >= '0' && s[i] <= '9')
-		tmp[j++] = s[i--];
-	tmp = ft_revers(tmp);
-	j = ft_atoi(tmp);
-	k = i;
-	if (s[i] == '%')
-		i = ret;
-	if (!(s1 = va_arg(ap, wchar_t *)) || !s1 || !ap)
-	{
-		ft_putstr("(null)");
-		return (6);
-	}
-	prec = 0;
-	ret = 0;
-	tmp = ft_strnew(13);
-	while (s1[ret] && prec <= j)
-	{
-		prec += ft_calc_wstr(s1[ret], j, tmp);
-		ret++;
-	}
-	tmp = ft_strnew(13);
-	if ((test = ft_point_space(s, i, &tmp, ret)) == -2)
+	if (test == 0)
 	{
 		ret = 0;
 		ft_putstr(tmp);
 		ret += ft_strlen(tmp);
 		return (ret);
 	}
-	prec = ret - 1;
+	if (test == 1)
+	{
+		ft_putstr("(null)");
+		return (6);
+	}
+	if (test == 2)
+	{
+		while (j > ret)
+		{
+			ft_putstr(" ");
+			ret += 2;
+		}
+		return (ret);
+	}
+	return (0);
+}
 
-	if (test == 0 && s[k] == '%' && j > 0)
+static int		ft_suite_1(int *c, int test, char *s)
+{
+	if (test == 0)
 	{
-		while (j > (size_t)ret)
+		while (c[4] > c[0])
 		{
 			ft_putstr(" ");
-			ret+=2;
+			c[0]++;
 		}
+		return (c[0]);
 	}
-	ret = 0;
-	ft_putstr(tmp);
-	ret += ft_strlen(tmp);
-	tmp = ft_strnew(13);
+	if (test == 1)
+	{
+		if (s[c[2]] != '%')
+			c[0] = ft_suite_1(c, 0, s);
+		if (c[1] == 0 && s[c[2]] == '%' && c[4] > 0)
+			c[0] = c[4];
+		return (c[0]);
+	}
+	return (0);
+}
+
+static int		ft_suite_2(int *c, char *s, int test, char *tmp)
+{
+	if (test == 0)
+	{
+		if (c[1] == 0 && s[c[2]] == '%' && c[4] > 0)
+			c[0] = ft_suite(c[0], tmp, 2, c[4]);
+		c[0] = ft_suite(c[0], tmp, 0, c[4]);
+		return (c[0]);
+	}
+	if (test == 1)
+	{
+		tmp = ft_revers(tmp);
+		c[4] = ft_atoi(tmp);
+		return (c[4]);
+	}
+	return (0);
+}
+
+int				ft_print_s_maj(va_list ap, char *s, int i)
+{
+	wchar_t		*s1;
+	char		*tmp;
+	int			c[5];
+
+	c[4] = 0;
+	c[0] = i;
+	if ((tmp = ft_strnew(13)) && s[--i] == '.')
+		c[1] = 1;
+	while (s[i] >= '0' && s[i] <= '9')
+		tmp[c[4]++] = s[i--];
+	c[4] = ft_suite_2(c, s, 1, tmp);
+	c[2] = i;
+	if (s[i] == '%')
+		i = c[0];
+	if (!(s1 = va_arg(ap, wchar_t *)) || !s1 || !ap)
+		return (ft_suite(c[0], tmp, 1, c[4]));
+	c[3] = 0;
+	c[0] = 0;
+	while (s1[c[0]] && c[3] <= c[4] && (tmp = ft_strnew(13)))
+		c[3] += ft_calc_wstr(s1[c[0]++], c[4], tmp);
+	if ((c[1] = ft_point_space(s, i, &tmp, c[0])) == -2)
+		return (ft_suite(c[0], tmp, 0, c[4]));
+	c[3] = c[0] - 1;
+	c[0] = ft_suite_2(c, s, 0, tmp);
 	i = 0;
-		while (s1[i])
-	{
-		ret += ft_calc_and_print_wchar(s1[i], tmp);
-		i++;
-		tmp = ft_strnew(13);
-		if (i >= (int)prec && j > 0 && test == 1)
-			return (ret);
-	}
-	if (s[k] != '%')
-		while (j > (size_t)ret)
-		{
-			ft_putstr(" ");
-			ret++;
-		}
-	if (test == 0 && s[k] == '%' && j > 0)
-		ret = j;
-	free(tmp);
-	return (ret);
+	while (s1[i] && (c[0] += ft_calc_and_print_wchar(s1[i++], tmp)))
+		if (i >= c[3] && c[4] > 0 && c[1] == 1)
+			return (c[0]);
+	return (ft_suite_1(c, 1, s));
 }

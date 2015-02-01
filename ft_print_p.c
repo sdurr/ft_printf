@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 16:03:22 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/24 11:46:12 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/30 09:19:49 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static int		ft_print_p_negative(int decimal, char *s, int j, char **aff)
 	hexa = ft_strnew(9);
 	i = 0;
 	hexa = ft_op_base_16(hexa, 0, &quotient);
-	hexa = ft_revers(hexa);
 	*aff = ft_strjoin(*aff, "0x7");
 	i = ft_strlen(hexa);
 	while (i++ < 11)
@@ -83,7 +82,6 @@ int				ft_print_p(va_list ap, char *s, int j, char **aff)
 	quotient = va_arg(ap, int);
 	if (quotient < 0)
 		return (ft_print_p_negative(quotient, s, j, aff));
-	hexa = ft_strnew(9);
 	if (quotient == 0 && (i = j))
 	{
 		while (s[i] != '%')
@@ -94,8 +92,7 @@ int				ft_print_p(va_list ap, char *s, int j, char **aff)
 			*aff = ft_strjoin(*aff, "0x0");
 		return (0);
 	}
-	hexa = ft_op_base_16(hexa, 0, (unsigned int *)&quotient);
-	hexa = ft_revers(hexa);
+	hexa = ft_op_base_16("", 0, (unsigned int *)&quotient);
 	test_aff(s, hexa, j, aff);
 	i = ft_strlen(hexa);
 	if (i > 7 && s[j - 1] != 'l' && s[j - 1] != ' ' && s[j - 1] != '+')

@@ -6,11 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:28 by sdurr             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2015/01/22 19:17:53 by getrembl         ###   ########.fr       */
-=======
-/*   Updated: 2015/01/27 18:24:20 by sdurr            ###   ########.fr       */
->>>>>>> 5fedfb12a0f083662ba9297865fa4cdfbcf4e522
+/*   Updated: 2015/02/01 16:40:07 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +33,14 @@ static int	ft_point_space(char *s, int i, char **aff, size_t stop)
 	return (0);
 }
 
+static void ft_suite(size_t j, long d, char **aff, char s)
+{
+	if (j < ft_strlen (ft_litoa(d)) && d > 0 && j > 0)
+		j = ft_strlen (ft_litoa(d));
+	if (s == ' ' && j == 0 && d >= 0)
+		*aff = ft_strjoin(*aff, " ");
+}
+
 int			ft_print_d_maj(va_list ap, char *s, int i, char **aff)
 {
 	long	d;
@@ -54,10 +58,7 @@ int			ft_print_d_maj(va_list ap, char *s, int i, char **aff)
 		d = d * -1;
 	if ((s[i] == '.' && s[i + 1] == '0' && s[i - 1] == '%'))
 		return (0);
-	if (j < ft_strlen (ft_litoa(d)) && d > 0 && j > 0)
-		j = ft_strlen (ft_litoa(d));
-	if (s[i] == ' ' && j == 0 && d >= 0)
-		*aff = ft_strjoin(*aff, " ");
+	ft_suite(j, d, aff, s[i]);
 	ft_point_space(s, i, aff, j);
 	while (j-- > (ft_strlen(ft_litoa(d))))
 		(s[i] == '.' || s[i + 1] == '0') ? (*aff = ft_strjoin(*aff, "0"))

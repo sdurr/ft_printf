@@ -6,61 +6,71 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/28 13:35:08 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/02/01 16:36:49 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libftprintf.h"
 #include <stdarg.h>
+#include <stdlib.h>
+
+static int		ft_minim(int ret, char *aff, int i, char *s)
+{
+	ret += ft_strlen(aff);
+	if ((aff = ft_strchr(aff, '0')) != NULL)
+		ft_putstr(aff);
+	if (s[i - 1] == '.')
+		ret += 1;
+	while (s[++i])
+		ret += 1;
+	return (ret);
+}
+
+static int		test_i(char *s, int i, int test, char **s1)
+{
+	if (test == 0)
+	{
+		if ((s[i] >= '0' && s[i] <= '9') || s[i] == '#' || s[i] == '+'
+			|| s[i] == 'l' || s[i] == ' ' || s[i] == '.' || s[i] == '-'
+			|| s[i] == 'h' || s[i] == 'j' || s[i] == 'z')
+			return (1);
+	}
+	if (test == 1)
+	{
+		ft_putstr(s1[1]);
+		i += ft_strlen(s1[1]);
+		return (i);
+	}
+	return (0);
+}
 
 int				ft_printf(char *format, ...)
 {
 	va_list	ap;
-	int		i;
-	char	*s;
-	char	*aff;
-	char	*tmp;
-	int		ret;
-	int		test;
+	int		i[3];
+	char	*s[4];
 
-	s = ft_strdup(format);
-	i = -1;
-	ret = 0;
+	s[0] = ft_strdup(format);
+	i[0] = -1;
+	i[1] = 0;
 	va_start(ap, format);
-	tmp = ft_strnew(2);
-	while (s[++i])
+	s[2] = ft_strnew(2);
+	while (s[0][++i[0]] && (s[1] = ft_strnew(1)))
 	{
-		aff = ft_strnew(1);
-		while (s[i] != '%' && s[i] && (tmp[0] = s[i++]))
-			aff = ft_strjoin(aff, tmp);
-		ft_putstr(aff);
-		ret += ft_strlen(aff);
-		aff = ft_strnew(1);
-		if (s[i++] == '%')
-		{
-			while ((s[i] >= '0' && s[i] <= '9') || s[i] == '#' || s[i] == '+'
-				   || s[i] == 'l' || s[i] == ' ' || s[i] == '.' || s[i] == '-'
-				   || s[i] == 'h' || s[i] == 'j' || s[i] == 'z')
-				i++;
-			if ((test = ft_type(s, i, ap, &aff)) == -1)
-				i--;
-			if (test > 0 && test != -2)
-				ret = test + ret;
-		}
-		if (test == -2)
-		{
-			ret += ft_strlen(aff);
-			if ((aff = ft_strchr(aff, '0')) != NULL)
-				ft_putstr(aff);
-			if (s[i - 1] == '.')
-				ret += 1;
-			while (s[++i])
-				ret += 1;
-			return (ret);
-		}
-		ft_putstr(aff);
-		ret += ft_strlen(aff);
+		while (s[0][i[0]] != '%' && s[0][i[0]] && (s[2][0] = s[0][i[0]++]))
+			s[1] = ft_strjoin(s[1], s[2]);
+		i[1] = test_i(s[0], i[1], 1, s);
+		if ((s[1] = ft_strnew(1)) && (i[0]++) >= 0)
+			while ((test_i(s[0], i[0], 0, s)) == 1)
+				i[0]++;
+		if ((i[2] = ft_type(s[0], i[0], ap, &s[1])) == -1)
+			i[0]--;
+		if (i[2] > 0 && i[2] != -2)
+			i[1] = i[2] + i[1];
+		if (i[2] == -2)
+			return (ft_minim(i[1], s[1], i[0], s[0]));
+		i[1] = test_i(s[0], i[1], 1, s);
 	}
-	return (ret);
+	return (i[1]);
 }

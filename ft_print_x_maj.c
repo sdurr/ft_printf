@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/24 11:48:32 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/30 09:11:24 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ static int		ft_print_x_maj_negative(int dec, char *s, int j, char **aff)
 	quotient = 4294967296 + dec;
 	hexa = ft_strnew(9);
 	hexa = ft_op_base_16(hexa, 1, &quotient);
-	hexa = ft_revers(hexa);
 	quotient = ft_number_befor(hexa, s, j, aff);
 	if (s[j - 1] == '#' && hexa[0] != '0')
 		*aff = ft_strjoin(*aff, "0X");
@@ -92,7 +91,6 @@ int				ft_print_x_maj(va_list ap, char *s, int j, char **aff)
 	}
 	hexa = ft_strnew(15);
 	hexa = ft_op_base_16_int(hexa, 1, &quotient);
-	hexa = ft_revers(hexa);
 	quotient = ft_number_befor(hexa, s, j, aff);
 	if (s[j - 1] == '#' && hexa[0] != '0')
 		*aff = ft_strjoin(*aff, "0X");

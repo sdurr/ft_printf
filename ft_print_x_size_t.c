@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/24 11:49:27 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/01/30 09:13:06 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int					ft_print_x_size_t(va_list ap, char *s, int j, char **aff)
 	}
 	hexa = ft_strnew(9);
 	hexa = ft_op_base_16_size_t(hexa, 0, &quotient);
-	hexa = ft_revers(hexa);
 	quotient = ft_number_befor_char(hexa, s, j, aff);
 	if (s[j - 1] == '#' && hexa[0] != '0')
 		*aff = ft_strjoin(*aff, "0x");
