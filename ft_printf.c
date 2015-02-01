@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/01 16:36:49 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/02/01 17:20:37 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,27 @@ static int		test_i(char *s, int i, int test, char **s1)
 	return (0);
 }
 
+static int		ft_printf_suite(va_list ap, int i[3], char *s[4])
+{
+	while (s[0][++i[0]] && (s[1] = ft_strnew(1)))
+	{
+		while (s[0][i[0]] != '%' && s[0][i[0]] && (s[2][0] = s[0][i[0]++]))
+			s[1] = ft_strjoin(s[1], s[2]);
+		i[1] = test_i(s[0], i[1], 1, s);
+		if ((s[1] = ft_strnew(1)) && (i[0]++) >= 0)
+			while ((test_i(s[0], i[0], 0, s)) == 1)
+				(i[0])++;
+		if ((i[2] = ft_type(s[0], i[0], ap, &s[1])) == -1)
+			i[0]--;
+		if (i[2] > 0 && i[2] != -2)
+			i[1] = i[2] + i[1];
+		if (i[2] == -2)
+			return (ft_minim(i[1], s[1], i[0], s[0]));
+		i[1] = test_i(s[0], i[1], 1, s);
+	}
+	return (i[1]);
+}
+
 int				ft_printf(char *format, ...)
 {
 	va_list	ap;
@@ -56,21 +77,5 @@ int				ft_printf(char *format, ...)
 	i[1] = 0;
 	va_start(ap, format);
 	s[2] = ft_strnew(2);
-	while (s[0][++i[0]] && (s[1] = ft_strnew(1)))
-	{
-		while (s[0][i[0]] != '%' && s[0][i[0]] && (s[2][0] = s[0][i[0]++]))
-			s[1] = ft_strjoin(s[1], s[2]);
-		i[1] = test_i(s[0], i[1], 1, s);
-		if ((s[1] = ft_strnew(1)) && (i[0]++) >= 0)
-			while ((test_i(s[0], i[0], 0, s)) == 1)
-				i[0]++;
-		if ((i[2] = ft_type(s[0], i[0], ap, &s[1])) == -1)
-			i[0]--;
-		if (i[2] > 0 && i[2] != -2)
-			i[1] = i[2] + i[1];
-		if (i[2] == -2)
-			return (ft_minim(i[1], s[1], i[0], s[0]));
-		i[1] = test_i(s[0], i[1], 1, s);
-	}
-	return (i[1]);
+	return (ft_printf_suite(ap, i, s));
 }
