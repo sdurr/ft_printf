@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/02 08:55:05 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/02 08:57:17 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ static int		s_test(char *s, int i, int *j, char c)
 		if (c != 0)
 			ft_putchar (c);
 		return (1);
-
 	}
 	return (0);
 }
@@ -70,8 +69,6 @@ static int		print_c(char *tmp, char **aff, char c)
 		return (1);
 	return (0);
 }
-
-#include <stdio.h>
 
 int				ft_print_c(va_list ap, char *s, int i, char **aff)
 {

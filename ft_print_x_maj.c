@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 12:10:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/30 09:11:24 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/02 11:45:28 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,12 @@ static int		ft_point_space(char *s, int i, char **aff, size_t stop)
 		j = ft_atoi(tmp);
 		if (j > stop)
 			while (j-- > stop)
-				*aff = ft_strjoin(*aff, " ");
+			{
+				if (s[i] == '.' || s[i + 1] == '0')
+					*aff = ft_strjoin (*aff, "0");
+				else
+					*aff = ft_strjoin(*aff, " ");
+			}
 	}
 	return (0);
 }
@@ -41,7 +46,7 @@ static int		ft_number_befor(char *s1, char *s, int i, char **aff)
 	j = 0;
 	tmp = ft_strnew(13);
 	i--;
-	while (s[i] > '0' && s[i] <= '9')
+	while (s[i] >= '0' && s[i] <= '9')
 		tmp[j++] = s[i--];
 	tmp = ft_revers(tmp);
 	j = ft_atoi(tmp);

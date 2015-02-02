@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/01 16:38:38 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/02/02 11:36:43 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,8 @@ static int		ft_suite_2(int *c, char *s, int test, char *tmp)
 	return (0);
 }
 
-int				ft_print_s_maj(va_list ap, char *s, int i)
+int				ft_print_s_maj(wchar_t	*s1, char *s, int i)
 {
-	wchar_t		*s1;
 	char		*tmp;
 	int			c[5];
 
@@ -126,7 +125,7 @@ int				ft_print_s_maj(va_list ap, char *s, int i)
 	c[2] = i;
 	if (s[i] == '%')
 		i = c[0];
-	if (!(s1 = va_arg(ap, wchar_t *)) || !s1 || !ap)
+	if (!s1)
 		return (ft_suite(c[0], tmp, 1, c[4]));
 	c[3] = 0;
 	c[0] = 0;

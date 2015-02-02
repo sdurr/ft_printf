@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/02 08:44:25 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/02 08:57:38 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int		test_i(char *s, int i, int test, char **s1)
 	}
 	return (0);
 }
-#include <stdio.h>
+
 static int		ft_printf_suite(va_list ap, int *i, char *s[4])
 {
 	while (s[0][++i[0]] && (s[1] = ft_strnew(1)))
