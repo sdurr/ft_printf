@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:22:54 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/02 11:36:43 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/02 12:39:24 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ static int		ft_point_space(char *s, int i, char **aff, size_t stop)
 	return (0);
 }
 
-static int		ft_suite(int ret, char *tmp, int test, int j)
+static int		ft_suite(int *c, char *tmp, int test, char s)
 {
 	if (test == 0)
 	{
-		ret = 0;
+		c[0] = 0;
 		ft_putstr(tmp);
-		ret += ft_strlen(tmp);
-		return (ret);
+		c[0] += ft_strlen(tmp);
+		return (c[0]);
 	}
 	if (test == 1)
 	{
@@ -60,12 +60,13 @@ static int		ft_suite(int ret, char *tmp, int test, int j)
 	}
 	if (test == 2)
 	{
-		while (j > ret)
+		while (c[4] > c[0])
 		{
-			ft_putstr(" ");
-			ret += 2;
+			(s == '0') ? ft_putstr("0")
+				: ft_putstr(" ");
+			c[0] += 2;
 		}
-		return (ret);
+		return (c[0]);
 	}
 	return (0);
 }
@@ -97,8 +98,8 @@ static int		ft_suite_2(int *c, char *s, int test, char *tmp)
 	if (test == 0)
 	{
 		if (c[1] == 0 && s[c[2]] == '%' && c[4] > 0)
-			c[0] = ft_suite(c[0], tmp, 2, c[4]);
-		c[0] = ft_suite(c[0], tmp, 0, c[4]);
+			c[0] = ft_suite(c, tmp, 2, c[5]);
+		c[0] = ft_suite(c, tmp, 0, c[5]);
 		return (c[0]);
 	}
 	if (test == 1)
@@ -110,7 +111,7 @@ static int		ft_suite_2(int *c, char *s, int test, char *tmp)
 	return (0);
 }
 
-int				ft_print_s_maj(wchar_t	*s1, char *s, int i)
+int				ft_print_s_maj(wchar_t *s1, char *s, int i)
 {
 	char		*tmp;
 	int			c[5];
@@ -121,18 +122,19 @@ int				ft_print_s_maj(wchar_t	*s1, char *s, int i)
 		c[1] = 1;
 	while (s[i] >= '0' && s[i] <= '9')
 		tmp[c[4]++] = s[i--];
+	c[5] = tmp[c[4] - 1];
 	c[4] = ft_suite_2(c, s, 1, tmp);
 	c[2] = i;
 	if (s[i] == '%')
 		i = c[0];
 	if (!s1)
-		return (ft_suite(c[0], tmp, 1, c[4]));
+		return (ft_suite(c, tmp, 1, s[i + 1]));
 	c[3] = 0;
 	c[0] = 0;
 	while (s1[c[0]] && c[3] <= c[4] && (tmp = ft_strnew(13)))
 		c[3] += ft_calc_wstr(s1[c[0]++], c[4], tmp);
 	if ((c[1] = ft_point_space(s, i, &tmp, c[0])) == -2)
-		return (ft_suite(c[0], tmp, 0, c[4]));
+		return (ft_suite(c, tmp, 0, s[i + 1]));
 	c[3] = c[0] - 1;
 	c[0] = ft_suite_2(c, s, 0, tmp);
 	i = 0;
