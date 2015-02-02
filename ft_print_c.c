@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/01 18:40:40 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/02/02 08:55:05 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,15 @@ static int		ft_point_space(char *s, int i, char **aff)
 	return (test);
 }
 
-static int		s_test(char *s, int i, int test, char c)
+static int		s_test(char *s, int i, int *j, char c)
 {
-	if ((c == 0 && s[i] != ' ' && s[i + 1] != '0' && test == 0)
-		|| (c == 0 && s[i] == '.' && test == 0) || (test == -2))
+	if ((c == 0 && s[i] != ' ' && s[i + 1] != '0' && j == 0 && j[1] == 0)
+		|| (c == 0 && s[i] == '.' && j[1] == 0 && j[0] == 0) || (j[1] == -2))
 	{
 		if (c != 0)
 			ft_putchar (c);
 		return (1);
+
 	}
 	return (0);
 }
@@ -70,24 +71,25 @@ static int		print_c(char *tmp, char **aff, char c)
 	return (0);
 }
 
+#include <stdio.h>
+
 int				ft_print_c(va_list ap, char *s, int i, char **aff)
 {
 	char		c;
 	char		*tmp;
-	int			j;
-	int			test;
+	int			j[2];
 
-	j = 0;
+	j[0] = 0;
 	if ((tmp = ft_strnew(13)) && (i--))
 		while (s[i] >= '0' && s[i] <= '9')
-			tmp[j++] = s[i--];
+			tmp[j[0]++] = s[i--];
 	tmp = ft_revers(tmp);
-	j = ft_atoi(tmp);
+	j[0] = ft_atoi(tmp);
 	c = (char)va_arg(ap, int);
-	test = ft_point_space(s, i, aff);
-	if ((s_test(s, i, test, c)) == 1)
+	j[1] = ft_point_space(s, i, aff);
+	if ((s_test(s, i, j, c)) == 1)
 		return (1);
-	precision(s, i, aff, j);
+	precision(s, i, aff, j[0]);
 	if (s[i] == ' ' && c == 0)
 		*aff = ft_strjoin (*aff, " ");
 	if (tmp[0] != '\0' || (s[i] == ' ' && c == 0)
