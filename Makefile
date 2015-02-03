@@ -6,7 +6,7 @@
 #    By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/27 14:34:24 by sdurr             #+#    #+#              #
-#    Updated: 2015/02/01 16:54:04 by getrembl         ###   ########.fr        #
+#    Updated: 2015/02/03 11:13:12 by sdurr            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -57,6 +57,7 @@ SRC				= 	ft_unimask.c \
 					ft_print_p.c \
 					ft_print_s.c \
 					ft_print_s_maj.c \
+					ft_suite_s_maj.c \
 					ft_print_u.c \
 					ft_print_u_maj.c \
 					ft_print_x.c \
