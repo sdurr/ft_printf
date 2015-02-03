@@ -6,7 +6,7 @@
 /*   By: getrembl <getrembl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/29 22:44:50 by getrembl          #+#    #+#             */
-/*   Updated: 2015/01/28 13:42:50 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/02/03 09:18:26 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int				ft_print_o_maj(va_list ap, char *s, int j, char **aff)
 	i = j;
 	while (s[i] != '%')
 		i--;
-	if ((octal = ft_strnew(12)) && s[i + 1] == '#')
+	if ((octal = ft_strnew(13)) && s[i + 1] == '#')
 		*aff = ft_strjoin(*aff, "0");
 	if (q == (long long)ULONG_MAX
 		&& (*aff = ft_strjoin(*aff, "1777777777777777777777")))

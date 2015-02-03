@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/03 09:07:34 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/02/03 09:23:58 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,10 @@ int				ft_printf(char *format, ...)
 {
 	va_list	ap;
 	int		i[3];
-	char	*s[4];
+	char	**s;
 
+	s = (char **)malloc(sizeof(char *) * 5);
+	s[3] = NULL;
 	s[0] = ft_strdup(format);
 	i[0] = -1;
 	i[1] = 0;
