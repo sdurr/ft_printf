@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:57 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/02 13:17:05 by getrembl         ###   ########.fr       */
+/*   Updated: 2015/02/03 09:07:34 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@
 static int		ft_minim(int ret, char *aff, int i, char *s)
 {
 	ret += ft_strlen(aff);
-	if ((aff = ft_strchr(aff, '0')) != NULL)
-		ft_putstr(aff);
-	if (s[i - 1] == '.')
-		ret += 1;
+	ft_putstr(aff);
+	ret += 1;
 	while (s[++i])
 		ret += 1;
 	return (ret);
@@ -47,12 +45,12 @@ static int		test_i(char *s, int i, int test, char **s1)
 
 static int		ft_printf_suite(va_list ap, int *i, char *s[4])
 {
-	while (s[0][++i[0]] && (s[1] = ft_strnew(2)))
+	while (s[0][++i[0]] && (s[1] = ft_strnew(12)))
 	{
 		while (s[0][i[0]] != '%' && s[0][i[0]] && (s[2][0] = s[0][i[0]++]))
 			s[1] = ft_strjoin(s[1], s[2]);
 		i[1] = test_i(s[0], i[1], 1, s);
-		if ((s[1] = ft_strnew(2)) && (i[0]++) >= 0)
+		if ((s[1] = ft_strnew(12)) && (i[0]++) >= 0)
 			while ((test_i(s[0], i[0], 0, s)) == 1)
 				(i[0])++;
 		if ((i[2] = ft_type(s[0], i[0], ap, &s[1])) == -1)

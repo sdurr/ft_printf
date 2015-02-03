@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 16:03:22 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/30 09:19:49 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/02 17:25:09 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ static int		ft_number_befor(char *s1, char *s, int i, char **aff)
 	if (s[i] == '-' && (ft_strcmp(s1, "0x0") == 0))
 		*aff = ft_strjoin (*aff, "0x0");
 	if ((s[i] == '.' && (ft_strcmp(s1, "0x") == 0)) || s[i + 1] == '0')
-		*aff = ft_strjoin (*aff, "0x");
+		*aff = ft_strjoin (*aff, "0x\0");
 	while (j-- > ft_strlen(s1))
 	{
 		if (s[i] == '.' || s[i + 1] == '0')
-			*aff = ft_strjoin (*aff, "0");
+			*aff = ft_strjoin (*aff, "0\0");
 		else
 			*aff = ft_strjoin (*aff, " ");
 	}
@@ -66,11 +66,11 @@ static void		test_aff(char *s, char *hexa, int j, char **aff)
 {
 	if (s[j - 1] != 'l' && ft_strlen(hexa) != 7
 		&& s[j - 1] != ' ' && s[j - 1] != '+')
-		*aff = ft_strjoin(*aff, "0x7");
+		*aff = ft_strjoin(*aff, "0x7\0");
 	else if (ft_strchr(*aff, 'x') == NULL && ft_strlen(hexa) != 7)
-		*aff = ft_strjoin(*aff, "0x");
+		*aff = ft_strjoin(*aff, "0x\0");
 	else
-		*aff = ft_strjoin(*aff, "0x10");
+		*aff = ft_strjoin(*aff, "0x10\0");
 }
 
 int				ft_print_p(va_list ap, char *s, int j, char **aff)
@@ -86,8 +86,8 @@ int				ft_print_p(va_list ap, char *s, int j, char **aff)
 	{
 		while (s[i] != '%')
 			i--;
-		if (((hexa = "0x0") && s[i + 1] == '.') || s[i + 1] == '0')
-			hexa = "0x";
+		if (((hexa = ft_strdup("0x0")) && s[i + 1] == '.') || s[i + 1] == '0')
+			hexa = ft_strdup("0x");
 		if ((quotient = ft_number_befor(hexa, s, j - 1, aff)) != -1)
 			*aff = ft_strjoin(*aff, "0x0");
 		return (0);

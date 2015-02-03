@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/27 15:23:12 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/02 08:57:17 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/02 17:12:03 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,7 @@ static int		s_test(char *s, int i, int *j, char c)
 
 static void		precision(char *s, int i, char **aff, int j)
 {
-	if (s[i + 1] == '0' && (j--))
-		*aff = ft_strjoin (*aff, " ");
-	while (j-- > 0)
+	while (j-- > 1)
 		(s[i + 1] != '0') ? (*aff = ft_strjoin (*aff, " "))
 			: (*aff = ft_strjoin (*aff, "0"));
 }
@@ -87,8 +85,6 @@ int				ft_print_c(va_list ap, char *s, int i, char **aff)
 	if ((s_test(s, i, j, c)) == 1)
 		return (1);
 	precision(s, i, aff, j[0]);
-	if (s[i] == ' ' && c == 0)
-		*aff = ft_strjoin (*aff, " ");
 	if (tmp[0] != '\0' || (s[i] == ' ' && c == 0)
 		|| (s[i + 1] == '0' && c == 0) || (s[i] == '.' && c == 0))
 		return (-2);
