@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 16:21:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/01/24 11:52:02 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/03 09:18:37 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char			*ft_op_base_8_long(char *octal, int rest, long long *q)
 	int		i;
 
 	i = 0;
-	octal = ft_strnew(9);
+	octal = ft_strnew(20);
 	while (*q != 0)
 	{
 		rest = *q % 8;

@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 10:11:09 by sdurr             #+#    #+#             */
-/*   Updated: 2014/11/28 11:53:55 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/03 09:16:35 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char		*ft_strnew(size_t size)
 	int		i;
 
 	i = 0;
-	if (!(ret = (char *)malloc(sizeof(char*) * size)))
+	if (!(ret = (char *)malloc(sizeof(char) * size + 1)))
 		return (NULL);
-	while (size != 0)
+	while (size)
 	{
 		ret[i] = '\0';
 		size--;
