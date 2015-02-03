@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 16:03:22 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/03 09:08:16 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/03 09:23:40 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,10 @@ int				ft_print_p(va_list ap, char *s, int j, char **aff)
 	{
 		while (s[i] != '%')
 			i--;
-		if ((s[i + 1] == '.') || s[i + 1] == '0')
+		if (((hexa = ft_strdup("0x0")) && (s[i + 1] == '.')) || s[i + 1] == '0')
 			hexa = ft_strdup("0x");
-		else
-			hexa = ft_strdup("0x0");
-			if ((quotient = ft_number_befor(hexa, s, j - 1, aff)) != -1)
-				*aff = ft_strjoin(*aff, "0x0");
+		if ((quotient = ft_number_befor(hexa, s, j - 1, aff)) != -1)
+			*aff = ft_strjoin(*aff, "0x0");
 		return (0);
 	}
 	hexa = ft_op_base_16("", 0, (unsigned int *)&quotient);
@@ -103,6 +101,5 @@ int				ft_print_p(va_list ap, char *s, int j, char **aff)
 		while (i++ < 11)
 			*aff = ft_strjoin(*aff, "f");
 	*aff = ft_strjoin(*aff, hexa);
-	free(hexa);
 	return (0);
 }
