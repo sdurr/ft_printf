@@ -6,10 +6,9 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/02 15:42:23 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/02 16:44:43 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/03 09:29:23 by getrembl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <stdarg.h>
 #include <wchar.h>
@@ -40,7 +39,7 @@ static int		ft_point_space(char *s, int *i, char **aff, size_t stop)
 		else
 			while (j-- >= stop)
 				(s[i[6] + 1] == '0') ? (*aff = ft_strjoin(*aff, "0"))
-				 : (*aff = ft_strjoin(*aff, " "));
+					: (*aff = ft_strjoin(*aff, " "));
 	}
 	if (s[i[6] + 1] == '0')
 		return (-2);
@@ -139,7 +138,7 @@ int				ft_print_s_maj(wchar_t *s1, char *s, int i)
 		c[3] += ft_calc_wstr(s1[c[0]++], c[4], tmp);
 	if ((c[1] = ft_point_space(s, c, &tmp, c[0])) == -2)
 		return (ft_suite(c, tmp, 0, s[i + 1]));
-	if (c[1] > 1  && c[4] == 0 && s[i] == '.')
+	if (c[1] > 1 && c[4] == 0 && s[i] == '.')
 		return (c[1]);
 	c[3] = c[0] - 1;
 	c[0] = ft_suite_2(c, s, 0, tmp);
