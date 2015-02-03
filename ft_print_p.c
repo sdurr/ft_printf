@@ -6,12 +6,14 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 16:03:22 by sdurr             #+#    #+#             */
-/*   Updated: 2015/02/02 17:25:09 by sdurr            ###   ########.fr       */
+/*   Updated: 2015/02/03 09:08:16 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdarg.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 static int		ft_number_befor(char *s1, char *s, int i, char **aff)
 {
@@ -27,11 +29,11 @@ static int		ft_number_befor(char *s1, char *s, int i, char **aff)
 	if (s[i] == '-' && (ft_strcmp(s1, "0x0") == 0))
 		*aff = ft_strjoin (*aff, "0x0");
 	if ((s[i] == '.' && (ft_strcmp(s1, "0x") == 0)) || s[i + 1] == '0')
-		*aff = ft_strjoin (*aff, "0x\0");
+		*aff = ft_strjoin (*aff, "0x");
 	while (j-- > ft_strlen(s1))
 	{
 		if (s[i] == '.' || s[i + 1] == '0')
-			*aff = ft_strjoin (*aff, "0\0");
+			*aff = ft_strjoin (*aff, "0");
 		else
 			*aff = ft_strjoin (*aff, " ");
 	}
@@ -86,10 +88,12 @@ int				ft_print_p(va_list ap, char *s, int j, char **aff)
 	{
 		while (s[i] != '%')
 			i--;
-		if (((hexa = ft_strdup("0x0")) && s[i + 1] == '.') || s[i + 1] == '0')
+		if ((s[i + 1] == '.') || s[i + 1] == '0')
 			hexa = ft_strdup("0x");
-		if ((quotient = ft_number_befor(hexa, s, j - 1, aff)) != -1)
-			*aff = ft_strjoin(*aff, "0x0");
+		else
+			hexa = ft_strdup("0x0");
+			if ((quotient = ft_number_befor(hexa, s, j - 1, aff)) != -1)
+				*aff = ft_strjoin(*aff, "0x0");
 		return (0);
 	}
 	hexa = ft_op_base_16("", 0, (unsigned int *)&quotient);
@@ -99,5 +103,6 @@ int				ft_print_p(va_list ap, char *s, int j, char **aff)
 		while (i++ < 11)
 			*aff = ft_strjoin(*aff, "f");
 	*aff = ft_strjoin(*aff, hexa);
+	free(hexa);
 	return (0);
 }
